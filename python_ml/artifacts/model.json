@@ -1,0 +1,22 @@
+{
+  "modelType": "logistic_regression_sgd",
+  "modelVersion": "2025-12-12",
+  "featureNames": [
+    "sectorMatch",
+    "geoMatch",
+    "sizeFit",
+    "dryPowderFit",
+    "activityLevel",
+    "ebitdaFit"
+  ],
+  "weights": [
+    0.8380598291181212,
+    0.83980843926549,
+    0.6456859457300839,
+    0.20039251820996365,
+    0.3246914407192468,
+    0.5887082690695418
+  ],
+  "bias": -3.6051978252417745,
+  "notes": "Dependency-free logistic regression trained on synthetic mandate-fit labels."
+}

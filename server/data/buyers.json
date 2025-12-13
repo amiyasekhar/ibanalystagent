@@ -1,0 +1,6898 @@
+{
+  "buyerDbVersion": "2025-12-12",
+  "seed": 7,
+  "count": 250,
+  "buyers": [
+    {
+      "id": "syn_b1",
+      "name": "Silver Capital 1",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 4.816,
+      "minDealSize": 11.244,
+      "maxDealSize": 56.774,
+      "dryPowder": 153.186,
+      "pastDeals": 8,
+      "strategyTags": [
+        "add-on",
+        "carve-out",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2727,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b2",
+      "name": "Aurora Holdings 2",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 8.5,
+      "maxEbitda": 104.569,
+      "minDealSize": 145.451,
+      "maxDealSize": 900.0,
+      "dryPowder": 0.0,
+      "pastDeals": 10,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7954,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b3",
+      "name": "Northbridge Equity 3",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.216,
+      "maxEbitda": 26.528,
+      "minDealSize": 32.675,
+      "maxDealSize": 242.515,
+      "dryPowder": 311.354,
+      "pastDeals": 16,
+      "strategyTags": [
+        "roll-up",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3738,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b4",
+      "name": "Evergreen Equity 4",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.869,
+      "maxEbitda": 38.438,
+      "minDealSize": 32.845,
+      "maxDealSize": 248.118,
+      "dryPowder": 314.754,
+      "pastDeals": 9,
+      "strategyTags": [
+        "majority-stake",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3175,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b5",
+      "name": "Atlas Investments 5",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.808,
+      "maxEbitda": 12.145,
+      "minDealSize": 27.502,
+      "maxDealSize": 96.491,
+      "dryPowder": 169.626,
+      "pastDeals": 21,
+      "strategyTags": [
+        "founder-friendly",
+        "vertical-integration",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2916,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b6",
+      "name": "Summit Holdings 6",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 1.777,
+      "maxEbitda": 25.089,
+      "minDealSize": 26.569,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 3,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7547,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b7",
+      "name": "Aurora Technologies 7",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Mexico",
+        "Canada"
+      ],
+      "minEbitda": 2.42,
+      "maxEbitda": 25.082,
+      "minDealSize": 31.016,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 8,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8002,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b8",
+      "name": "Summit Growth 8",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Manufacturing",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.227,
+      "maxEbitda": 23.163,
+      "minDealSize": 22.857,
+      "maxDealSize": 165.157,
+      "dryPowder": 415.765,
+      "pastDeals": 17,
+      "strategyTags": [
+        "vertical-integration",
+        "minority",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3162,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b9",
+      "name": "Atlas Investments 9",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.917,
+      "maxEbitda": 45.374,
+      "minDealSize": 80.237,
+      "maxDealSize": 348.281,
+      "dryPowder": 497.513,
+      "pastDeals": 26,
+      "strategyTags": [
+        "add-on",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4396,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b10",
+      "name": "Cedar Investments 10",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 4.743,
+      "maxEbitda": 40.735,
+      "minDealSize": 80.598,
+      "maxDealSize": 501.129,
+      "dryPowder": 1063.394,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3011,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b11",
+      "name": "Evergreen Investments 11",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 6.029,
+      "maxEbitda": 25.778,
+      "minDealSize": 79.634,
+      "maxDealSize": 317.945,
+      "dryPowder": 365.144,
+      "pastDeals": 12,
+      "strategyTags": [
+        "platform",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2818,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b12",
+      "name": "Silver Industries 12",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.253,
+      "maxEbitda": 32.205,
+      "minDealSize": 30.845,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 23,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8565,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b13",
+      "name": "Cedar Growth 13",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 9.07,
+      "maxEbitda": 124.373,
+      "minDealSize": 117.572,
+      "maxDealSize": 800.0,
+      "dryPowder": 1051.012,
+      "pastDeals": 11,
+      "strategyTags": [
+        "vertical-integration",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4048,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b14",
+      "name": "Aurora Holdings 14",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.092,
+      "maxEbitda": 25.362,
+      "minDealSize": 50.297,
+      "maxDealSize": 237.041,
+      "dryPowder": 377.421,
+      "pastDeals": 24,
+      "strategyTags": [
+        "vertical-integration",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3631,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b15",
+      "name": "Evergreen Partners 15",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.993,
+      "maxEbitda": 14.731,
+      "minDealSize": 29.748,
+      "maxDealSize": 114.483,
+      "dryPowder": 274.347,
+      "pastDeals": 29,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4109,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b16",
+      "name": "Cedar Group 16",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Europe",
+        "UK"
+      ],
+      "minEbitda": 1.658,
+      "maxEbitda": 15.589,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 16,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8258,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b17",
+      "name": "Lakeshore Capital 17",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 2.537,
+      "maxEbitda": 30.656,
+      "minDealSize": 46.673,
+      "maxDealSize": 223.283,
+      "dryPowder": 352.665,
+      "pastDeals": 17,
+      "strategyTags": [
+        "majority-stake",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3198,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b18",
+      "name": "Aurora Equity 18",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.937,
+      "maxEbitda": 74.842,
+      "minDealSize": 76.449,
+      "maxDealSize": 533.636,
+      "dryPowder": 1073.017,
+      "pastDeals": 21,
+      "strategyTags": [
+        "add-on",
+        "majority-stake",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3096,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b19",
+      "name": "Northbridge Holdings 19",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 2.288,
+      "maxEbitda": 14.419,
+      "minDealSize": 43.717,
+      "maxDealSize": 184.445,
+      "dryPowder": 259.024,
+      "pastDeals": 24,
+      "strategyTags": [
+        "add-on",
+        "international-expansion",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3865,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b20",
+      "name": "Lakeshore Holdings 20",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.44,
+      "maxEbitda": 18.812,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "majority-stake",
+        "buy-and-build",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8676,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b21",
+      "name": "Cedar Partners 21",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.144,
+      "maxEbitda": 74.577,
+      "minDealSize": 66.392,
+      "maxDealSize": 552.385,
+      "dryPowder": 1011.469,
+      "pastDeals": 18,
+      "strategyTags": [
+        "buy-and-build",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3687,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b22",
+      "name": "Pioneer Investments 22",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 9.192,
+      "maxEbitda": 66.108,
+      "minDealSize": 163.294,
+      "maxDealSize": 625.342,
+      "dryPowder": 743.534,
+      "pastDeals": 23,
+      "strategyTags": [
+        "carve-out",
+        "platform",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4411,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b23",
+      "name": "Aurora Holdings 23",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.293,
+      "maxEbitda": 37.028,
+      "minDealSize": 55.119,
+      "maxDealSize": 438.812,
+      "dryPowder": 920.969,
+      "pastDeals": 11,
+      "strategyTags": [
+        "international-expansion",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3402,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b24",
+      "name": "Cedar Holdings 24",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.868,
+      "maxEbitda": 56.089,
+      "minDealSize": 68.988,
+      "maxDealSize": 417.108,
+      "dryPowder": 552.291,
+      "pastDeals": 8,
+      "strategyTags": [
+        "synergies",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3164,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b25",
+      "name": "Lakeshore Technologies 25",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.549,
+      "maxEbitda": 65.711,
+      "minDealSize": 42.158,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 21,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7261,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b26",
+      "name": "Northbridge Investments 26",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 10.243,
+      "minDealSize": 11.932,
+      "maxDealSize": 89.199,
+      "dryPowder": 175.149,
+      "pastDeals": 21,
+      "strategyTags": [
+        "add-on",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4987,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b27",
+      "name": "Atlas Holdings 27",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.469,
+      "maxEbitda": 59.345,
+      "minDealSize": 50.011,
+      "maxDealSize": 414.524,
+      "dryPowder": 1139.871,
+      "pastDeals": 20,
+      "strategyTags": [
+        "minority",
+        "roll-up",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3627,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b28",
+      "name": "Atlas Partners 28",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.827,
+      "maxEbitda": 38.939,
+      "minDealSize": 52.805,
+      "maxDealSize": 311.485,
+      "dryPowder": 532.062,
+      "pastDeals": 7,
+      "strategyTags": [
+        "add-on",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2754,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b29",
+      "name": "Atlas Equity 29",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.293,
+      "maxEbitda": 70.482,
+      "minDealSize": 89.928,
+      "maxDealSize": 447.057,
+      "dryPowder": 593.864,
+      "pastDeals": 25,
+      "strategyTags": [
+        "platform",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4111,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b30",
+      "name": "Aurora Capital 30",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 5.879,
+      "minDealSize": 10.289,
+      "maxDealSize": 48.972,
+      "dryPowder": 125.137,
+      "pastDeals": 26,
+      "strategyTags": [
+        "founder-friendly",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3876,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b31",
+      "name": "Aurora Capital 31",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 7.429,
+      "maxEbitda": 54.53,
+      "minDealSize": 92.837,
+      "maxDealSize": 433.109,
+      "dryPowder": 749.796,
+      "pastDeals": 18,
+      "strategyTags": [
+        "platform",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3346,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b32",
+      "name": "Aurora Capital 32",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.346,
+      "maxEbitda": 12.711,
+      "minDealSize": 42.109,
+      "maxDealSize": 159.042,
+      "dryPowder": 206.54,
+      "pastDeals": 29,
+      "strategyTags": [
+        "vertical-integration",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3725,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b33",
+      "name": "Cedar Capital 33",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.469,
+      "maxEbitda": 50.219,
+      "minDealSize": 67.148,
+      "maxDealSize": 528.233,
+      "dryPowder": 808.529,
+      "pastDeals": 26,
+      "strategyTags": [
+        "platform",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3081,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b34",
+      "name": "Aurora Investments 34",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada",
+        "UK"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 5.222,
+      "minDealSize": 11.828,
+      "maxDealSize": 55.084,
+      "dryPowder": 113.975,
+      "pastDeals": 22,
+      "strategyTags": [
+        "add-on",
+        "synergies",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2573,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b35",
+      "name": "Aurora Holdings 35",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 3.754,
+      "minDealSize": 7.269,
+      "maxDealSize": 34.742,
+      "dryPowder": 89.753,
+      "pastDeals": 13,
+      "strategyTags": [
+        "majority-stake",
+        "roll-up",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4415,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b36",
+      "name": "Silver Equity 36",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.84,
+      "maxEbitda": 14.649,
+      "minDealSize": 26.932,
+      "maxDealSize": 106.919,
+      "dryPowder": 127.898,
+      "pastDeals": 29,
+      "strategyTags": [
+        "synergies",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4829,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b37",
+      "name": "Aurora Systems 37",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.377,
+      "maxEbitda": 18.38,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 21,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.745,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b38",
+      "name": "Oak Capital 38",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.725,
+      "maxEbitda": 15.599,
+      "minDealSize": 21.552,
+      "maxDealSize": 114.882,
+      "dryPowder": 200.623,
+      "pastDeals": 20,
+      "strategyTags": [
+        "carve-out",
+        "minority",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4508,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b39",
+      "name": "Atlas Holdings 39",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.348,
+      "maxEbitda": 15.808,
+      "minDealSize": 37.45,
+      "maxDealSize": 197.548,
+      "dryPowder": 225.859,
+      "pastDeals": 15,
+      "strategyTags": [
+        "majority-stake",
+        "platform",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3575,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b40",
+      "name": "Silver Holdings 40",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.176,
+      "maxEbitda": 25.203,
+      "minDealSize": 36.989,
+      "maxDealSize": 187.972,
+      "dryPowder": 428.788,
+      "pastDeals": 10,
+      "strategyTags": [
+        "synergies",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.268,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b41",
+      "name": "Cedar Investments 41",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.086,
+      "maxEbitda": 37.732,
+      "minDealSize": 51.314,
+      "maxDealSize": 312.585,
+      "dryPowder": 643.065,
+      "pastDeals": 11,
+      "strategyTags": [
+        "add-on",
+        "vertical-integration",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.471,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b42",
+      "name": "Oak Investments 42",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.04,
+      "maxEbitda": 12.791,
+      "minDealSize": 45.538,
+      "maxDealSize": 154.296,
+      "dryPowder": 339.66,
+      "pastDeals": 22,
+      "strategyTags": [
+        "majority-stake",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4825,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b43",
+      "name": "Cedar Holdings 43",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.487,
+      "maxEbitda": 27.142,
+      "minDealSize": 36.048,
+      "maxDealSize": 201.495,
+      "dryPowder": 565.585,
+      "pastDeals": 24,
+      "strategyTags": [
+        "vertical-integration",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2963,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b44",
+      "name": "Silver Partners 44",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 3.105,
+      "maxEbitda": 22.421,
+      "minDealSize": 47.61,
+      "maxDealSize": 270.165,
+      "dryPowder": 309.023,
+      "pastDeals": 22,
+      "strategyTags": [
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3393,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b45",
+      "name": "Atlas Technologies 45",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.073,
+      "maxEbitda": 38.151,
+      "minDealSize": 50.436,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 10,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6537,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b46",
+      "name": "Oak Investments 46",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 7.224,
+      "maxEbitda": 97.541,
+      "minDealSize": 139.433,
+      "maxDealSize": 800.0,
+      "dryPowder": 1947.203,
+      "pastDeals": 27,
+      "strategyTags": [
+        "international-expansion",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2609,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b47",
+      "name": "Summit Systems 47",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.653,
+      "maxEbitda": 69.084,
+      "minDealSize": 58.978,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 11,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7499,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b48",
+      "name": "Evergreen Partners 48",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.89,
+      "maxEbitda": 14.475,
+      "minDealSize": 34.766,
+      "maxDealSize": 186.771,
+      "dryPowder": 331.115,
+      "pastDeals": 21,
+      "strategyTags": [
+        "synergies",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2947,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b49",
+      "name": "Pioneer Holdings 49",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 9.315,
+      "maxEbitda": 80.831,
+      "minDealSize": 117.915,
+      "maxDealSize": 900.0,
+      "dryPowder": 0.0,
+      "pastDeals": 6,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8091,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b50",
+      "name": "Pioneer Partners 50",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.021,
+      "maxEbitda": 9.923,
+      "minDealSize": 26.569,
+      "maxDealSize": 94.424,
+      "dryPowder": 215.915,
+      "pastDeals": 15,
+      "strategyTags": [
+        "add-on",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4539,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b51",
+      "name": "Cedar Equity 51",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.254,
+      "maxEbitda": 19.879,
+      "minDealSize": 42.519,
+      "maxDealSize": 253.72,
+      "dryPowder": 322.936,
+      "pastDeals": 26,
+      "strategyTags": [
+        "vertical-integration",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2621,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b52",
+      "name": "Oak Systems 52",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.487,
+      "maxEbitda": 63.111,
+      "minDealSize": 62.586,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 16,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6942,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b53",
+      "name": "Oak Holdings 53",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 8.377,
+      "minDealSize": 7.639,
+      "maxDealSize": 63.414,
+      "dryPowder": 175.051,
+      "pastDeals": 17,
+      "strategyTags": [
+        "carve-out",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2766,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b54",
+      "name": "Summit Capital 54",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.879,
+      "maxEbitda": 15.004,
+      "minDealSize": 32.258,
+      "maxDealSize": 136.633,
+      "dryPowder": 383.454,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3376,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b55",
+      "name": "Evergreen Investments 55",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada",
+        "Europe"
+      ],
+      "minEbitda": 4.572,
+      "maxEbitda": 31.911,
+      "minDealSize": 70.05,
+      "maxDealSize": 328.432,
+      "dryPowder": 568.962,
+      "pastDeals": 23,
+      "strategyTags": [
+        "roll-up",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4119,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b56",
+      "name": "Silver Investments 56",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.533,
+      "maxEbitda": 15.693,
+      "minDealSize": 27.591,
+      "maxDealSize": 170.514,
+      "dryPowder": 418.023,
+      "pastDeals": 6,
+      "strategyTags": [
+        "buy-and-build",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3339,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b57",
+      "name": "Atlas Technologies 57",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.814,
+      "maxEbitda": 13.384,
+      "minDealSize": 25.201,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 4,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7151,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b58",
+      "name": "Northbridge Equity 58",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 3.156,
+      "maxEbitda": 18.353,
+      "minDealSize": 39.837,
+      "maxDealSize": 227.126,
+      "dryPowder": 342.218,
+      "pastDeals": 13,
+      "strategyTags": [
+        "buy-and-build",
+        "roll-up",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4057,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b59",
+      "name": "Aurora Group 59",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.309,
+      "maxEbitda": 32.9,
+      "minDealSize": 39.972,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 24,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7835,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b60",
+      "name": "Summit Holdings 60",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing",
+        "Healthcare",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 2.792,
+      "maxEbitda": 16.455,
+      "minDealSize": 53.842,
+      "maxDealSize": 187.331,
+      "dryPowder": 344.995,
+      "pastDeals": 7,
+      "strategyTags": [
+        "synergies",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.44,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b61",
+      "name": "Northbridge Equity 61",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 12.17,
+      "minDealSize": 10.718,
+      "maxDealSize": 88.738,
+      "dryPowder": 99.95,
+      "pastDeals": 20,
+      "strategyTags": [
+        "minority",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3729,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b62",
+      "name": "Summit Systems 62",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 9.39,
+      "maxEbitda": 102.714,
+      "minDealSize": 142.824,
+      "maxDealSize": 900.0,
+      "dryPowder": 0.0,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7389,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b63",
+      "name": "Evergreen Investments 63",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.762,
+      "maxEbitda": 19.269,
+      "minDealSize": 40.846,
+      "maxDealSize": 159.676,
+      "dryPowder": 248.58,
+      "pastDeals": 25,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4116,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b64",
+      "name": "Aurora Equity 64",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.733,
+      "maxEbitda": 31.52,
+      "minDealSize": 93.714,
+      "maxDealSize": 348.673,
+      "dryPowder": 455.719,
+      "pastDeals": 23,
+      "strategyTags": [
+        "minority",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4308,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b65",
+      "name": "Silver Industries 65",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.843,
+      "maxEbitda": 53.727,
+      "minDealSize": 49.397,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 11,
+      "strategyTags": [
+        "synergies",
+        "buy-and-build",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8095,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b66",
+      "name": "Cedar Holdings 66",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 10.144,
+      "maxEbitda": 58.191,
+      "minDealSize": 180.333,
+      "maxDealSize": 707.639,
+      "dryPowder": 1063.019,
+      "pastDeals": 19,
+      "strategyTags": [
+        "carve-out",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3071,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b67",
+      "name": "Evergreen Capital 67",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 3.746,
+      "maxEbitda": 25.804,
+      "minDealSize": 65.194,
+      "maxDealSize": 322.846,
+      "dryPowder": 553.797,
+      "pastDeals": 23,
+      "strategyTags": [
+        "international-expansion",
+        "minority",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3523,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b68",
+      "name": "Cedar Investments 68",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 9.557,
+      "minDealSize": 12.88,
+      "maxDealSize": 82.092,
+      "dryPowder": 136.539,
+      "pastDeals": 20,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.254,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b69",
+      "name": "Silver Holdings 69",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 6.185,
+      "maxEbitda": 88.694,
+      "minDealSize": 102.926,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8187,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b70",
+      "name": "Aurora Equity 70",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.32,
+      "maxEbitda": 47.008,
+      "minDealSize": 80.049,
+      "maxDealSize": 436.083,
+      "dryPowder": 495.478,
+      "pastDeals": 23,
+      "strategyTags": [
+        "vertical-integration",
+        "platform",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4547,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b71",
+      "name": "Northbridge Growth 71",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.402,
+      "maxEbitda": 44.884,
+      "minDealSize": 84.652,
+      "maxDealSize": 364.558,
+      "dryPowder": 591.138,
+      "pastDeals": 9,
+      "strategyTags": [
+        "roll-up",
+        "carve-out",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4743,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b72",
+      "name": "Oak Group 72",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.601,
+      "maxEbitda": 13.05,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 23,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6964,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b73",
+      "name": "Northbridge Growth 73",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.653,
+      "maxEbitda": 24.537,
+      "minDealSize": 26.359,
+      "maxDealSize": 157.264,
+      "dryPowder": 239.993,
+      "pastDeals": 14,
+      "strategyTags": [
+        "platform",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2848,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b74",
+      "name": "Northbridge Capital 74",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.306,
+      "maxEbitda": 61.362,
+      "minDealSize": 91.11,
+      "maxDealSize": 377.002,
+      "dryPowder": 418.904,
+      "pastDeals": 12,
+      "strategyTags": [
+        "minority",
+        "roll-up",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3401,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b75",
+      "name": "Lakeshore Growth 75",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.138,
+      "maxEbitda": 27.698,
+      "minDealSize": 51.561,
+      "maxDealSize": 326.481,
+      "dryPowder": 421.91,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3556,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b76",
+      "name": "Pioneer Growth 76",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 3.547,
+      "maxEbitda": 16.715,
+      "minDealSize": 43.876,
+      "maxDealSize": 196.463,
+      "dryPowder": 342.679,
+      "pastDeals": 18,
+      "strategyTags": [
+        "international-expansion",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2771,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b77",
+      "name": "Lakeshore Partners 77",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.166,
+      "maxEbitda": 13.932,
+      "minDealSize": 22.519,
+      "maxDealSize": 147.539,
+      "dryPowder": 363.623,
+      "pastDeals": 6,
+      "strategyTags": [
+        "platform",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4436,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b78",
+      "name": "Northbridge Holdings 78",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.119,
+      "maxEbitda": 55.575,
+      "minDealSize": 93.238,
+      "maxDealSize": 359.602,
+      "dryPowder": 447.48,
+      "pastDeals": 19,
+      "strategyTags": [
+        "carve-out",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4239,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b79",
+      "name": "Northbridge Capital 79",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 6.787,
+      "maxEbitda": 31.785,
+      "minDealSize": 88.029,
+      "maxDealSize": 295.8,
+      "dryPowder": 411.891,
+      "pastDeals": 27,
+      "strategyTags": [
+        "carve-out",
+        "add-on",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3046,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b80",
+      "name": "Oak Partners 80",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.433,
+      "maxEbitda": 74.03,
+      "minDealSize": 103.583,
+      "maxDealSize": 800.0,
+      "dryPowder": 2864.777,
+      "pastDeals": 6,
+      "strategyTags": [
+        "founder-friendly",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2651,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b81",
+      "name": "Oak Systems 81",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.457,
+      "maxEbitda": 24.02,
+      "minDealSize": 25.0,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "founder-friendly",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7408,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b82",
+      "name": "Atlas Equity 82",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.152,
+      "maxEbitda": 62.092,
+      "minDealSize": 125.009,
+      "maxDealSize": 634.109,
+      "dryPowder": 1220.076,
+      "pastDeals": 28,
+      "strategyTags": [
+        "synergies",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3442,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b83",
+      "name": "Aurora Equity 83",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 3.263,
+      "maxEbitda": 31.539,
+      "minDealSize": 63.485,
+      "maxDealSize": 240.901,
+      "dryPowder": 368.058,
+      "pastDeals": 13,
+      "strategyTags": [
+        "international-expansion",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4375,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b84",
+      "name": "Atlas Holdings 84",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.957,
+      "maxEbitda": 24.158,
+      "minDealSize": 49.421,
+      "maxDealSize": 176.935,
+      "dryPowder": 209.809,
+      "pastDeals": 21,
+      "strategyTags": [
+        "platform",
+        "majority-stake",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3691,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b85",
+      "name": "Lakeshore Holdings 85",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 6.548,
+      "minDealSize": 13.503,
+      "maxDealSize": 79.197,
+      "dryPowder": 215.973,
+      "pastDeals": 23,
+      "strategyTags": [
+        "carve-out",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2735,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b86",
+      "name": "Aurora Investments 86",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.785,
+      "maxEbitda": 10.83,
+      "minDealSize": 22.338,
+      "maxDealSize": 110.318,
+      "dryPowder": 133.095,
+      "pastDeals": 29,
+      "strategyTags": [
+        "roll-up",
+        "international-expansion",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4775,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b87",
+      "name": "Atlas Capital 87",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 12.738,
+      "maxEbitda": 43.265,
+      "minDealSize": 155.689,
+      "maxDealSize": 537.952,
+      "dryPowder": 619.801,
+      "pastDeals": 7,
+      "strategyTags": [
+        "vertical-integration",
+        "synergies",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3882,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b88",
+      "name": "Aurora Group 88",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 3.987,
+      "maxEbitda": 85.689,
+      "minDealSize": 55.449,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 17,
+      "strategyTags": [
+        "buy-and-build",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6921,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b89",
+      "name": "Evergreen Growth 89",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 3.602,
+      "maxEbitda": 54.956,
+      "minDealSize": 49.968,
+      "maxDealSize": 374.212,
+      "dryPowder": 1033.865,
+      "pastDeals": 29,
+      "strategyTags": [
+        "minority",
+        "add-on",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3306,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b90",
+      "name": "Pioneer Group 90",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.893,
+      "maxEbitda": 59.131,
+      "minDealSize": 54.84,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.851,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b91",
+      "name": "Pioneer Equity 91",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services",
+        "Healthcare",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.375,
+      "maxEbitda": 16.397,
+      "minDealSize": 31.583,
+      "maxDealSize": 193.919,
+      "dryPowder": 402.932,
+      "pastDeals": 18,
+      "strategyTags": [
+        "platform",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3539,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b92",
+      "name": "Northbridge Growth 92",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 13.281,
+      "minDealSize": 13.269,
+      "maxDealSize": 87.054,
+      "dryPowder": 204.38,
+      "pastDeals": 26,
+      "strategyTags": [
+        "carve-out",
+        "synergies",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4279,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b93",
+      "name": "Atlas Capital 93",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Healthcare",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.617,
+      "maxEbitda": 20.729,
+      "minDealSize": 55.258,
+      "maxDealSize": 235.089,
+      "dryPowder": 465.554,
+      "pastDeals": 29,
+      "strategyTags": [
+        "international-expansion",
+        "majority-stake",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2726,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b94",
+      "name": "Pioneer Growth 94",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.946,
+      "maxEbitda": 23.522,
+      "minDealSize": 82.149,
+      "maxDealSize": 288.996,
+      "dryPowder": 358.322,
+      "pastDeals": 26,
+      "strategyTags": [
+        "roll-up",
+        "synergies",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.467,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b95",
+      "name": "Cedar Investments 95",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 11.034,
+      "maxEbitda": 68.802,
+      "minDealSize": 206.314,
+      "maxDealSize": 719.525,
+      "dryPowder": 1994.813,
+      "pastDeals": 25,
+      "strategyTags": [
+        "add-on",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3154,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b96",
+      "name": "Oak Growth 96",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.218,
+      "maxEbitda": 7.944,
+      "minDealSize": 20.202,
+      "maxDealSize": 89.182,
+      "dryPowder": 209.68,
+      "pastDeals": 27,
+      "strategyTags": [
+        "buy-and-build",
+        "founder-friendly",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2868,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b97",
+      "name": "Summit Equity 97",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 9.738,
+      "maxEbitda": 113.856,
+      "minDealSize": 142.171,
+      "maxDealSize": 800.0,
+      "dryPowder": 1158.593,
+      "pastDeals": 18,
+      "strategyTags": [
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3903,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b98",
+      "name": "Oak Equity 98",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 3.52,
+      "maxEbitda": 54.971,
+      "minDealSize": 69.642,
+      "maxDealSize": 345.322,
+      "dryPowder": 384.277,
+      "pastDeals": 7,
+      "strategyTags": [
+        "carve-out",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.495,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b99",
+      "name": "Pioneer Partners 99",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.935,
+      "maxEbitda": 27.932,
+      "minDealSize": 31.177,
+      "maxDealSize": 220.071,
+      "dryPowder": 311.655,
+      "pastDeals": 23,
+      "strategyTags": [
+        "vertical-integration",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.489,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b100",
+      "name": "Evergreen Systems 100",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.216,
+      "maxEbitda": 54.682,
+      "minDealSize": 84.597,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8126,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b101",
+      "name": "Atlas Holdings 101",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.711,
+      "maxEbitda": 11.612,
+      "minDealSize": 24.43,
+      "maxDealSize": 149.934,
+      "dryPowder": 181.953,
+      "pastDeals": 22,
+      "strategyTags": [
+        "buy-and-build",
+        "platform",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3729,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b102",
+      "name": "Cedar Capital 102",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 8.063,
+      "maxEbitda": 66.456,
+      "minDealSize": 114.612,
+      "maxDealSize": 789.016,
+      "dryPowder": 1099.623,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4027,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b103",
+      "name": "Atlas Capital 103",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.467,
+      "maxEbitda": 21.408,
+      "minDealSize": 54.303,
+      "maxDealSize": 236.8,
+      "dryPowder": 285.295,
+      "pastDeals": 18,
+      "strategyTags": [
+        "founder-friendly",
+        "vertical-integration",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3631,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b104",
+      "name": "Summit Group 104",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 5.681,
+      "maxEbitda": 50.404,
+      "minDealSize": 82.895,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 8,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.88,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b105",
+      "name": "Cedar Holdings 105",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 9.514,
+      "maxEbitda": 43.549,
+      "minDealSize": 117.27,
+      "maxDealSize": 467.433,
+      "dryPowder": 581.297,
+      "pastDeals": 19,
+      "strategyTags": [
+        "buy-and-build",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3661,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b106",
+      "name": "Lakeshore Investments 106",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 4.9,
+      "maxEbitda": 42.157,
+      "minDealSize": 90.784,
+      "maxDealSize": 303.32,
+      "dryPowder": 437.356,
+      "pastDeals": 17,
+      "strategyTags": [
+        "roll-up",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3825,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b107",
+      "name": "Pioneer Capital 107",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.005,
+      "maxEbitda": 34.803,
+      "minDealSize": 85.333,
+      "maxDealSize": 384.92,
+      "dryPowder": 1004.769,
+      "pastDeals": 10,
+      "strategyTags": [
+        "buy-and-build",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3925,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b108",
+      "name": "Pioneer Technologies 108",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.912,
+      "maxEbitda": 62.498,
+      "minDealSize": 94.138,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8678,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b109",
+      "name": "Evergreen Growth 109",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.669,
+      "maxEbitda": 26.462,
+      "minDealSize": 51.026,
+      "maxDealSize": 209.791,
+      "dryPowder": 296.501,
+      "pastDeals": 22,
+      "strategyTags": [
+        "international-expansion",
+        "roll-up",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.286,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b110",
+      "name": "Cedar Partners 110",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.058,
+      "maxEbitda": 17.426,
+      "minDealSize": 58.682,
+      "maxDealSize": 204.078,
+      "dryPowder": 545.389,
+      "pastDeals": 27,
+      "strategyTags": [
+        "carve-out",
+        "majority-stake",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3287,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b111",
+      "name": "Cedar Holdings 111",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.127,
+      "maxEbitda": 16.58,
+      "minDealSize": 16.793,
+      "maxDealSize": 138.359,
+      "dryPowder": 247.754,
+      "pastDeals": 28,
+      "strategyTags": [
+        "minority",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.349,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b112",
+      "name": "Evergreen Industries 112",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.782,
+      "maxEbitda": 54.839,
+      "minDealSize": 50.095,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 20,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7354,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b113",
+      "name": "Oak Growth 113",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 9.126,
+      "maxEbitda": 51.885,
+      "minDealSize": 128.556,
+      "maxDealSize": 638.045,
+      "dryPowder": 1343.252,
+      "pastDeals": 11,
+      "strategyTags": [
+        "minority",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4266,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b114",
+      "name": "Aurora Capital 114",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Mexico",
+        "Europe"
+      ],
+      "minEbitda": 2.658,
+      "maxEbitda": 26.863,
+      "minDealSize": 38.722,
+      "maxDealSize": 285.801,
+      "dryPowder": 506.322,
+      "pastDeals": 12,
+      "strategyTags": [
+        "vertical-integration",
+        "minority",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4628,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b115",
+      "name": "Summit Investments 115",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.917,
+      "maxEbitda": 15.742,
+      "minDealSize": 27.25,
+      "maxDealSize": 97.708,
+      "dryPowder": 125.872,
+      "pastDeals": 27,
+      "strategyTags": [
+        "international-expansion",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.283,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b116",
+      "name": "Pioneer Equity 116",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.928,
+      "maxEbitda": 51.401,
+      "minDealSize": 56.655,
+      "maxDealSize": 445.402,
+      "dryPowder": 1196.517,
+      "pastDeals": 12,
+      "strategyTags": [
+        "majority-stake",
+        "platform",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2995,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b117",
+      "name": "Cedar Holdings 117",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.269,
+      "maxEbitda": 13.931,
+      "minDealSize": 25.127,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.824,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b118",
+      "name": "Northbridge Holdings 118",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 7.883,
+      "maxEbitda": 66.601,
+      "minDealSize": 134.069,
+      "maxDealSize": 636.747,
+      "dryPowder": 1185.385,
+      "pastDeals": 24,
+      "strategyTags": [
+        "add-on",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4597,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b119",
+      "name": "Summit Growth 119",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.024,
+      "maxEbitda": 38.536,
+      "minDealSize": 41.165,
+      "maxDealSize": 314.986,
+      "dryPowder": 646.35,
+      "pastDeals": 17,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3529,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b120",
+      "name": "Lakeshore Capital 120",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.196,
+      "maxEbitda": 6.27,
+      "minDealSize": 15.833,
+      "maxDealSize": 80.6,
+      "dryPowder": 194.271,
+      "pastDeals": 29,
+      "strategyTags": [
+        "founder-friendly",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4193,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b121",
+      "name": "Atlas Investments 121",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 3.602,
+      "maxEbitda": 36.481,
+      "minDealSize": 45.295,
+      "maxDealSize": 221.646,
+      "dryPowder": 419.42,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.292,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b122",
+      "name": "Lakeshore Equity 122",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.256,
+      "maxEbitda": 12.193,
+      "minDealSize": 22.104,
+      "maxDealSize": 128.903,
+      "dryPowder": 322.232,
+      "pastDeals": 23,
+      "strategyTags": [
+        "buy-and-build",
+        "international-expansion",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4327,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b123",
+      "name": "Aurora Holdings 123",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.329,
+      "maxEbitda": 23.712,
+      "minDealSize": 49.784,
+      "maxDealSize": 280.271,
+      "dryPowder": 348.626,
+      "pastDeals": 18,
+      "strategyTags": [
+        "buy-and-build",
+        "roll-up",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3878,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b124",
+      "name": "Atlas Capital 124",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Software",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 4.759,
+      "maxEbitda": 49.583,
+      "minDealSize": 88.84,
+      "maxDealSize": 474.958,
+      "dryPowder": 1010.439,
+      "pastDeals": 6,
+      "strategyTags": [
+        "roll-up",
+        "buy-and-build",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4027,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b125",
+      "name": "Summit Investments 125",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.317,
+      "maxEbitda": 11.804,
+      "minDealSize": 25.372,
+      "maxDealSize": 142.329,
+      "dryPowder": 358.718,
+      "pastDeals": 20,
+      "strategyTags": [
+        "carve-out",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4928,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b126",
+      "name": "Silver Equity 126",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.093,
+      "maxEbitda": 39.548,
+      "minDealSize": 32.612,
+      "maxDealSize": 260.874,
+      "dryPowder": 311.749,
+      "pastDeals": 13,
+      "strategyTags": [
+        "minority",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4197,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b127",
+      "name": "Cedar Holdings 127",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 2.492,
+      "maxEbitda": 20.809,
+      "minDealSize": 34.424,
+      "maxDealSize": 208.279,
+      "dryPowder": 324.459,
+      "pastDeals": 20,
+      "strategyTags": [
+        "vertical-integration",
+        "carve-out",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3885,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b128",
+      "name": "Atlas Capital 128",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 4.67,
+      "maxEbitda": 50.888,
+      "minDealSize": 73.783,
+      "maxDealSize": 338.494,
+      "dryPowder": 465.425,
+      "pastDeals": 29,
+      "strategyTags": [
+        "carve-out",
+        "buy-and-build",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2979,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b129",
+      "name": "Atlas Growth 129",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 13.269,
+      "maxEbitda": 71.314,
+      "minDealSize": 177.066,
+      "maxDealSize": 800.0,
+      "dryPowder": 1542.524,
+      "pastDeals": 28,
+      "strategyTags": [
+        "international-expansion",
+        "buy-and-build",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4677,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b130",
+      "name": "Lakeshore Investments 130",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.227,
+      "maxEbitda": 44.295,
+      "minDealSize": 54.567,
+      "maxDealSize": 272.265,
+      "dryPowder": 596.77,
+      "pastDeals": 27,
+      "strategyTags": [
+        "majority-stake",
+        "platform",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3953,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b131",
+      "name": "Oak Growth 131",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.532,
+      "maxEbitda": 15.733,
+      "minDealSize": 43.437,
+      "maxDealSize": 160.468,
+      "dryPowder": 436.763,
+      "pastDeals": 8,
+      "strategyTags": [
+        "platform",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4051,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b132",
+      "name": "Northbridge Equity 132",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 11.131,
+      "maxEbitda": 85.251,
+      "minDealSize": 163.45,
+      "maxDealSize": 800.0,
+      "dryPowder": 1834.481,
+      "pastDeals": 29,
+      "strategyTags": [
+        "add-on",
+        "synergies",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3286,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b133",
+      "name": "Lakeshore Equity 133",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.671,
+      "maxEbitda": 9.113,
+      "minDealSize": 25.749,
+      "maxDealSize": 91.157,
+      "dryPowder": 106.831,
+      "pastDeals": 9,
+      "strategyTags": [
+        "majority-stake",
+        "add-on",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2998,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b134",
+      "name": "Evergreen Holdings 134",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.288,
+      "maxEbitda": 14.011,
+      "minDealSize": 31.906,
+      "maxDealSize": 107.096,
+      "dryPowder": 202.927,
+      "pastDeals": 20,
+      "strategyTags": [
+        "platform",
+        "add-on",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3418,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b135",
+      "name": "Evergreen Equity 135",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.511,
+      "maxEbitda": 34.124,
+      "minDealSize": 101.557,
+      "maxDealSize": 425.647,
+      "dryPowder": 640.51,
+      "pastDeals": 29,
+      "strategyTags": [
+        "majority-stake",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2684,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b136",
+      "name": "Aurora Industries 136",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.88,
+      "maxEbitda": 27.366,
+      "minDealSize": 35.661,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.655,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b137",
+      "name": "Atlas Partners 137",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.438,
+      "maxEbitda": 20.472,
+      "minDealSize": 47.093,
+      "maxDealSize": 169.657,
+      "dryPowder": 262.905,
+      "pastDeals": 23,
+      "strategyTags": [
+        "international-expansion",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4807,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b138",
+      "name": "Northbridge Partners 138",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 12.868,
+      "maxEbitda": 97.632,
+      "minDealSize": 221.757,
+      "maxDealSize": 800.0,
+      "dryPowder": 1193.785,
+      "pastDeals": 5,
+      "strategyTags": [
+        "minority",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3292,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b139",
+      "name": "Pioneer Growth 139",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.415,
+      "maxEbitda": 33.059,
+      "minDealSize": 93.022,
+      "maxDealSize": 349.151,
+      "dryPowder": 505.817,
+      "pastDeals": 20,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2579,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b140",
+      "name": "Lakeshore Technologies 140",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.766,
+      "maxEbitda": 36.467,
+      "minDealSize": 30.021,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 24,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8842,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b141",
+      "name": "Summit Capital 141",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.63,
+      "maxEbitda": 28.533,
+      "minDealSize": 70.051,
+      "maxDealSize": 351.167,
+      "dryPowder": 474.359,
+      "pastDeals": 27,
+      "strategyTags": [
+        "add-on",
+        "minority",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3033,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b142",
+      "name": "Silver Systems 142",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.47,
+      "maxEbitda": 76.567,
+      "minDealSize": 104.697,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.706,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b143",
+      "name": "Evergreen Partners 143",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.998,
+      "maxEbitda": 9.591,
+      "minDealSize": 33.731,
+      "maxDealSize": 121.781,
+      "dryPowder": 345.809,
+      "pastDeals": 15,
+      "strategyTags": [
+        "buy-and-build",
+        "add-on",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3299,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b144",
+      "name": "Summit Growth 144",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.531,
+      "maxEbitda": 14.471,
+      "minDealSize": 38.763,
+      "maxDealSize": 151.871,
+      "dryPowder": 279.471,
+      "pastDeals": 20,
+      "strategyTags": [
+        "founder-friendly",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3493,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b145",
+      "name": "Pioneer Growth 145",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 3.365,
+      "maxEbitda": 52.217,
+      "minDealSize": 66.515,
+      "maxDealSize": 505.353,
+      "dryPowder": 600.392,
+      "pastDeals": 10,
+      "strategyTags": [
+        "add-on",
+        "vertical-integration",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4893,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b146",
+      "name": "Atlas Systems 146",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 2.712,
+      "maxEbitda": 38.566,
+      "minDealSize": 38.285,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6943,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b147",
+      "name": "Lakeshore Investments 147",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.226,
+      "maxEbitda": 31.247,
+      "minDealSize": 64.566,
+      "maxDealSize": 218.771,
+      "dryPowder": 376.846,
+      "pastDeals": 18,
+      "strategyTags": [
+        "buy-and-build",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3464,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b148",
+      "name": "Aurora Investments 148",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.59,
+      "maxEbitda": 13.497,
+      "minDealSize": 28.577,
+      "maxDealSize": 161.622,
+      "dryPowder": 247.917,
+      "pastDeals": 29,
+      "strategyTags": [
+        "carve-out",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2502,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b149",
+      "name": "Cedar Technologies 149",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.301,
+      "maxEbitda": 20.826,
+      "minDealSize": 43.099,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 21,
+      "strategyTags": [
+        "carve-out",
+        "synergies",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7156,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b150",
+      "name": "Lakeshore Holdings 150",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 9.334,
+      "maxEbitda": 58.186,
+      "minDealSize": 136.052,
+      "maxDealSize": 496.462,
+      "dryPowder": 569.958,
+      "pastDeals": 24,
+      "strategyTags": [
+        "founder-friendly",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4776,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b151",
+      "name": "Pioneer Equity 151",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.706,
+      "maxEbitda": 19.46,
+      "minDealSize": 27.538,
+      "maxDealSize": 117.565,
+      "dryPowder": 285.706,
+      "pastDeals": 25,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2936,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b152",
+      "name": "Silver Systems 152",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 4.358,
+      "maxEbitda": 33.787,
+      "minDealSize": 60.727,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 13,
+      "strategyTags": [
+        "international-expansion",
+        "synergies",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.731,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b153",
+      "name": "Aurora Equity 153",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 10.201,
+      "maxEbitda": 77.445,
+      "minDealSize": 132.978,
+      "maxDealSize": 800.0,
+      "dryPowder": 1212.772,
+      "pastDeals": 14,
+      "strategyTags": [
+        "carve-out",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4624,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b154",
+      "name": "Evergreen Industries 154",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.42,
+      "maxEbitda": 16.569,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8838,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b155",
+      "name": "Aurora Investments 155",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.185,
+      "maxEbitda": 20.517,
+      "minDealSize": 26.49,
+      "maxDealSize": 194.477,
+      "dryPowder": 322.547,
+      "pastDeals": 27,
+      "strategyTags": [
+        "add-on",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3928,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b156",
+      "name": "Silver Investments 156",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.295,
+      "maxEbitda": 18.405,
+      "minDealSize": 18.254,
+      "maxDealSize": 150.757,
+      "dryPowder": 237.405,
+      "pastDeals": 29,
+      "strategyTags": [
+        "majority-stake",
+        "vertical-integration",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3187,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b157",
+      "name": "Summit Growth 157",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.303,
+      "maxEbitda": 39.496,
+      "minDealSize": 60.812,
+      "maxDealSize": 292.341,
+      "dryPowder": 482.95,
+      "pastDeals": 22,
+      "strategyTags": [
+        "vertical-integration",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3414,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b158",
+      "name": "Pioneer Investments 158",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.508,
+      "maxEbitda": 61.465,
+      "minDealSize": 66.179,
+      "maxDealSize": 422.34,
+      "dryPowder": 562.9,
+      "pastDeals": 13,
+      "strategyTags": [
+        "roll-up",
+        "carve-out",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.295,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b159",
+      "name": "Summit Industries 159",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.584,
+      "maxEbitda": 39.357,
+      "minDealSize": 32.906,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 16,
+      "strategyTags": [
+        "majority-stake",
+        "synergies",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7004,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b160",
+      "name": "Aurora Holdings 160",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.622,
+      "maxEbitda": 13.339,
+      "minDealSize": 32.103,
+      "maxDealSize": 110.622,
+      "dryPowder": 236.363,
+      "pastDeals": 24,
+      "strategyTags": [
+        "majority-stake",
+        "add-on",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3077,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b161",
+      "name": "Cedar Partners 161",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 6.568,
+      "maxEbitda": 105.115,
+      "minDealSize": 127.68,
+      "maxDealSize": 699.115,
+      "dryPowder": 1371.035,
+      "pastDeals": 25,
+      "strategyTags": [
+        "majority-stake",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3741,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b162",
+      "name": "Pioneer Capital 162",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 4.375,
+      "maxEbitda": 25.4,
+      "minDealSize": 58.764,
+      "maxDealSize": 292.456,
+      "dryPowder": 548.467,
+      "pastDeals": 14,
+      "strategyTags": [
+        "roll-up",
+        "vertical-integration",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4356,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b163",
+      "name": "Evergreen Systems 163",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.705,
+      "maxEbitda": 22.442,
+      "minDealSize": 30.383,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6691,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b164",
+      "name": "Cedar Capital 164",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.332,
+      "maxEbitda": 9.47,
+      "minDealSize": 18.086,
+      "maxDealSize": 83.583,
+      "dryPowder": 189.868,
+      "pastDeals": 21,
+      "strategyTags": [
+        "platform",
+        "add-on",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3417,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b165",
+      "name": "Pioneer Investments 165",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 14.24,
+      "minDealSize": 17.904,
+      "maxDealSize": 93.844,
+      "dryPowder": 255.703,
+      "pastDeals": 21,
+      "strategyTags": [
+        "add-on",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.323,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b166",
+      "name": "Aurora Industries 166",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.359,
+      "maxEbitda": 65.84,
+      "minDealSize": 45.683,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7654,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b167",
+      "name": "Summit Equity 167",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.937,
+      "maxEbitda": 31.916,
+      "minDealSize": 57.633,
+      "maxDealSize": 206.923,
+      "dryPowder": 588.574,
+      "pastDeals": 6,
+      "strategyTags": [
+        "roll-up",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3814,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b168",
+      "name": "Silver Technologies 168",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.916,
+      "maxEbitda": 53.501,
+      "minDealSize": 56.096,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8843,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b169",
+      "name": "Atlas Holdings 169",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.683,
+      "maxEbitda": 32.466,
+      "minDealSize": 70.958,
+      "maxDealSize": 350.545,
+      "dryPowder": 763.87,
+      "pastDeals": 14,
+      "strategyTags": [
+        "founder-friendly",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3732,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b170",
+      "name": "Evergreen Growth 170",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.182,
+      "maxEbitda": 27.116,
+      "minDealSize": 63.924,
+      "maxDealSize": 219.537,
+      "dryPowder": 321.851,
+      "pastDeals": 28,
+      "strategyTags": [
+        "vertical-integration",
+        "add-on",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3688,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b171",
+      "name": "Oak Holdings 171",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.454,
+      "maxEbitda": 26.918,
+      "minDealSize": 52.212,
+      "maxDealSize": 224.193,
+      "dryPowder": 478.047,
+      "pastDeals": 18,
+      "strategyTags": [
+        "platform",
+        "add-on",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4741,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b172",
+      "name": "Pioneer Investments 172",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.66,
+      "maxEbitda": 37.937,
+      "minDealSize": 110.036,
+      "maxDealSize": 402.138,
+      "dryPowder": 1132.84,
+      "pastDeals": 10,
+      "strategyTags": [
+        "international-expansion",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3115,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b173",
+      "name": "Evergreen Equity 173",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.874,
+      "maxEbitda": 20.276,
+      "minDealSize": 36.097,
+      "maxDealSize": 192.358,
+      "dryPowder": 275.759,
+      "pastDeals": 21,
+      "strategyTags": [
+        "buy-and-build",
+        "international-expansion",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4191,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b174",
+      "name": "Pioneer Holdings 174",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 13.389,
+      "minDealSize": 13.695,
+      "maxDealSize": 106.659,
+      "dryPowder": 159.856,
+      "pastDeals": 18,
+      "strategyTags": [
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4368,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b175",
+      "name": "Northbridge Investments 175",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.464,
+      "maxEbitda": 22.679,
+      "minDealSize": 58.566,
+      "maxDealSize": 217.993,
+      "dryPowder": 327.151,
+      "pastDeals": 26,
+      "strategyTags": [
+        "platform",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3368,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b176",
+      "name": "Aurora Growth 176",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.022,
+      "maxEbitda": 48.31,
+      "minDealSize": 106.906,
+      "maxDealSize": 520.346,
+      "dryPowder": 619.325,
+      "pastDeals": 23,
+      "strategyTags": [
+        "minority",
+        "founder-friendly",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.482,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b177",
+      "name": "Summit Growth 177",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.448,
+      "maxEbitda": 53.111,
+      "minDealSize": 72.216,
+      "maxDealSize": 425.88,
+      "dryPowder": 557.472,
+      "pastDeals": 18,
+      "strategyTags": [
+        "majority-stake",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4794,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b178",
+      "name": "Cedar Holdings 178",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.349,
+      "maxEbitda": 12.668,
+      "minDealSize": 25.134,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 8,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8007,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b179",
+      "name": "Silver Partners 179",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.886,
+      "maxEbitda": 39.36,
+      "minDealSize": 98.796,
+      "maxDealSize": 350.003,
+      "dryPowder": 487.35,
+      "pastDeals": 11,
+      "strategyTags": [
+        "carve-out",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3347,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b180",
+      "name": "Cedar Growth 180",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.101,
+      "maxEbitda": 55.287,
+      "minDealSize": 97.063,
+      "maxDealSize": 382.527,
+      "dryPowder": 453.044,
+      "pastDeals": 27,
+      "strategyTags": [
+        "founder-friendly",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4122,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b181",
+      "name": "Summit Holdings 181",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.351,
+      "maxEbitda": 49.365,
+      "minDealSize": 46.159,
+      "maxDealSize": 371.658,
+      "dryPowder": 945.051,
+      "pastDeals": 21,
+      "strategyTags": [
+        "platform",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2805,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b182",
+      "name": "Pioneer Equity 182",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 7.837,
+      "maxEbitda": 70.146,
+      "minDealSize": 155.112,
+      "maxDealSize": 704.454,
+      "dryPowder": 1477.897,
+      "pastDeals": 27,
+      "strategyTags": [
+        "add-on",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3204,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b183",
+      "name": "Silver Holdings 183",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.102,
+      "maxEbitda": 26.628,
+      "minDealSize": 61.083,
+      "maxDealSize": 221.175,
+      "dryPowder": 466.166,
+      "pastDeals": 29,
+      "strategyTags": [
+        "roll-up",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.451,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b184",
+      "name": "Lakeshore Group 184",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.372,
+      "maxEbitda": 21.679,
+      "minDealSize": 25.0,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 23,
+      "strategyTags": [
+        "synergies",
+        "majority-stake",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6541,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b185",
+      "name": "Evergreen Group 185",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.658,
+      "maxEbitda": 22.37,
+      "minDealSize": 34.134,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 14,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7386,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b186",
+      "name": "Silver Partners 186",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.646,
+      "maxEbitda": 20.769,
+      "minDealSize": 22.509,
+      "maxDealSize": 161.242,
+      "dryPowder": 383.388,
+      "pastDeals": 22,
+      "strategyTags": [
+        "add-on",
+        "majority-stake",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.377,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b187",
+      "name": "Pioneer Holdings 187",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.37,
+      "maxEbitda": 20.195,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 24,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6715,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b188",
+      "name": "Aurora Investments 188",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 4.785,
+      "maxEbitda": 29.512,
+      "minDealSize": 79.25,
+      "maxDealSize": 325.643,
+      "dryPowder": 380.308,
+      "pastDeals": 28,
+      "strategyTags": [
+        "platform",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4404,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b189",
+      "name": "Aurora Investments 189",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 8.652,
+      "maxEbitda": 82.804,
+      "minDealSize": 117.678,
+      "maxDealSize": 497.37,
+      "dryPowder": 657.75,
+      "pastDeals": 14,
+      "strategyTags": [
+        "founder-friendly",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.477,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b190",
+      "name": "Summit Growth 190",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 3.31,
+      "maxEbitda": 18.691,
+      "minDealSize": 53.738,
+      "maxDealSize": 192.733,
+      "dryPowder": 251.042,
+      "pastDeals": 9,
+      "strategyTags": [
+        "vertical-integration",
+        "founder-friendly",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2858,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b191",
+      "name": "Cedar Growth 191",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.799,
+      "maxEbitda": 23.647,
+      "minDealSize": 33.526,
+      "maxDealSize": 276.221,
+      "dryPowder": 486.025,
+      "pastDeals": 25,
+      "strategyTags": [
+        "roll-up",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.256,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b192",
+      "name": "Cedar Group 192",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.74,
+      "maxEbitda": 15.858,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7273,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b193",
+      "name": "Lakeshore Holdings 193",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 11.882,
+      "maxEbitda": 128.734,
+      "minDealSize": 210.704,
+      "maxDealSize": 800.0,
+      "dryPowder": 3803.138,
+      "pastDeals": 28,
+      "strategyTags": [
+        "founder-friendly",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4593,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b194",
+      "name": "Atlas Equity 194",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Mexico",
+        "UK"
+      ],
+      "minEbitda": 6.168,
+      "maxEbitda": 73.003,
+      "minDealSize": 113.675,
+      "maxDealSize": 444.745,
+      "dryPowder": 642.068,
+      "pastDeals": 25,
+      "strategyTags": [
+        "minority",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3315,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b195",
+      "name": "Aurora Equity 195",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.781,
+      "maxEbitda": 19.732,
+      "minDealSize": 30.818,
+      "maxDealSize": 152.229,
+      "dryPowder": 365.039,
+      "pastDeals": 13,
+      "strategyTags": [
+        "vertical-integration",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2634,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b196",
+      "name": "Oak Capital 196",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 2.706,
+      "maxEbitda": 15.32,
+      "minDealSize": 46.345,
+      "maxDealSize": 158.223,
+      "dryPowder": 294.119,
+      "pastDeals": 9,
+      "strategyTags": [
+        "carve-out",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4666,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b197",
+      "name": "Northbridge Holdings 197",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.795,
+      "maxEbitda": 23.785,
+      "minDealSize": 50.753,
+      "maxDealSize": 172.326,
+      "dryPowder": 277.26,
+      "pastDeals": 24,
+      "strategyTags": [
+        "majority-stake",
+        "founder-friendly",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3184,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b198",
+      "name": "Northbridge Group 198",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Manufacturing",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "UK",
+        "Canada"
+      ],
+      "minEbitda": 4.351,
+      "maxEbitda": 32.43,
+      "minDealSize": 58.829,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 13,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6525,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b199",
+      "name": "Cedar Partners 199",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.072,
+      "maxEbitda": 10.215,
+      "minDealSize": 30.892,
+      "maxDealSize": 112.966,
+      "dryPowder": 315.415,
+      "pastDeals": 11,
+      "strategyTags": [
+        "majority-stake",
+        "minority",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4908,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b200",
+      "name": "Evergreen Holdings 200",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 7.033,
+      "maxEbitda": 99.128,
+      "minDealSize": 99.188,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8732,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b201",
+      "name": "Silver Capital 201",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 2.125,
+      "maxEbitda": 29.089,
+      "minDealSize": 31.262,
+      "maxDealSize": 186.199,
+      "dryPowder": 409.288,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3098,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b202",
+      "name": "Evergreen Holdings 202",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.538,
+      "maxEbitda": 23.755,
+      "minDealSize": 39.655,
+      "maxDealSize": 195.377,
+      "dryPowder": 227.645,
+      "pastDeals": 25,
+      "strategyTags": [
+        "international-expansion",
+        "minority",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2686,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b203",
+      "name": "Summit Growth 203",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 6.484,
+      "maxEbitda": 80.924,
+      "minDealSize": 94.511,
+      "maxDealSize": 509.195,
+      "dryPowder": 1193.572,
+      "pastDeals": 18,
+      "strategyTags": [
+        "international-expansion",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4717,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b204",
+      "name": "Evergreen Partners 204",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.032,
+      "maxEbitda": 20.364,
+      "minDealSize": 16.38,
+      "maxDealSize": 131.564,
+      "dryPowder": 340.464,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.34,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b205",
+      "name": "Silver Partners 205",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 5.224,
+      "maxEbitda": 56.757,
+      "minDealSize": 82.539,
+      "maxDealSize": 558.204,
+      "dryPowder": 688.863,
+      "pastDeals": 26,
+      "strategyTags": [
+        "majority-stake",
+        "add-on",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4017,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b206",
+      "name": "Cedar Group 206",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 4.785,
+      "maxEbitda": 53.517,
+      "minDealSize": 63.191,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7057,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b207",
+      "name": "Pioneer Industries 207",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.97,
+      "maxEbitda": 51.906,
+      "minDealSize": 64.282,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 20,
+      "strategyTags": [
+        "synergies",
+        "carve-out",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7782,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b208",
+      "name": "Northbridge Holdings 208",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 4.925,
+      "minDealSize": 9.88,
+      "maxDealSize": 36.869,
+      "dryPowder": 75.0,
+      "pastDeals": 25,
+      "strategyTags": [
+        "buy-and-build",
+        "synergies",
+        "carve-out"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2643,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b209",
+      "name": "Lakeshore Group 209",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 2.857,
+      "maxEbitda": 23.489,
+      "minDealSize": 42.502,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8338,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b210",
+      "name": "Lakeshore Growth 210",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.647,
+      "maxEbitda": 24.767,
+      "minDealSize": 48.947,
+      "maxDealSize": 268.766,
+      "dryPowder": 414.373,
+      "pastDeals": 26,
+      "strategyTags": [
+        "platform",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3286,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b211",
+      "name": "Northbridge Capital 211",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.901,
+      "maxEbitda": 13.903,
+      "minDealSize": 31.875,
+      "maxDealSize": 123.538,
+      "dryPowder": 172.483,
+      "pastDeals": 7,
+      "strategyTags": [
+        "buy-and-build",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4743,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b212",
+      "name": "Cedar Growth 212",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 10.646,
+      "minDealSize": 16.214,
+      "maxDealSize": 88.693,
+      "dryPowder": 227.219,
+      "pastDeals": 16,
+      "strategyTags": [
+        "majority-stake",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4369,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b213",
+      "name": "Evergreen Growth 213",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 3.637,
+      "maxEbitda": 72.247,
+      "minDealSize": 57.398,
+      "maxDealSize": 466.678,
+      "dryPowder": 910.895,
+      "pastDeals": 16,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.268,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b214",
+      "name": "Aurora Equity 214",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 7.734,
+      "maxEbitda": 54.688,
+      "minDealSize": 94.258,
+      "maxDealSize": 524.433,
+      "dryPowder": 823.265,
+      "pastDeals": 7,
+      "strategyTags": [
+        "synergies",
+        "carve-out",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3072,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b215",
+      "name": "Aurora Holdings 215",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 10.769,
+      "maxEbitda": 141.877,
+      "minDealSize": 136.907,
+      "maxDealSize": 900.0,
+      "dryPowder": 0.0,
+      "pastDeals": 6,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8023,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b216",
+      "name": "Silver Investments 216",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.217,
+      "maxEbitda": 14.536,
+      "minDealSize": 40.319,
+      "maxDealSize": 168.972,
+      "dryPowder": 431.914,
+      "pastDeals": 23,
+      "strategyTags": [
+        "synergies",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3593,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b217",
+      "name": "Cedar Investments 217",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "Mexico",
+        "UK"
+      ],
+      "minEbitda": 7.452,
+      "maxEbitda": 54.298,
+      "minDealSize": 140.248,
+      "maxDealSize": 576.842,
+      "dryPowder": 1499.231,
+      "pastDeals": 6,
+      "strategyTags": [
+        "vertical-integration",
+        "roll-up",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4144,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b218",
+      "name": "Aurora Holdings 218",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.639,
+      "maxEbitda": 19.537,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8009,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b219",
+      "name": "Evergreen Group 219",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.337,
+      "maxEbitda": 64.818,
+      "minDealSize": 76.366,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 24,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.801,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b220",
+      "name": "Summit Industries 220",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Other"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.49,
+      "maxEbitda": 20.937,
+      "minDealSize": 44.406,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 19,
+      "strategyTags": [
+        "synergies",
+        "international-expansion",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7284,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b221",
+      "name": "Oak Partners 221",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.036,
+      "maxEbitda": 10.576,
+      "minDealSize": 15.353,
+      "maxDealSize": 91.456,
+      "dryPowder": 114.263,
+      "pastDeals": 18,
+      "strategyTags": [
+        "add-on",
+        "buy-and-build",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3437,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b222",
+      "name": "Pioneer Group 222",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.012,
+      "maxEbitda": 47.523,
+      "minDealSize": 37.344,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 18,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7341,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b223",
+      "name": "Summit Industries 223",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing",
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.432,
+      "maxEbitda": 32.464,
+      "minDealSize": 46.436,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 7,
+      "strategyTags": [
+        "synergies",
+        "minority",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6796,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b224",
+      "name": "Pioneer Group 224",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.747,
+      "maxEbitda": 70.873,
+      "minDealSize": 67.112,
+      "maxDealSize": 600.0,
+      "dryPowder": 0.0,
+      "pastDeals": 14,
+      "strategyTags": [
+        "synergies",
+        "carve-out",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8597,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b225",
+      "name": "Silver Partners 225",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.476,
+      "maxEbitda": 23.287,
+      "minDealSize": 27.031,
+      "maxDealSize": 197.854,
+      "dryPowder": 337.564,
+      "pastDeals": 21,
+      "strategyTags": [
+        "carve-out",
+        "buy-and-build",
+        "add-on"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4551,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b226",
+      "name": "Atlas Capital 226",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.279,
+      "maxEbitda": 12.484,
+      "minDealSize": 42.507,
+      "maxDealSize": 153.549,
+      "dryPowder": 431.366,
+      "pastDeals": 23,
+      "strategyTags": [
+        "buy-and-build",
+        "vertical-integration",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3445,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b227",
+      "name": "Lakeshore Technologies 227",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.492,
+      "maxEbitda": 23.998,
+      "minDealSize": 32.77,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 24,
+      "strategyTags": [
+        "synergies",
+        "founder-friendly",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.79,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b228",
+      "name": "Oak Investments 228",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 9.823,
+      "maxEbitda": 86.856,
+      "minDealSize": 136.123,
+      "maxDealSize": 627.464,
+      "dryPowder": 803.892,
+      "pastDeals": 14,
+      "strategyTags": [
+        "carve-out",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4555,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b229",
+      "name": "Silver Equity 229",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 8.357,
+      "maxEbitda": 86.83,
+      "minDealSize": 136.587,
+      "maxDealSize": 769.123,
+      "dryPowder": 1330.031,
+      "pastDeals": 12,
+      "strategyTags": [
+        "add-on",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3041,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b230",
+      "name": "Northbridge Growth 230",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.044,
+      "maxEbitda": 28.032,
+      "minDealSize": 50.944,
+      "maxDealSize": 261.02,
+      "dryPowder": 508.936,
+      "pastDeals": 27,
+      "strategyTags": [
+        "vertical-integration",
+        "add-on",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4422,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b231",
+      "name": "Silver Holdings 231",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.286,
+      "maxEbitda": 47.299,
+      "minDealSize": 54.48,
+      "maxDealSize": 285.917,
+      "dryPowder": 391.728,
+      "pastDeals": 11,
+      "strategyTags": [
+        "synergies",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4661,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b232",
+      "name": "Evergreen Holdings 232",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 2.426,
+      "maxEbitda": 23.641,
+      "minDealSize": 39.815,
+      "maxDealSize": 249.561,
+      "dryPowder": 375.684,
+      "pastDeals": 26,
+      "strategyTags": [
+        "platform",
+        "buy-and-build",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2891,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b233",
+      "name": "Atlas Equity 233",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.446,
+      "maxEbitda": 38.413,
+      "minDealSize": 62.614,
+      "maxDealSize": 330.102,
+      "dryPowder": 619.396,
+      "pastDeals": 23,
+      "strategyTags": [
+        "minority",
+        "vertical-integration",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4465,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b234",
+      "name": "Cedar Industries 234",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Other"
+      ],
+      "geographies": [
+        "US",
+        "Canada"
+      ],
+      "minEbitda": 1.772,
+      "maxEbitda": 22.454,
+      "minDealSize": 25.0,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "platform"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6644,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b235",
+      "name": "Northbridge Partners 235",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 8.336,
+      "maxEbitda": 73.006,
+      "minDealSize": 101.486,
+      "maxDealSize": 800.0,
+      "dryPowder": 957.881,
+      "pastDeals": 7,
+      "strategyTags": [
+        "roll-up",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2811,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b236",
+      "name": "Summit Holdings 236",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing",
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.879,
+      "maxEbitda": 30.577,
+      "minDealSize": 89.534,
+      "maxDealSize": 317.456,
+      "dryPowder": 440.721,
+      "pastDeals": 12,
+      "strategyTags": [
+        "synergies",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4732,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b237",
+      "name": "Aurora Growth 237",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Mexico"
+      ],
+      "minEbitda": 8.708,
+      "maxEbitda": 45.854,
+      "minDealSize": 139.348,
+      "maxDealSize": 571.324,
+      "dryPowder": 916.733,
+      "pastDeals": 12,
+      "strategyTags": [
+        "buy-and-build",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4115,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b238",
+      "name": "Summit Partners 238",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.307,
+      "maxEbitda": 11.408,
+      "minDealSize": 20.792,
+      "maxDealSize": 90.417,
+      "dryPowder": 182.934,
+      "pastDeals": 12,
+      "strategyTags": [
+        "roll-up",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4644,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b239",
+      "name": "Evergreen Investments 239",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.582,
+      "maxEbitda": 41.999,
+      "minDealSize": 45.993,
+      "maxDealSize": 327.437,
+      "dryPowder": 652.07,
+      "pastDeals": 27,
+      "strategyTags": [
+        "international-expansion",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3604,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b240",
+      "name": "Northbridge Investments 240",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 4.912,
+      "maxEbitda": 23.02,
+      "minDealSize": 74.705,
+      "maxDealSize": 291.207,
+      "dryPowder": 366.45,
+      "pastDeals": 20,
+      "strategyTags": [
+        "roll-up",
+        "buy-and-build"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4659,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b241",
+      "name": "Oak Partners 241",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.631,
+      "maxEbitda": 16.277,
+      "minDealSize": 22.378,
+      "maxDealSize": 166.105,
+      "dryPowder": 456.256,
+      "pastDeals": 26,
+      "strategyTags": [
+        "roll-up",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4709,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b242",
+      "name": "Evergreen Industries 242",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US",
+        "UK"
+      ],
+      "minEbitda": 1.364,
+      "maxEbitda": 24.295,
+      "minDealSize": 26.255,
+      "maxDealSize": 250.0,
+      "dryPowder": 0.0,
+      "pastDeals": 23,
+      "strategyTags": [
+        "synergies",
+        "roll-up",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7053,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b243",
+      "name": "Oak Equity 243",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Business Services"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.0,
+      "maxEbitda": 8.584,
+      "minDealSize": 15.653,
+      "maxDealSize": 81.134,
+      "dryPowder": 123.913,
+      "pastDeals": 12,
+      "strategyTags": [
+        "minority",
+        "roll-up",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.2843,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b244",
+      "name": "Aurora Growth 244",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 1.646,
+      "maxEbitda": 17.992,
+      "minDealSize": 28.049,
+      "maxDealSize": 178.857,
+      "dryPowder": 488.993,
+      "pastDeals": 10,
+      "strategyTags": [
+        "international-expansion",
+        "minority"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3211,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b245",
+      "name": "Aurora Technologies 245",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Healthcare",
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 5.701,
+      "maxEbitda": 94.219,
+      "minDealSize": 77.794,
+      "maxDealSize": 900.0,
+      "dryPowder": 0.0,
+      "pastDeals": 4,
+      "strategyTags": [
+        "synergies",
+        "add-on",
+        "roll-up"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.7883,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b246",
+      "name": "Lakeshore Growth 246",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US",
+        "Europe"
+      ],
+      "minEbitda": 6.602,
+      "maxEbitda": 38.134,
+      "minDealSize": 79.912,
+      "maxDealSize": 282.92,
+      "dryPowder": 488.925,
+      "pastDeals": 22,
+      "strategyTags": [
+        "add-on",
+        "roll-up",
+        "international-expansion"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.4561,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b247",
+      "name": "Summit Group 247",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Manufacturing"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 1.94,
+      "maxEbitda": 13.365,
+      "minDealSize": 25.0,
+      "maxDealSize": 150.0,
+      "dryPowder": 0.0,
+      "pastDeals": 22,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "founder-friendly"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.8953,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b248",
+      "name": "Oak Group 248",
+      "type": "Strategic",
+      "sectorFocus": [
+        "Business Services",
+        "Healthcare"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.198,
+      "maxEbitda": 39.527,
+      "minDealSize": 42.203,
+      "maxDealSize": 400.0,
+      "dryPowder": 0.0,
+      "pastDeals": 9,
+      "strategyTags": [
+        "synergies",
+        "platform",
+        "majority-stake"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.6895,
+        "ownershipPreference": "Majority"
+      }
+    },
+    {
+      "id": "syn_b249",
+      "name": "Aurora Capital 249",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Consumer"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 3.132,
+      "maxEbitda": 13.323,
+      "minDealSize": 38.63,
+      "maxDealSize": 170.917,
+      "dryPowder": 211.228,
+      "pastDeals": 19,
+      "strategyTags": [
+        "buy-and-build",
+        "synergies"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3691,
+        "ownershipPreference": "Minority"
+      }
+    },
+    {
+      "id": "syn_b250",
+      "name": "Northbridge Growth 250",
+      "type": "Private Equity",
+      "sectorFocus": [
+        "Software"
+      ],
+      "geographies": [
+        "US"
+      ],
+      "minEbitda": 2.127,
+      "maxEbitda": 38.726,
+      "minDealSize": 37.206,
+      "maxDealSize": 279.0,
+      "dryPowder": 364.717,
+      "pastDeals": 26,
+      "strategyTags": [
+        "roll-up",
+        "vertical-integration"
+      ],
+      "_meta": {
+        "version": "2025-12-12",
+        "synergyPropensity": 0.3617,
+        "ownershipPreference": "Majority"
+      }
+    }
+  ]
+}

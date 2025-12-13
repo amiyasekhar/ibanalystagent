@@ -1,0 +1,27 @@
+{
+    "name": "offdeal-analyst-agent-server",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "buyers:gen": "python3 ../python_ml/generate_buyers.py",
+        "ml:data": "python3 ../python_ml/generate_csv.py",
+        "ml:train": "python3 ../python_ml/train.py"
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.71.2",
+        "axios": "^1.7.9",
+        "cors": "^2.8.5",
+        "dotenv": "^16.6.1",
+        "express": "^4.21.2",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/node": "^22.9.4",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.9.3"
+    }
+}

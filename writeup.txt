@@ -1,0 +1,12 @@
+I built an analyst copilot that takes a teaser/CIM blurb, extracts the key deal fields, ranks a buyer universe based on mandate fit and a matching model, and then drafts outreach emails and a teaser-style summary. It also supports buyer search with filters, and tracks the workflow steps and outputs so you can iterate quickly.
+
+What it does
+- Deal intake → structured profile (sector, geo, revenue/EBITDA, EV, description)
+- Buyer matching with mandate checks (sector/EV/EBITDA bands) + ranked list with “why”
+- Outreach automation: email subjects/bodies + deal summary
+- Buyer search: keyword + filters to build/validate a buyer list
+- Workflow tracking: run history + logs for debugging
+
+It automates the repetitive analyst parts of a sell-side process—intake, buyer list building, and first-pass outreach—so a banker can focus on positioning and relationship work.
+
+

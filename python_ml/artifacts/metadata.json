@@ -1,0 +1,16 @@
+{
+  "modelVersion": "2025-12-12",
+  "featureNames": [
+    "sectorMatch",
+    "geoMatch",
+    "sizeFit",
+    "dryPowderFit",
+    "activityLevel",
+    "ebitdaFit"
+  ],
+  "source": "csv",
+  "rows": 8750,
+  "seed": 7,
+  "trainer": "legacy_pure_python",
+  "note": "TRAIN_USE_SKLEARN not enabled"
+}

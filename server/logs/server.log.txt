@@ -1,0 +1,122 @@
+[INFO] 2025-12-13T11:15:22.416Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-13T11:18:44.371Z HTTP request
+{"requestId":"95849772-26c2-4f17-89c3-939c33e358d2","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:18:44.372Z HTTP response
+{"requestId":"95849772-26c2-4f17-89c3-939c33e358d2","method":"POST","path":"/api/workflows","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T11:18:44.377Z HTTP request
+{"requestId":"8c9c8b47-a8df-48c9-94e9-a58d3be71e1a","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"408","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Orion — Vertical SaaS (Transportation Management)\\n\\nUS-based SaaS platform serving mid-market 3PLs and regional carriers. Cloud TMS with carrier integrations, billing automation, and workflow tools. ~80% recurring subscription revenue.\\n\\nFY2025E revenue: $18.5m\\nFY2025E EBITDA: $5.2m\\nTarget EV: ~$70m\\n\\nMajority transaction preferred. Growth via upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T11:18:48.299Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3921}
+Bot: True
+[INFO] 2025-12-13T11:18:48.300Z HTTP response
+{"requestId":"8c9c8b47-a8df-48c9-94e9-a58d3be71e1a","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/extract","status":200,"ms":3923}
+Bot: True
+[INFO] 2025-12-13T11:18:48.302Z HTTP request
+{"requestId":"fe4dd078-ee82-4db7-8eac-9188cad2d3b2","method":"GET","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:18:48.303Z HTTP response
+{"requestId":"fe4dd078-ee82-4db7-8eac-9188cad2d3b2","method":"GET","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T11:19:15.699Z HTTP request
+{"requestId":"3de940ab-20c3-4fd7-9cde-476784f80675","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"471","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Orion\\nSector: Software\\nGeography: US\\nRevenue ($m): 18.5\\nEBITDA ($m): 5.2\\nEV ($m): 70\\nDescription: US-based vertical SaaS platform serving mid-market 3PLs and regional carriers. Cloud-based transportation management system (TMS) with carrier integrations, billing automation, and workflow tools. Approximately 80% recurring subscription revenue. Majority transaction preferred. Growth strategy focused on upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T11:19:19.873Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4173}
+Bot: True
+[INFO] 2025-12-13T11:19:19.873Z HTTP response
+{"requestId":"3de940ab-20c3-4fd7-9cde-476784f80675","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/extract","status":200,"ms":4174}
+Bot: True
+[INFO] 2025-12-13T11:19:19.875Z HTTP request
+{"requestId":"18c115a7-0063-44f0-97a6-555b40c848fe","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:19:19.875Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-13T11:19:19.894Z Python inference ok
+{"ms":19,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-13T11:19:37.602Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":17707}
+Bot: True
+[INFO] 2025-12-13T11:19:37.603Z HTTP response
+{"requestId":"18c115a7-0063-44f0-97a6-555b40c848fe","method":"POST","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9/match","status":200,"ms":17728}
+Bot: True
+[INFO] 2025-12-13T11:19:37.607Z HTTP request
+{"requestId":"f70efb04-4572-4b08-a28a-1a971cece82a","method":"GET","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"2ec-xf8OIZ+MsMBPjOyHpBcORTVUJdE\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:19:37.608Z HTTP response
+{"requestId":"f70efb04-4572-4b08-a28a-1a971cece82a","method":"GET","path":"/api/workflows/7dff80ea-791e-4fca-80e1-5d48f944e7b9","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T11:21:39.776Z HTTP request
+{"requestId":"e4b9dc6d-f4f6-4a71-9ec0-cef730b6a0e1","method":"GET","path":"/api/buyers/search?q=synergies+vertical+integration&sector=Manufacturing&geography=US&type=Strategic&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:21:39.777Z HTTP response
+{"requestId":"e4b9dc6d-f4f6-4a71-9ec0-cef730b6a0e1","method":"GET","path":"/api/buyers/search?q=synergies+vertical+integration&sector=Manufacturing&geography=US&type=Strategic&limit=25","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T11:27:40.583Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-13T11:28:01.642Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-13T11:31:11.500Z HTTP request
+{"requestId":"d696bb37-b0ef-4ddf-aec5-ddc6e99d17ec","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:31:11.502Z HTTP response
+{"requestId":"d696bb37-b0ef-4ddf-aec5-ddc6e99d17ec","method":"POST","path":"/api/workflows","status":200,"ms":2}
+Bot: True
+[INFO] 2025-12-13T11:31:11.506Z HTTP request
+{"requestId":"cf7ebd9d-cbc4-45a2-9c9e-1e785913e2f5","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"447","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Orion — Vertical SaaS (Transportation Management)\\n\\nUS-based SaaS platform serving mid-market 3PLs and regional carriers. Cloud TMS with carrier integrations, billing automation, and workflow tools. ~80% recurring subscription revenue with multi-year customer relationships.\\n\\nFY2025E revenue: $18.5m\\nFY2025E EBITDA: $5.2m\\nTarget EV: ~$70m\\n\\nMajority transaction preferred. Growth via upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T11:31:15.375Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3868}
+Bot: True
+[INFO] 2025-12-13T11:31:15.376Z HTTP response
+{"requestId":"cf7ebd9d-cbc4-45a2-9c9e-1e785913e2f5","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/extract","status":200,"ms":3870}
+Bot: True
+[INFO] 2025-12-13T11:31:15.378Z HTTP request
+{"requestId":"1a27ab1e-ba7a-45bc-b2e9-fda42ba51226","method":"GET","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:31:15.379Z HTTP response
+{"requestId":"1a27ab1e-ba7a-45bc-b2e9-fda42ba51226","method":"GET","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T11:32:54.513Z HTTP request
+{"requestId":"899f2720-19a0-4de7-adc5-2aa160515430","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"488","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Orion\\nSector: Software\\nGeography: US\\nRevenue ($m): 18.5\\nEBITDA ($m): 5.2\\nEV ($m): 70\\nDescription: Vertical SaaS platform serving mid-market 3PLs and regional carriers. Cloud-based transportation management system (TMS) with carrier integrations, billing automation, and workflow tools. ~80% recurring subscription revenue with multi-year customer relationships. Growth strategy focused on upsells and channel partnerships. Majority transaction preferred.\"}"}
+Bot: True
+[INFO] 2025-12-13T11:32:57.976Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3462}
+Bot: True
+[INFO] 2025-12-13T11:32:57.977Z HTTP response
+{"requestId":"899f2720-19a0-4de7-adc5-2aa160515430","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/extract","status":200,"ms":3464}
+Bot: True
+[INFO] 2025-12-13T11:32:57.982Z HTTP request
+{"requestId":"365c347f-d0f8-4dd5-91f5-0c564fa52b65","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:32:57.982Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-13T11:32:58.010Z Python inference ok
+{"ms":28,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-13T11:33:18.865Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":20854}
+Bot: True
+[INFO] 2025-12-13T11:33:18.866Z HTTP response
+{"requestId":"365c347f-d0f8-4dd5-91f5-0c564fa52b65","method":"POST","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf/match","status":200,"ms":20884}
+Bot: True
+[INFO] 2025-12-13T11:33:18.870Z HTTP request
+{"requestId":"4b163bb3-a719-4d50-a469-f1dd85b91569","method":"GET","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"2fd-9fZ+hX3yacEHe/Va//e01MWo1/E\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:33:18.870Z HTTP response
+{"requestId":"4b163bb3-a719-4d50-a469-f1dd85b91569","method":"GET","path":"/api/workflows/de323c99-0821-4e26-a879-3b1fb6c80ebf","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-13T11:34:25.503Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-13T11:38:26.954Z HTTP request
+{"requestId":"7f556b84-b9a4-4280-9869-3a72bc427d83","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Software&geography=US&type=Private+Equity&tag=buy-and-build&minDeal=20&maxDeal=150&minEbitda=3&maxEbitda=20&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T11:38:26.956Z HTTP response
+{"requestId":"7f556b84-b9a4-4280-9869-3a72bc427d83","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Software&geography=US&type=Private+Equity&tag=buy-and-build&minDeal=20&maxDeal=150&minEbitda=3&maxEbitda=20&limit=25","status":200,"ms":2}
+Bot: True
