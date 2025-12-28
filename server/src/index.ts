@@ -11,6 +11,7 @@ import { createWorkflow, getWorkflow, recordRun, setResult, updateDeal } from ".
 import { claudeJson } from "./claude";
 import { requestLoggingMiddleware } from "./requestLogging";
 import { searchBuyers } from "./buyerSearch";
+import { generateRawDealText } from "./generateRawDealText";
 
 const app = express();
 
@@ -19,6 +20,17 @@ app.use(express.json({ limit: "1mb" }));
 app.use(requestLoggingMiddleware);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
+
+app.post("/api/generate-raw-deal-text", async (req, res) => {
+  try {
+    const out = await generateRawDealText(req.body);
+    if (!out.ok) return res.status(400).json(out);
+    return res.json(out);
+  } catch (e: any) {
+    log.error("generate-raw-deal-text failed", { message: e?.message || String(e) });
+    return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+  }
+});
 
 app.get("/api/buyers/search", (req, res) => {
   try {

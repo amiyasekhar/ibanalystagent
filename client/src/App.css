@@ -195,6 +195,10 @@ textarea{
   resize: vertical;
   line-height: 1.35;
 }
+
+textarea.textareaCompact{
+  min-height: 72px;
+}
 input:focus, select:focus, textarea:focus{
   border-color: rgba(124,92,255,.45);
 }
@@ -440,6 +444,8 @@ pre{
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* inline generator viewer removed in favor of two-tab windows */
 
 .draftSubject, .draftBody{
   border-radius: 12px;

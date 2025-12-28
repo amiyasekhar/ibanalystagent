@@ -22,6 +22,7 @@ type BuyerSearchResult = {
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 type TabKey = "summary" | "buyers" | "outreach" | "search";
+type LeftTabKey = "deal" | "generate";
 
 function clamp01(x: number) {
   if (!isFinite(x)) return 0;
@@ -40,6 +41,15 @@ async function copyToClipboard(text: string) {
 export default function App() {
   const [workflowId, setWorkflowId] = useState<string | null>(null);
   const [runHistory, setRunHistory] = useState<Array<{ at: string; type: string; ok: boolean; note?: string }>>([]);
+
+  const [genCompanyName, setGenCompanyName] = useState<string>("");
+  const [genCompanyDesc, setGenCompanyDesc] = useState<string>("");
+  const [genFinancialText, setGenFinancialText] = useState<string>("");
+  const [genLoading, setGenLoading] = useState(false);
+  const [genError, setGenError] = useState<string | null>(null);
+  const [genUsed, setGenUsed] = useState<string | null>(null);
+  const [genOutput, setGenOutput] = useState<string>("");
+  const [leftTab, setLeftTab] = useState<LeftTabKey>("deal");
 
   const [dealName, setDealName] = useState("B2B SaaS for logistics");
   const [sector, setSector] = useState("Software");
@@ -101,6 +111,33 @@ export default function App() {
     const data = (await res.json()) as any;
     const runs = Array.isArray(data?.workflow?.runs) ? data.workflow.runs : [];
     setRunHistory(runs);
+  }
+
+  async function handleGenerateRawDealText() {
+    setGenLoading(true);
+    setGenError(null);
+    setGenUsed(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/generate-raw-deal-text`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companyName: genCompanyName,
+          companyDescription: genCompanyDesc,
+          financialText: genFinancialText,
+        }),
+      });
+      if (!res.ok) throw new Error(`Generator API returned ${res.status}`);
+      const data = (await res.json()) as any;
+      if (!data?.ok || typeof data?.rawText !== "string") throw new Error("Bad generator response");
+      setGenOutput(String(data.rawText));
+      setGenUsed(String(data.used || ""));
+      setLeftTab("generate");
+    } catch (err: any) {
+      setGenError(err?.message || "Generation failed");
+    } finally {
+      setGenLoading(false);
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -239,6 +276,7 @@ export default function App() {
   const dotClass = loading ? "live" : result ? "live" : "";
 
   return (
+    <>
     <div className="app">
       <header className="topbar">
         <div className="brand">
@@ -276,25 +314,110 @@ export default function App() {
               Workflow: <span className="mono">{workflowId || "—"}</span>
             </div>
 
-            <div className="field">
-              <label>Raw deal text (optional)</label>
-              <textarea
-                rows={4}
-                value={rawIntake}
-                onChange={(e) => setRawIntake(e.target.value)}
-                placeholder="Paste CIM blurb / broker teaser / notes. Click Extract to auto-fill fields."
-              />
-              <div className="actions" style={{ marginTop: 8 }}>
-                <button className="ghost" type="button" onClick={handleExtract} disabled={extracting || !rawIntake.trim()}>
-                  {extracting ? "Extracting…" : "Extract fields"}
-                </button>
-              </div>
-              {extractError && (
-                <div className="small" style={{ marginTop: 6 }}>
-                  ⚠ {extractError}
-                </div>
-              )}
+            <div className="pillRow" style={{ marginTop: 6 }}>
+              <button
+                type="button"
+                className={`pill ${leftTab === "generate" ? "pillActive" : ""}`}
+                onClick={() => setLeftTab("generate")}
+              >
+                Generate deal text
+              </button>
+              <button
+                type="button"
+                className={`pill ${leftTab === "deal" ? "pillActive" : ""}`}
+                onClick={() => setLeftTab("deal")}
+              >
+                Deal intake
+              </button>
             </div>
+
+            {leftTab === "generate" && (
+              <div className="section">
+                <h3>Generate raw deal text</h3>
+                <div className="small" style={{ marginBottom: 8 }}>
+                  Enter a company name (and optionally description + pasted financial table) to generate a teaser-style raw blurb.
+                </div>
+                <div className="row">
+                  <div className="field">
+                    <label>Company name</label>
+                    <input value={genCompanyName} onChange={(e) => setGenCompanyName(e.target.value)} placeholder="e.g. Project Orion" />
+                  </div>
+                  <div className="field">
+                    <label>Company description (optional)</label>
+                    <textarea
+                      className="textareaCompact"
+                      rows={2}
+                      value={genCompanyDesc}
+                      onChange={(e) => setGenCompanyDesc(e.target.value)}
+                      placeholder="US-based vertical SaaS for logistics..."
+                    />
+                  </div>
+                </div>
+                <div className="field" style={{ marginTop: 10 }}>
+                  <label>Financial input (optional)</label>
+                  <textarea
+                    rows={5}
+                    value={genFinancialText}
+                    onChange={(e) => setGenFinancialText(e.target.value)}
+                    placeholder="Paste the table text (e.g., FY20A–FY27P rows like Revenue/EBITDA/etc.)"
+                  />
+                </div>
+                <div className="actions">
+                  <button className="primary" type="button" onClick={handleGenerateRawDealText} disabled={genLoading || !genCompanyName.trim()}>
+                    {genLoading ? "Generating…" : "Generate raw text"}
+                  </button>
+                  {genUsed && <div className="small">Used: {genUsed}</div>}
+                  <button
+                    className="ghost"
+                    type="button"
+                    onClick={() => {
+                      setRawIntake(genOutput);
+                      setLeftTab("deal");
+                    }}
+                    disabled={!genOutput.trim()}
+                  >
+                    Use in Deal intake
+                  </button>
+                </div>
+                {genError && (
+                  <div className="small" style={{ marginTop: 6 }}>
+                    ⚠ {genError}
+                  </div>
+                )}
+
+                <div className="field" style={{ marginTop: 10 }}>
+                  <label>Generated raw deal text</label>
+                  <textarea
+                    rows={7}
+                    value={genOutput}
+                    onChange={(e) => setGenOutput(e.target.value)}
+                    placeholder="Generated text will appear here…"
+                  />
+                </div>
+              </div>
+            )}
+
+            {leftTab === "deal" && (
+              <>
+                <div className="field">
+                  <label>Raw deal text</label>
+                  <textarea
+                    rows={6}
+                    value={rawIntake}
+                    onChange={(e) => setRawIntake(e.target.value)}
+                    placeholder="Paste CIM blurb / broker teaser / notes. Then Extract fields → Match buyers."
+                  />
+                  <div className="actions" style={{ marginTop: 8 }}>
+                    <button className="ghost" type="button" onClick={handleExtract} disabled={extracting || !rawIntake.trim()}>
+                      {extracting ? "Extracting…" : "Extract fields"}
+                    </button>
+                  </div>
+                  {extractError && (
+                    <div className="small" style={{ marginTop: 6 }}>
+                      ⚠ {extractError}
+                    </div>
+                  )}
+                </div>
 
             <div className="row">
               <div className="field">
@@ -406,6 +529,8 @@ export default function App() {
                   ))}
                 </div>
               </div>
+            )}
+              </>
             )}
           </form>
         </section>
@@ -657,5 +782,6 @@ export default function App() {
 
       <footer className="footer">Built for a 1-day demo: agentic workflow + ML scoring + full-stack TypeScript.</footer>
     </div>
+    </>
   );
 }

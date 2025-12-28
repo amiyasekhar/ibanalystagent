@@ -120,3 +120,279 @@ Bot: True
 [INFO] 2025-12-13T11:38:26.956Z HTTP response
 {"requestId":"7f556b84-b9a4-4280-9869-3a72bc427d83","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Software&geography=US&type=Private+Equity&tag=buy-and-build&minDeal=20&maxDeal=150&minEbitda=3&maxEbitda=20&limit=25","status":200,"ms":2}
 Bot: True
+[INFO] 2025-12-13T12:09:50.957Z HTTP request
+{"requestId":"d4b05eff-f778-45f7-88bb-25051994bd64","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:09:50.958Z HTTP response
+{"requestId":"d4b05eff-f778-45f7-88bb-25051994bd64","method":"POST","path":"/api/workflows","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T12:09:50.963Z HTTP request
+{"requestId":"ab0532cb-ae0a-4874-9832-f97c04fbae22","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"408","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Orion — Vertical SaaS (Transportation Management)\\n\\nUS-based SaaS platform serving mid-market 3PLs and regional carriers. Cloud TMS with carrier integrations, billing automation, and workflow tools. ~80% recurring subscription revenue.\\n\\nFY2025E revenue: $18.5m\\nFY2025E EBITDA: $5.2m\\nTarget EV: ~$70m\\n\\nMajority transaction preferred. Growth via upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T12:09:54.913Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3949}
+Bot: True
+[INFO] 2025-12-13T12:09:54.913Z HTTP response
+{"requestId":"ab0532cb-ae0a-4874-9832-f97c04fbae22","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","status":200,"ms":3950}
+Bot: True
+[INFO] 2025-12-13T12:09:54.918Z HTTP request
+{"requestId":"df3dfb7b-2585-44d5-b509-54f60fc0853f","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:09:54.918Z HTTP response
+{"requestId":"df3dfb7b-2585-44d5-b509-54f60fc0853f","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-13T12:09:58.375Z HTTP request
+{"requestId":"66d28cb3-cb1a-40a8-a067-442e387f012d","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"408","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Orion — Vertical SaaS (Transportation Management)\\n\\nUS-based SaaS platform serving mid-market 3PLs and regional carriers. Cloud TMS with carrier integrations, billing automation, and workflow tools. ~80% recurring subscription revenue.\\n\\nFY2025E revenue: $18.5m\\nFY2025E EBITDA: $5.2m\\nTarget EV: ~$70m\\n\\nMajority transaction preferred. Growth via upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T12:10:02.051Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3676}
+Bot: True
+[INFO] 2025-12-13T12:10:02.052Z HTTP response
+{"requestId":"66d28cb3-cb1a-40a8-a067-442e387f012d","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","status":200,"ms":3677}
+Bot: True
+[INFO] 2025-12-13T12:10:02.056Z HTTP request
+{"requestId":"d98d5be0-778e-4c0c-8300-d5178722a5eb","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"30e-bwcD3TeqgRaNb6qtOl+15S/JY8E\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:10:02.056Z HTTP response
+{"requestId":"d98d5be0-778e-4c0c-8300-d5178722a5eb","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-13T12:10:11.364Z HTTP request
+{"requestId":"544f2e9b-ccd3-4640-beaa-15301d676460","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"471","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Orion\\nSector: Software\\nGeography: US\\nRevenue ($m): 18.5\\nEBITDA ($m): 5.2\\nEV ($m): 70\\nDescription: US-based vertical SaaS platform serving mid-market 3PLs and regional carriers. Cloud-based transportation management system (TMS) with carrier integrations, billing automation, and workflow tools. Approximately 80% recurring subscription revenue. Majority transaction preferred. Growth strategy focused on upsells and channel partnerships.\"}"}
+Bot: True
+[INFO] 2025-12-13T12:10:15.206Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3842}
+Bot: True
+[INFO] 2025-12-13T12:10:15.207Z HTTP response
+{"requestId":"544f2e9b-ccd3-4640-beaa-15301d676460","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/extract","status":200,"ms":3843}
+Bot: True
+[INFO] 2025-12-13T12:10:15.210Z HTTP request
+{"requestId":"b73f7055-32ea-479f-97e1-52d2d0edcc04","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:10:15.211Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-13T12:10:15.231Z Python inference ok
+{"ms":20,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-13T12:10:33.536Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":18304}
+Bot: True
+[INFO] 2025-12-13T12:10:33.536Z HTTP response
+{"requestId":"b73f7055-32ea-479f-97e1-52d2d0edcc04","method":"POST","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9/match","status":200,"ms":18326}
+Bot: True
+[INFO] 2025-12-13T12:10:33.539Z HTTP request
+{"requestId":"29544da7-06b2-40a2-bbc3-1a3a9e48c042","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"36a-gsk8OLqlNepzS4xBrr+kw48bzwg\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:10:33.540Z HTTP response
+{"requestId":"29544da7-06b2-40a2-bbc3-1a3a9e48c042","method":"GET","path":"/api/workflows/5b2d9385-3d5e-4789-9f7e-a896ab0e05e9","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-13T12:12:32.167Z HTTP request
+{"requestId":"a8e83197-1676-46c7-b473-1043c2cd44f1","method":"GET","path":"/api/buyers/search?q=uy-and-build+roll-up&sector=Software&geography=US&type=Private+Equity&tag=buy-and-build&minDeal=20&maxDeal=150&minEbitda=3&maxEbitda=20&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-13T12:12:32.167Z HTTP response
+{"requestId":"a8e83197-1676-46c7-b473-1043c2cd44f1","method":"GET","path":"/api/buyers/search?q=uy-and-build+roll-up&sector=Software&geography=US&type=Private+Equity&tag=buy-and-build&minDeal=20&maxDeal=150&minEbitda=3&maxEbitda=20&limit=25","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-22T09:29:23.747Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T09:35:42.213Z HTTP request
+{"requestId":"3b5570a5-c90a-49a4-84ab-2484de9acadb","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-22T09:35:42.216Z HTTP response
+{"requestId":"3b5570a5-c90a-49a4-84ab-2484de9acadb","method":"POST","path":"/api/workflows","status":200,"ms":3}
+Bot: True
+[INFO] 2025-12-22T09:35:42.223Z HTTP request
+{"requestId":"9b568a52-1404-4db6-a4c2-ad79689e5f7e","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"565","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Harbor — Specialty Facilities Services\\n\\nUS-based provider of recurring facilities maintenance and light project work for multi-site commercial customers. Services include preventative maintenance, emergency response, and small retrofit projects. High repeat business with long-tenured customer relationships.\\n\\nFY2025E revenue: $28.0m\\nFY2025E EBITDA: $4.2m\\nTarget EV: ~$40m\\n\\nOwner is seeking a majority recapitalization to fund add-on acquisitions and expand into adjacent geographies. No customer represents more than ~8% of revenue.\"}"}
+Bot: True
+[INFO] 2025-12-22T09:35:46.155Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3931}
+Bot: True
+[INFO] 2025-12-22T09:35:46.156Z HTTP response
+{"requestId":"9b568a52-1404-4db6-a4c2-ad79689e5f7e","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","status":200,"ms":3933}
+Bot: True
+[INFO] 2025-12-22T09:35:46.158Z HTTP request
+{"requestId":"24f638c0-d947-4969-8ec1-b4280cffc816","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-22T09:35:46.158Z HTTP response
+{"requestId":"24f638c0-d947-4969-8ec1-b4280cffc816","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-22T09:36:27.717Z HTTP request
+{"requestId":"d952c9f4-370c-48a9-abf4-1a45cd50190d","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"565","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Harbor — Specialty Facilities Services\\n\\nUS-based provider of recurring facilities maintenance and light project work for multi-site commercial customers. Services include preventative maintenance, emergency response, and small retrofit projects. High repeat business with long-tenured customer relationships.\\n\\nFY2025E revenue: $28.0m\\nFY2025E EBITDA: $4.2m\\nTarget EV: ~$40m\\n\\nOwner is seeking a majority recapitalization to fund add-on acquisitions and expand into adjacent geographies. No customer represents more than ~8% of revenue.\"}"}
+Bot: True
+[INFO] 2025-12-22T09:36:32.724Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":5007}
+Bot: True
+[INFO] 2025-12-22T09:36:32.725Z HTTP response
+{"requestId":"d952c9f4-370c-48a9-abf4-1a45cd50190d","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","status":200,"ms":5009}
+Bot: True
+[INFO] 2025-12-22T09:36:32.727Z HTTP request
+{"requestId":"869c01af-85c8-4027-a312-a63aa9da03b4","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"34d-2OcQhsVtgaNI6ekiBgxKDPm+Q1U\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-22T09:36:32.728Z HTTP response
+{"requestId":"869c01af-85c8-4027-a312-a63aa9da03b4","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-22T09:39:42.556Z HTTP request
+{"requestId":"2e30505a-bf0f-4858-aa85-e603958b703d","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"563","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Harbor\\nSector: Business Services\\nGeography: US\\nRevenue ($m): 28\\nEBITDA ($m): 4.2\\nEV ($m): 40\\nDescription: US-based provider of recurring facilities maintenance and light project work for multi-site commercial customers. Services include preventative maintenance, emergency response, and small retrofit projects. High repeat business with long-tenured customer relationships. Owner seeking majority recapitalization to fund add-on acquisitions and expand into adjacent geographies. No customer represents more than ~8% of revenue.\"}"}
+Bot: True
+[INFO] 2025-12-22T09:39:45.927Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3370}
+Bot: True
+[INFO] 2025-12-22T09:39:45.927Z HTTP response
+{"requestId":"2e30505a-bf0f-4858-aa85-e603958b703d","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/extract","status":200,"ms":3371}
+Bot: True
+[INFO] 2025-12-22T09:39:45.929Z HTTP request
+{"requestId":"86df6b70-35c8-46c6-bbba-d3cdbc84cca2","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-22T09:39:45.930Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-22T09:39:45.968Z Python inference ok
+{"ms":38,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-22T09:40:02.618Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":16650}
+Bot: True
+[INFO] 2025-12-22T09:40:02.620Z HTTP response
+{"requestId":"86df6b70-35c8-46c6-bbba-d3cdbc84cca2","method":"POST","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308/match","status":200,"ms":16691}
+Bot: True
+[INFO] 2025-12-22T09:40:02.621Z HTTP request
+{"requestId":"8119c59f-a98c-43c6-bdb2-a81e3423fb17","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"3c6-EHEiKbAsfHgZWGmWwxlCbBakU48\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-22T09:40:02.622Z HTTP response
+{"requestId":"8119c59f-a98c-43c6-bdb2-a81e3423fb17","method":"GET","path":"/api/workflows/2b45ffd8-ae87-4285-9b59-71fba391b308","status":200,"ms":1}
+Bot: True
+[INFO] 2025-12-22T11:29:55.230Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T11:31:35.801Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T11:56:35.535Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T12:05:03.888Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T12:09:29.539Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-22T12:16:17.404Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-24T12:17:04.203Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-24T12:20:50.894Z HTTP request
+{"requestId":"54c0ded4-a594-4d45-8fdf-dde79b40b5c2","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:20:50.899Z HTTP response
+{"requestId":"54c0ded4-a594-4d45-8fdf-dde79b40b5c2","method":"POST","path":"/api/workflows","status":200,"ms":5}
+Bot: True
+[INFO] 2025-12-24T12:20:50.910Z HTTP request
+{"requestId":"1db332db-3a72-4408-a24f-814f3d868cd9","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"738","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Orion — Vertical SaaS for Logistics\\n\\nUS-based vertical SaaS platform serving mid-market 3PLs and regional carriers. Core product is a cloud transportation management system (TMS) with carrier integrations, billing automation, and workflow tools. Revenue is primarily recurring subscription with a growing attach rate for modules and implementation services. Customer relationships are multi-year and usage is embedded in daily operations.\\n\\nFY2025E revenue: $18.5m\\nFY2025E EBITDA: $5.2m\\nTarget EV: ~$70m\\n\\nTransaction: Sponsor-led majority recapitalization or full sale. Ownership seeks a partner to accelerate go-to-market and selective tuck-in acquisitions. No customer represents more than ~6% of revenue.\"}"}
+Bot: True
+[INFO] 2025-12-24T12:20:55.090Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4178}
+Bot: True
+[INFO] 2025-12-24T12:20:55.091Z HTTP response
+{"requestId":"1db332db-3a72-4408-a24f-814f3d868cd9","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/extract","status":200,"ms":4181}
+Bot: True
+[INFO] 2025-12-24T12:20:55.096Z HTTP request
+{"requestId":"9ff473f6-81d4-4557-acf1-3b3edc56b71a","method":"GET","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:20:55.096Z HTTP response
+{"requestId":"9ff473f6-81d4-4557-acf1-3b3edc56b71a","method":"GET","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-24T12:23:16.585Z HTTP request
+{"requestId":"474d104c-311f-4a57-9bbd-f94265d6a5d8","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"740","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Orion\\nSector: Software\\nGeography: US\\nRevenue ($m): 18.5\\nEBITDA ($m): 5.2\\nEV ($m): 70\\nDescription: US-based vertical SaaS platform serving mid-market 3PLs and regional carriers. Core product is a cloud transportation management system (TMS) with carrier integrations, billing automation, and workflow tools. Revenue is primarily recurring subscription with a growing attach rate for modules and implementation services. Customer relationships are multi-year and usage is embedded in daily operations. Transaction is a sponsor-led majority recapitalization or full sale. Ownership seeks a partner to accelerate go-to-market and selective tuck-in acquisitions. No customer represents more than ~6% of revenue.\"}"}
+Bot: True
+[INFO] 2025-12-24T12:23:21.102Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4516}
+Bot: True
+[INFO] 2025-12-24T12:23:21.103Z HTTP response
+{"requestId":"474d104c-311f-4a57-9bbd-f94265d6a5d8","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/extract","status":200,"ms":4518}
+Bot: True
+[INFO] 2025-12-24T12:23:21.105Z HTTP request
+{"requestId":"99a8cbce-a8f4-4b7d-b088-c17473a174a1","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:23:21.106Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-24T12:23:21.150Z Python inference ok
+{"ms":44,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-24T12:23:40.636Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":19486}
+Bot: True
+[INFO] 2025-12-24T12:23:40.637Z HTTP response
+{"requestId":"99a8cbce-a8f4-4b7d-b088-c17473a174a1","method":"POST","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f/match","status":200,"ms":19532}
+Bot: True
+[INFO] 2025-12-24T12:23:40.643Z HTTP request
+{"requestId":"cd973c00-652a-4fed-bc2c-d678671ecd58","method":"GET","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"3f9-Diz0dPdrwur/elNQ+N7JPW3t8o4\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:23:40.645Z HTTP response
+{"requestId":"cd973c00-652a-4fed-bc2c-d678671ecd58","method":"GET","path":"/api/workflows/826f421e-5f44-44df-9c58-9a965097bb4f","status":200,"ms":2}
+Bot: True
+[INFO] 2025-12-24T12:43:46.107Z HTTP request
+{"requestId":"1cae6bc0-2c37-492c-930e-12e7125905d3","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=UK&type=Strategic&tag=buy-and-build&minDeal=50&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:43:46.109Z HTTP response
+{"requestId":"1cae6bc0-2c37-492c-930e-12e7125905d3","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=UK&type=Strategic&tag=buy-and-build&minDeal=50&limit=25","status":200,"ms":2}
+Bot: True
+[INFO] 2025-12-24T12:43:50.261Z HTTP request
+{"requestId":"c85c078f-6b5b-45f7-8995-1bdb61be83c0","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=UK&type=Strategic&tag=buy-and-build&minDeal=50&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"18-OA2KR4WcyNbj+lWkcFFrkvNMfQw\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:43:50.263Z HTTP response
+{"requestId":"c85c078f-6b5b-45f7-8995-1bdb61be83c0","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=UK&type=Strategic&tag=buy-and-build&minDeal=50&limit=25","status":304,"ms":2}
+Bot: True
+[INFO] 2025-12-24T12:44:20.719Z HTTP request
+{"requestId":"02799bf5-75ae-4533-8e79-2284a7fffd6b","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=US&type=Strategic&tag=buy-and-build&minDeal=20&minEbitda=3&maxEbitda=20&limit=25","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-24T12:44:20.721Z HTTP response
+{"requestId":"02799bf5-75ae-4533-8e79-2284a7fffd6b","method":"GET","path":"/api/buyers/search?q=buy-and-build+roll-up&sector=Manufacturing&geography=US&type=Strategic&tag=buy-and-build&minDeal=20&minEbitda=3&maxEbitda=20&limit=25","status":200,"ms":2}
+Bot: True
+[INFO] 2025-12-26T12:56:27.725Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2025-12-26T13:05:54.598Z HTTP request
+{"requestId":"be32b23d-fa89-4c45-b85d-24e209807d99","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-26T13:05:54.601Z HTTP response
+{"requestId":"be32b23d-fa89-4c45-b85d-24e209807d99","method":"POST","path":"/api/workflows","status":200,"ms":3}
+Bot: True
+[INFO] 2025-12-26T13:05:54.614Z HTTP request
+{"requestId":"0fce59ac-b040-4244-ab28-e9e03be37731","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"817","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Project Atlas — Specialty Facilities Services Platform\\n\\nUS-based provider of recurring facilities maintenance and light project work for multi-site commercial customers. Services include preventative maintenance, emergency response, and small retrofit projects. The business operates a branch-based model with technicians in multiple metro areas and a high percentage of repeat customers through contract and recurring service revenue.\\n\\nFY2025E revenue: $28.0m\\nFY2025E EBITDA: $4.2m\\nTarget EV: ~$40m\\n\\nTransaction: Ownership is exploring a sell-side process / majority recapitalization. Management is seeking a partner to fund add-on acquisitions, expand into adjacent geographies, and invest in scheduling and sales operations. Customer concentration is limited (no customer > ~8% of revenue).\"}"}
+Bot: True
+[INFO] 2025-12-26T13:05:59.567Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4951}
+Bot: True
+[INFO] 2025-12-26T13:05:59.568Z HTTP response
+{"requestId":"0fce59ac-b040-4244-ab28-e9e03be37731","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/extract","status":200,"ms":4954}
+Bot: True
+[INFO] 2025-12-26T13:05:59.574Z HTTP request
+{"requestId":"354cd2a9-15f0-4b46-a7d1-bd384379f916","method":"GET","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-26T13:05:59.574Z HTTP response
+{"requestId":"354cd2a9-15f0-4b46-a7d1-bd384379f916","method":"GET","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15","status":200,"ms":0}
+Bot: True
+[INFO] 2025-12-26T13:07:03.300Z HTTP request
+{"requestId":"81c87464-0ac7-412a-b9de-5400115282f3","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"791","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Atlas\\nSector: Business Services\\nGeography: US\\nRevenue ($m): 28\\nEBITDA ($m): 4.2\\nEV ($m): 40\\nDescription: US-based specialty facilities services platform providing recurring maintenance and light project work for multi-site commercial customers. Services include preventative maintenance, emergency response, and small retrofit projects. Operates branch-based model with technicians across multiple metro areas. High percentage of repeat customers through contract and recurring service revenue. Limited customer concentration (no customer >8% of revenue). Ownership exploring sell-side process/majority recapitalization. Management seeking partner to fund add-on acquisitions, expand into adjacent geographies, and invest in scheduling and sales operations.\"}"}
+Bot: True
+[INFO] 2025-12-26T13:07:07.292Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3992}
+Bot: True
+[INFO] 2025-12-26T13:07:07.293Z HTTP response
+{"requestId":"81c87464-0ac7-412a-b9de-5400115282f3","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/extract","status":200,"ms":3993}
+Bot: True
+[INFO] 2025-12-26T13:07:07.295Z HTTP request
+{"requestId":"3a33c0d4-23d3-4e5e-a44a-75d9f7abf752","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-26T13:07:07.298Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2025-12-26T13:07:07.354Z Python inference ok
+{"ms":57,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2025-12-26T13:07:26.688Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":19334}
+Bot: True
+[INFO] 2025-12-26T13:07:26.689Z HTTP response
+{"requestId":"3a33c0d4-23d3-4e5e-a44a-75d9f7abf752","method":"POST","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15/match","status":200,"ms":19394}
+Bot: True
+[INFO] 2025-12-26T13:07:26.696Z HTTP request
+{"requestId":"3b8f7513-150c-4d13-b575-088aee8f1e2f","method":"GET","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"42c-41RUSFyrpI+DBJR/2lO5mKLxklQ\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2025-12-26T13:07:26.697Z HTTP response
+{"requestId":"3b8f7513-150c-4d13-b575-088aee8f1e2f","method":"GET","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15","status":200,"ms":1}
+Bot: True

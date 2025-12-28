@@ -15,11 +15,24 @@ const workflows_1 = require("./workflows");
 const claude_1 = require("./claude");
 const requestLogging_1 = require("./requestLogging");
 const buyerSearch_1 = require("./buyerSearch");
+const generateRawDealText_1 = require("./generateRawDealText");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({ origin: true }));
 app.use(express_1.default.json({ limit: "1mb" }));
 app.use(requestLogging_1.requestLoggingMiddleware);
 app.get("/health", (_req, res) => res.json({ ok: true }));
+app.post("/api/generate-raw-deal-text", async (req, res) => {
+    try {
+        const out = await (0, generateRawDealText_1.generateRawDealText)(req.body);
+        if (!out.ok)
+            return res.status(400).json(out);
+        return res.json(out);
+    }
+    catch (e) {
+        logger_1.log.error("generate-raw-deal-text failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
 app.get("/api/buyers/search", (req, res) => {
     try {
         const q = typeof req.query.q === "string" ? req.query.q : "";

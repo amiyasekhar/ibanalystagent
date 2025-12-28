@@ -1,0 +1,186 @@
+{
+  "company": "Reliance Industries Limited",
+  "currency": "INR crore",
+  "years": [
+    {
+      "year_label": "2022-23",
+      "year_end": "2023-03-31",
+      "revenue": {
+        "value": 974864,
+        "source": {
+          "page": 262,
+          "section": "CONSOLIDATED STATEMENT OF PROFIT AND LOSS",
+          "snippet": "Value of Sales & Services (Revenue) 9,74,864"
+        }
+      },
+      "ebitda": {
+        "value": 153920,
+        "source": {
+          "page": 194,
+          "section": "Financial Results",
+          "snippet": "Earnings Before Depreciation, Finance Cost and Tax Expenses (EBDIT)# 1,53,920"
+        }
+      },
+      "pat": {
+        "value": 66702,
+        "source": {
+          "page": 262,
+          "section": "CONSOLIDATED STATEMENT OF PROFIT AND LOSS",
+          "snippet": "Net Profit Attributable to: a) Owners of the Company 66,702"
+        }
+      },
+      "eps": {
+        "value": 98.59,
+        "source": {
+          "page": 262,
+          "section": "CONSOLIDATED STATEMENT OF PROFIT AND LOSS",
+          "snippet": "Continuing and Discontinued Operations: Basic (in \u20b9) - After Exceptional Item 33 98.59"
+        }
+      },
+      "networth": {
+        "value": 828881,
+        "source": {
+          "page": 261,
+          "section": "CONSOLIDATED BALANCE SHEET",
+          "snippet": "Total Equity 8,28,881"
+        }
+      },
+      "total_assets": {
+        "value": 1607431,
+        "source": {
+          "page": 261,
+          "section": "CONSOLIDATED BALANCE SHEET",
+          "snippet": "Total Assets 16,07,431"
+        }
+      },
+      "_pat_attrib_owners": {
+        "value": 66702,
+        "source": {
+          "page": 262,
+          "section": "CONSOLIDATED STATEMENT OF PROFIT AND LOSS",
+          "snippet": "Net Profit Attributable to:\na) Owners of the Company\n66,702"
+        }
+      }
+    },
+    {
+      "year_label": "2023-24",
+      "year_end": "2024-03-31",
+      "revenue": {
+        "value": 1000122,
+        "source": {
+          "page": 133,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Value of Sales & Services (Revenue) 10,00,122"
+        }
+      },
+      "ebitda": {
+        "value": 178677,
+        "source": {
+          "page": 30,
+          "section": "Management Discussion and Analysis",
+          "snippet": "Consolidated EBITDA for the year increased by 16.1% to C 1,78,677 crore (US$ 21.4 billion) as compared to C1,53,920 crore in FY 2022\u201123."
+        }
+      },
+      "pat": {
+        "value": 79020,
+        "source": {
+          "page": 25,
+          "section": "Reliance at a Glance",
+          "snippet": "PROFIT AFTER TAX (C crore) \u20b979,020 Crore"
+        }
+      },
+      "eps": {
+        "value": 102.9,
+        "source": {
+          "page": 133,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Continuing Operations: Basic (in C) 32 102.90"
+        }
+      },
+      "networth": {
+        "value": 925788,
+        "source": {
+          "page": 132,
+          "section": "Consolidated Balance Sheet",
+          "snippet": "Total Equity 9,25,788"
+        }
+      },
+      "total_assets": {
+        "value": 1755986,
+        "source": {
+          "page": 132,
+          "section": "Consolidated Balance Sheet",
+          "snippet": "Total Assets 17,55,986"
+        }
+      },
+      "_pat_attrib_owners": {
+        "value": 69621,
+        "source": {
+          "page": 133,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Net Profit Attributable to:\na) Owners of the Company 69,621 66,702"
+        }
+      }
+    },
+    {
+      "year_label": "2024-25",
+      "year_end": "2025-03-31",
+      "revenue": {
+        "value": 1071174,
+        "source": {
+          "page": 127,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Value of Sales & Services (Revenue) 10,71,174"
+        }
+      },
+      "ebitda": {
+        "value": 183422,
+        "source": {
+          "page": 32,
+          "section": "10-YEAR FINANCIAL HIGHLIGHTS",
+          "snippet": "Earnings Before Depreciation, Finance Cost and Tax Expenses (EBDIT) # 1,83,422"
+        }
+      },
+      "pat": {
+        "value": 69648,
+        "source": {
+          "page": 127,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Net Profit Attributable to: a) Owners of the Company 69,648"
+        }
+      },
+      "eps": {
+        "value": 51.47,
+        "source": {
+          "page": 127,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Earnings Per Equity Share of Face Value of \u20b9 10 each Basic (in \u20b9) 51.47"
+        }
+      },
+      "networth": {
+        "value": 1009626,
+        "source": {
+          "page": 126,
+          "section": "Consolidated Balance Sheet",
+          "snippet": "Total Equity 10,09,626"
+        }
+      },
+      "total_assets": {
+        "value": 1950121,
+        "source": {
+          "page": 126,
+          "section": "Consolidated Balance Sheet",
+          "snippet": "Total Assets 19,50,121"
+        }
+      },
+      "_pat_attrib_owners": {
+        "value": 69648,
+        "source": {
+          "page": 127,
+          "section": "Consolidated Statement of Profit and Loss",
+          "snippet": "Net Profit Attributable to:\na) Owners of the Company 69,648"
+        }
+      }
+    }
+  ]
+}
