@@ -396,3 +396,5 @@ Bot: True
 [INFO] 2025-12-26T13:07:26.697Z HTTP response
 {"requestId":"3b8f7513-150c-4d13-b575-088aee8f1e2f","method":"GET","path":"/api/workflows/8f498681-95e4-4237-8692-93d9e3b49b15","status":200,"ms":1}
 Bot: True
+[INFO] 2025-12-31T15:27:49.824Z Server running on http://localhost:4000
+Bot: True
