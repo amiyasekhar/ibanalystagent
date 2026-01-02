@@ -12,6 +12,9 @@ import { claudeJson } from "./claude";
 import { requestLoggingMiddleware } from "./requestLogging";
 import { searchBuyers } from "./buyerSearch";
 import { generateRawDealText } from "./generateRawDealText";
+import { extractFinancialsFromPdfs } from "./pdfFinancials";
+import multer from "multer";
+import { ensureUploadsDir, sanitizeFilename } from "./uploadUtils";
 
 const app = express();
 
@@ -20,6 +23,65 @@ app.use(express.json({ limit: "1mb" }));
 app.use(requestLoggingMiddleware);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (_req, _file, cb) => cb(null, ensureUploadsDir()),
+    filename: (_req, file, cb) => {
+      const safe = sanitizeFilename(file.originalname || "upload.pdf");
+      cb(null, `${Date.now()}-${safe}`);
+    },
+  }),
+  limits: { fileSize: 25 * 1024 * 1024 }, // 25MB per file
+});
+
+// Drag/drop upload endpoint: upload PDFs and immediately extract financials.
+app.post("/api/extract-financials-from-upload", upload.array("pdfs", 50), async (req, res) => {
+  try {
+    const files = (req.files as Express.Multer.File[]) || [];
+    const highlight = String((req.body as any)?.highlight || "").toLowerCase() === "true";
+    if (!files.length) return res.status(400).json({ ok: false, error: "No PDF files uploaded" });
+
+    const pdfPaths = files.map((f) => f.path);
+    const out = await extractFinancialsFromPdfs({ pdfPaths, highlight });
+    // Cleanup uploaded temp files (keep highlighted PDFs if generated).
+    try {
+      const fs = await import("node:fs/promises");
+      await Promise.all(
+        files.map(async (f) => {
+          try {
+            await fs.unlink(f.path);
+          } catch {
+            // ignore
+          }
+        })
+      );
+    } catch {
+      // ignore
+    }
+
+    if (!out.ok) return res.status(500).json(out);
+    return res.json({ ...out, uploaded: files.map((f) => ({ originalName: f.originalname })) });
+  } catch (e: any) {
+    log.error("extract-financials-from-upload failed", { message: e?.message || String(e) });
+    return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+  }
+});
+
+app.post("/api/extract-financials-from-pdf", async (req, res) => {
+  try {
+    const pdfPaths = Array.isArray(req.body?.pdfPaths) ? req.body.pdfPaths.map(String) : [];
+    const highlight = Boolean(req.body?.highlight);
+    if (!pdfPaths.length) return res.status(400).json({ ok: false, error: "pdfPaths must be a non-empty array" });
+
+    const out = await extractFinancialsFromPdfs({ pdfPaths, highlight });
+    if (!out.ok) return res.status(500).json(out);
+    return res.json(out);
+  } catch (e: any) {
+    log.error("extract-financials-from-pdf failed", { message: e?.message || String(e) });
+    return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+  }
+});
 
 app.post("/api/generate-raw-deal-text", async (req, res) => {
   try {

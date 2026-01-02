@@ -1,4 +1,37 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -16,11 +49,73 @@ const claude_1 = require("./claude");
 const requestLogging_1 = require("./requestLogging");
 const buyerSearch_1 = require("./buyerSearch");
 const generateRawDealText_1 = require("./generateRawDealText");
+const pdfFinancials_1 = require("./pdfFinancials");
+const multer_1 = __importDefault(require("multer"));
+const uploadUtils_1 = require("./uploadUtils");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({ origin: true }));
 app.use(express_1.default.json({ limit: "1mb" }));
 app.use(requestLogging_1.requestLoggingMiddleware);
 app.get("/health", (_req, res) => res.json({ ok: true }));
+const upload = (0, multer_1.default)({
+    storage: multer_1.default.diskStorage({
+        destination: (_req, _file, cb) => cb(null, (0, uploadUtils_1.ensureUploadsDir)()),
+        filename: (_req, file, cb) => {
+            const safe = (0, uploadUtils_1.sanitizeFilename)(file.originalname || "upload.pdf");
+            cb(null, `${Date.now()}-${safe}`);
+        },
+    }),
+    limits: { fileSize: 25 * 1024 * 1024 }, // 25MB per file
+});
+// Drag/drop upload endpoint: upload PDFs and immediately extract financials.
+app.post("/api/extract-financials-from-upload", upload.array("pdfs", 50), async (req, res) => {
+    try {
+        const files = req.files || [];
+        const highlight = String(req.body?.highlight || "").toLowerCase() === "true";
+        if (!files.length)
+            return res.status(400).json({ ok: false, error: "No PDF files uploaded" });
+        const pdfPaths = files.map((f) => f.path);
+        const out = await (0, pdfFinancials_1.extractFinancialsFromPdfs)({ pdfPaths, highlight });
+        // Cleanup uploaded temp files (keep highlighted PDFs if generated).
+        try {
+            const fs = await Promise.resolve().then(() => __importStar(require("node:fs/promises")));
+            await Promise.all(files.map(async (f) => {
+                try {
+                    await fs.unlink(f.path);
+                }
+                catch {
+                    // ignore
+                }
+            }));
+        }
+        catch {
+            // ignore
+        }
+        if (!out.ok)
+            return res.status(500).json(out);
+        return res.json({ ...out, uploaded: files.map((f) => ({ originalName: f.originalname })) });
+    }
+    catch (e) {
+        logger_1.log.error("extract-financials-from-upload failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+app.post("/api/extract-financials-from-pdf", async (req, res) => {
+    try {
+        const pdfPaths = Array.isArray(req.body?.pdfPaths) ? req.body.pdfPaths.map(String) : [];
+        const highlight = Boolean(req.body?.highlight);
+        if (!pdfPaths.length)
+            return res.status(400).json({ ok: false, error: "pdfPaths must be a non-empty array" });
+        const out = await (0, pdfFinancials_1.extractFinancialsFromPdfs)({ pdfPaths, highlight });
+        if (!out.ok)
+            return res.status(500).json(out);
+        return res.json(out);
+    }
+    catch (e) {
+        logger_1.log.error("extract-financials-from-pdf failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
 app.post("/api/generate-raw-deal-text", async (req, res) => {
     try {
         const out = await (0, generateRawDealText_1.generateRawDealText)(req.body);

@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import time
 from typing import Dict, Any, List, Tuple, Optional
 
 from dotenv import load_dotenv
@@ -15,7 +16,7 @@ load_dotenv()
 PDF_FILES = ["Reliance1.pdf", "Reliance2.pdf", "Reliance3.pdf"]
 MODEL_NAME = "gemini-2.5-pro"
 
-client = genai.Client()
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY") or None)
 
 METRICS = ["revenue", "ebitda", "pat", "eps", "networth", "total_assets"]
 
@@ -228,9 +229,29 @@ def _gemini_pdf_call(pdf_path: str, prompt: str) -> Dict[str, Any]:
     with open(pdf_path, "rb") as f:
         pdf_bytes = f.read()
     pdf_part = genai.types.Part.from_bytes(data=pdf_bytes, mime_type="application/pdf")
-    resp = client.models.generate_content(model=MODEL_NAME, contents=[pdf_part, prompt])
-    raw = json_strip_fences(resp.text or "")
-    return json.loads(raw)
+    last_err: Optional[Exception] = None
+    # Transient TLS/network issues can happen with large PDF uploads. Retry a few times.
+    for attempt in range(1, 4):
+        try:
+            resp = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=[pdf_part, prompt],
+                config=genai.types.GenerateContentConfig(
+                    temperature=0.2,
+                    top_p=0.9,
+                ),
+            )
+            raw = json_strip_fences(resp.text or "")
+            return json.loads(raw)
+        except Exception as e:
+            last_err = e
+            msg = str(e)
+            # Only retry the common transient read/TLS errors
+            transient = ("SSLV3_ALERT_BAD_RECORD_MAC" in msg) or ("httpx.ReadError" in msg) or ("ReadError" in msg)
+            if not transient or attempt >= 3:
+                break
+            time.sleep(0.8 * attempt)
+    raise last_err if last_err else RuntimeError("Gemini PDF call failed")
 
 def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
     return _gemini_pdf_call(pdf_path, EXTRACTION_PROMPT)

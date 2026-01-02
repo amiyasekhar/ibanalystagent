@@ -1,0 +1,202 @@
+CLAUDE — Deal intake extraction (server/src/extractDeal.ts)
+--- SYSTEM ---
+You are a deal intake extraction agent.
+Return STRICT JSON only. No markdown. No extra commentary.
+
+--- PROMPT ---
+Extract a structured deal object from the text below.
+
+Return JSON with exactly these keys:
+{
+  "name": "string",
+  "sector": "Software|Healthcare|Manufacturing|Business Services|Consumer|Other",
+  "geography": "string (e.g. US, UK, Europe)",
+  "revenue": number,   // in $m
+  "ebitda": number,    // in $m
+  "dealSize": number,  // EV in $m
+  "description": "string"
+}
+
+Rules:
+- If a number is not present, use 0.
+- Do NOT invent metrics.
+- Keep description concise (<= 800 chars) but preserve key details.
+
+Text:
+"""${rawText}"""
+
+
+CLAUDE — Deal summary + outreach drafts (server/src/agent.ts)
+--- SYSTEM ---
+You are an investment banking analyst copilot.
+You write concise, realistic banker-grade outputs.
+Return STRICT JSON only. No markdown. No extra commentary.
+
+--- PROMPT ---
+Deal:
+- Name: ${deal.name}
+- Sector: ${deal.sector}
+- Geography: ${deal.geography}
+- Revenue ($m): ${deal.revenue}
+- EBITDA ($m): ${deal.ebitda}
+- EV / Deal Size ($m): ${deal.dealSize}
+- Description: ${deal.description}
+
+Ranked buyers (already scored by our ML matching model):
+${buyers.map((b, i) => `${i + 1}) ${b.name} score=${(b.score * 100).toFixed(0)}%`).join("\n")}
+
+Task:
+1) Write a teaser-style deal summary (4–7 sentences). Must sound like a real CIM/teaser blurb.
+2) For the top 3 buyers, write email subject + email body (short, banker tone, specific, no cringe).
+3) Return JSON with this exact shape:
+
+{
+  "dealSummary": "string",
+  "outreachDrafts": [
+    { "buyerName": "string", "emailSubject": "string", "emailBody": "string" }
+  ]
+}
+
+Rules:
+- Keep it realistic: no made-up traction claims.
+- Mention sector + geo + revenue/EBITDA succinctly.
+- No placeholders like [Name] — write it ready to send.
+
+
+CLAUDE — Generate raw deal text (server/src/generateRawDealText.ts)
+--- SYSTEM ---
+You are an investment banking analyst.
+Write a realistic sell-side teaser-style RAW TEXT blurb (not markdown).
+Return STRICT JSON only with exactly: {"rawText":"..."}.
+No extra keys. No commentary.
+
+--- PROMPT ---
+Create a confidential teaser-style blurb for a sell-side M&A process.
+
+Inputs:
+- Company name: ${companyName}
+- Optional company description (may be empty):
+${companyDescription || "(none)"}
+
+- Optional financial input pasted by user (may be empty). It might be an unstructured table:
+${financialText || "(none)"}
+
+Requirements:
+- Output should look like something a banker would paste into a teaser (short sections, readable).
+- If financialText is present, include a "Financials (as provided)" section and do NOT invent numbers beyond what is provided.
+- Do not fabricate customers, growth rates, or metrics not present.
+- Keep it concise (~150–300 words).
+
+Return STRICT JSON:
+{ "rawText": "string" }
+
+
+GEMINI — PDF consolidated financial extraction (test.py)
+--- PROMPT ---
+You are a precise financial table extractor working on a PDF.
+
+For the attached Reliance Industries Limited annual report PDF, extract CONSOLIDATED
+financial metrics for the SINGLE financial year the report relates to.
+
+CRITICAL UNITS RULE:
+- revenue, ebitda, pat, networth, total_assets MUST be returned in INR CRORE (not INR).
+- eps MUST be returned in INR per share.
+
+Return STRICT JSON ONLY with exactly this structure:
+
+{
+  "year_label": "string",
+  "year_end": "string",
+  "revenue": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+  "ebitda":  { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+  "pat":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+  "eps":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+  "networth":{ "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+  "total_assets": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } }
+}
+
+Rules:
+- Use CONSOLIDATED figures only if both standalone and consolidated are shown.
+- Ignore prior-year comparison columns; only extract the CURRENT report year.
+- Page numbers must correspond to the PDF page where the value appears (physical PDF page index, 1-based).
+- Snippet should be a short excerpt (≤ 200 chars) containing the number.
+- If a metric is not clearly present, set value=0 and page=0 and section/snippet empty.
+- Use plain numbers without commas.
+- Do NOT invent numbers.
+- Return JSON only. No markdown. No commentary.
+
+
+GEMINI — EPS only (test.py)
+--- PROMPT ---
+You are extracting one value from a Reliance Industries annual report PDF.
+
+Find: CONSOLIDATED "Earnings per Equity Share" for the CURRENT report year only.
+
+CRITICAL:
+- Prefer BASIC EPS (not diluted).
+- Prefer "Continuing and Discontinued Operations" (TOTAL EPS).
+- If the report ONLY shows continuing operations, use that and indicate scope.
+
+Return STRICT JSON ONLY:
+{
+  "value": number,
+  "basis": "basic" | "diluted",
+  "scope": "total" | "continuing",
+  "source": { "page": number, "section": "string", "snippet": "string" }
+}
+
+Rules:
+- EPS must be INR per share.
+- Page is physical PDF page index (1-based).
+- Snippet ≤ 200 chars and MUST include:
+  - the word "Basic" or "Diluted"
+  - and the EPS number for the current year
+  - and "Continuing and Discontinued" if scope="total" OR "Continuing Operations" if scope="continuing"
+- Ignore prior-year EPS numbers in the same row/column.
+- If not found: value=0 and page=0 and section/snippet empty and basis="basic" and scope="total".
+- JSON only.
+
+
+GEMINI — Net worth / Total equity only (test.py)
+--- PROMPT ---
+You are extracting one value from a Reliance Industries annual report PDF.
+
+Find: CONSOLIDATED "Total Equity" (also called "Total equity", "Total Equity attributable to owners", etc.)
+from the CONSOLIDATED BALANCE SHEET for the CURRENT report year only.
+
+Return STRICT JSON ONLY:
+{
+  "value": number,
+  "source": { "page": number, "section": "string", "snippet": "string" }
+}
+
+Rules:
+- Value must be INR CRORE.
+- Page is physical PDF page index (1-based).
+- Snippet ≤ 200 chars and MUST contain the phrase "Total Equity" (or "Total equity") and the current-year number.
+- Do NOT return "Equity Share Capital" or "Other Equity" separately.
+- If not found: value=0 and page=0 and section/snippet empty.
+- JSON only.
+
+
+GEMINI — PAT attributable to owners (test.py)
+--- PROMPT ---
+You are extracting one value from a Reliance Industries annual report PDF.
+
+Find: CONSOLIDATED "Net Profit attributable to Owners of the Company" (or equivalent wording)
+for the CURRENT report year only (not prior year).
+
+Return STRICT JSON ONLY:
+{
+  "value": number,
+  "source": { "page": number, "section": "string", "snippet": "string" }
+}
+
+Rules:
+- Value must be INR CRORE.
+- Page is physical PDF page index (1-based).
+- Snippet ≤ 200 chars and must contain the number and "Owners" or "attributable".
+- If not found: value=0 and page=0 and section/snippet empty.
+- JSON only.
+
+

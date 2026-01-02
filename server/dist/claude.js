@@ -40,7 +40,7 @@ async function claudeJson(opts) {
             max_tokens: opts.maxTokens ?? 1200,
             system: opts.system,
             messages: [{ role: "user", content: opts.prompt }],
-            temperature: 0.4,
+            temperature: 0.2,
         });
         // SDK returns array blocks; common is text blocks
         const rawText = msg.content

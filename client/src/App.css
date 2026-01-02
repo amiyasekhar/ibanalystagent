@@ -233,6 +233,45 @@ input:focus, select:focus, textarea:focus{
   flex-wrap: wrap;
 }
 
+.dropzone{
+  border: 1px dashed rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .06s ease;
+}
+.dropzone:hover{
+  border-color: rgba(255,255,255,.26);
+  background: rgba(255,255,255,.045);
+}
+.dropzone:active{
+  transform: translateY(1px);
+}
+.dropzoneActive{
+  border-color: rgba(124,92,255,.55);
+  background: rgba(124,92,255,.10);
+}
+.dropzoneTitle{
+  font-weight: 750;
+  font-size: 13px;
+  color: rgba(255,255,255,.88);
+}
+.checkRow{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  width: fit-content;
+  max-width: 100%;
+}
+.checkRow input{
+  width: auto;
+}
+
 button{
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.05);

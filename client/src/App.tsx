@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import "./App.css";
 
 type BuyerMatch = { name: string; score: number; rationale: string };
@@ -45,6 +45,15 @@ export default function App() {
   const [genCompanyName, setGenCompanyName] = useState<string>("");
   const [genCompanyDesc, setGenCompanyDesc] = useState<string>("");
   const [genFinancialText, setGenFinancialText] = useState<string>("");
+  const [genPdfPaths, setGenPdfPaths] = useState<string>("");
+  const [pdfLoading, setPdfLoading] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
+  const [pdfHighlight, setPdfHighlight] = useState(false);
+  const [pdfStatus, setPdfStatus] = useState<string | null>(null);
+  const [pdfDragging, setPdfDragging] = useState(false);
+  const [pdfQueuedFiles, setPdfQueuedFiles] = useState<File[]>([]);
+  const [pdfUploadedNames, setPdfUploadedNames] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [genLoading, setGenLoading] = useState(false);
   const [genError, setGenError] = useState<string | null>(null);
   const [genUsed, setGenUsed] = useState<string | null>(null);
@@ -138,6 +147,87 @@ export default function App() {
     } finally {
       setGenLoading(false);
     }
+  }
+
+  async function handleExtractFinancialsFromPdf() {
+    setPdfLoading(true);
+    setPdfError(null);
+    try {
+      const pdfPaths = genPdfPaths
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      if (!pdfPaths.length) throw new Error("Enter at least one PDF path");
+
+      const res = await fetch(`${API_BASE}/api/extract-financials-from-pdf`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pdfPaths, highlight: pdfHighlight }),
+      });
+      const data = (await res.json().catch(() => null)) as any;
+      if (!res.ok) throw new Error(data?.error || `PDF extract API returned ${res.status}`);
+      if (!data?.ok || typeof data?.tableText !== "string") throw new Error(data?.error || "Bad PDF extract response");
+      setGenFinancialText(String(data.tableText));
+    } catch (e: any) {
+      setPdfError(e?.message || "PDF extraction failed");
+    } finally {
+      setPdfLoading(false);
+    }
+  }
+
+  async function uploadAndExtractPdfs(files: FileList | File[]) {
+    setPdfLoading(true);
+    setPdfError(null);
+    setPdfStatus(null);
+    try {
+      const arr = Array.from(files || []);
+      if (!arr.length) throw new Error("No files selected");
+      setPdfUploadedNames(arr.map((f) => f.name));
+      setPdfStatus(`Processing ${arr.length} PDF(s)…`);
+
+      const fd = new FormData();
+      for (const f of arr) fd.append("pdfs", f);
+      fd.append("highlight", String(pdfHighlight));
+
+      const res = await fetch(`${API_BASE}/api/extract-financials-from-upload`, {
+        method: "POST",
+        body: fd,
+      });
+      const data = (await res.json().catch(() => null)) as any;
+      if (!res.ok) throw new Error(data?.error || `Upload API returned ${res.status}`);
+      if (!data?.ok || typeof data?.tableText !== "string") throw new Error(data?.error || "Bad upload response");
+      setGenFinancialText(String(data.tableText));
+      const uploaded = Array.isArray(data?.uploaded) ? data.uploaded : [];
+      const years = Array.isArray(data?.years) ? data.years : [];
+      const yearLabels = years
+        .map((y: any) => String(y?.year_label || "").trim())
+        .filter(Boolean)
+        .slice(0, 6);
+      const nameList =
+        uploaded.length > 0 ? uploaded.map((u: any) => String(u?.originalName || "")).filter(Boolean) : pdfUploadedNames;
+      const compactNames = nameList.slice(0, 3).join(", ") + (nameList.length > 3 ? ` +${nameList.length - 3} more` : "");
+      const yearsText = yearLabels.length ? ` • years: ${yearLabels.join(", ")}` : "";
+      setPdfStatus(`Extracted financials from ${uploaded.length || arr.length} PDF(s)${compactNames ? ` (${compactNames})` : ""}${yearsText}`);
+    } catch (e: any) {
+      setPdfError(e?.message || "Upload failed");
+    } finally {
+      setPdfLoading(false);
+    }
+  }
+
+  function addQueuedFiles(list: FileList | File[]) {
+    const incoming = Array.from(list || []);
+    if (!incoming.length) return;
+    const onlyPdf = incoming.filter((f) => (f.type || "").toLowerCase() === "application/pdf" || f.name.toLowerCase().endsWith(".pdf"));
+    setPdfQueuedFiles((prev) => {
+      const seen = new Set(prev.map((f) => `${f.name}:${f.size}:${f.lastModified}`));
+      const next = [...prev];
+      for (const f of onlyPdf) {
+        const key = `${f.name}:${f.size}:${f.lastModified}`;
+        if (!seen.has(key)) next.push(f);
+      }
+      return next;
+    });
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -336,6 +426,150 @@ export default function App() {
                 <h3>Generate raw deal text</h3>
                 <div className="small" style={{ marginBottom: 8 }}>
                   Enter a company name (and optionally description + pasted financial table) to generate a teaser-style raw blurb.
+                </div>
+                <div className="field" style={{ marginBottom: 8 }}>
+                  <label>Upload PDFs (optional)</label>
+                  <div
+                    className={`dropzone ${pdfDragging ? "dropzoneActive" : ""}`}
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onDragEnter={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setPdfDragging(true);
+                    }}
+                    onDragLeave={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setPdfDragging(false);
+                    }}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setPdfDragging(false);
+                      if (e.dataTransfer?.files?.length) addQueuedFiles(e.dataTransfer.files);
+                    }}
+                  >
+                    <div className="dropzoneTitle">Drag & drop PDF(s) here (as many as you want)</div>
+                    <div className="small" style={{ marginTop: 4 }}>
+                      Drop PDFs to queue them. Then click <b>Generate deal info</b> to extract financials and auto-fill the Financial input box.
+                    </div>
+                    <div className="actions" style={{ marginTop: 10 }}>
+                      <button
+                        className="ghost"
+                        type="button"
+                        disabled={pdfLoading}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          fileInputRef.current?.click();
+                        }}
+                      >
+                        Choose PDF(s)
+                      </button>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="application/pdf"
+                        multiple
+                        onChange={(e) => {
+                          if (e.target.files?.length) addQueuedFiles(e.target.files);
+                        }}
+                        style={{ display: "none" }}
+                      />
+                      <label
+                        className="checkRow"
+                        onClick={(e) => {
+                          // prevent dropzone click from opening finder when toggling checkbox
+                          e.stopPropagation();
+                        }}
+                      >
+                        <input type="checkbox" checked={pdfHighlight} onChange={(e) => setPdfHighlight(e.target.checked)} />
+                        <span className="small">Write highlighted PDF(s)</span>
+                      </label>
+                      <button
+                        className="primary"
+                        type="button"
+                        disabled={pdfLoading || pdfQueuedFiles.length === 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          uploadAndExtractPdfs(pdfQueuedFiles);
+                        }}
+                      >
+                        {pdfLoading ? "Generating…" : "Generate deal info"}
+                      </button>
+                      {pdfQueuedFiles.length > 0 && (
+                        <button
+                          className="ghost"
+                          type="button"
+                          disabled={pdfLoading}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setPdfQueuedFiles([]);
+                            setPdfStatus(null);
+                            setPdfError(null);
+                          }}
+                        >
+                          Clear PDFs
+                        </button>
+                      )}
+                      {genFinancialText.trim() && (
+                        <button
+                          className="ghost"
+                          type="button"
+                          disabled={pdfLoading}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setGenFinancialText("");
+                            setPdfStatus(null);
+                            setPdfError(null);
+                          }}
+                        >
+                          Clear financials
+                        </button>
+                      )}
+                    </div>
+                    {pdfQueuedFiles.length > 0 && (
+                      <div className="small" style={{ marginTop: 10 }}>
+                        <b>Queued:</b>{" "}
+                        {pdfQueuedFiles.length <= 6
+                          ? pdfQueuedFiles.map((f) => f.name).join(", ")
+                          : `${pdfQueuedFiles.slice(0, 5).map((f) => f.name).join(", ")} +${pdfQueuedFiles.length - 5} more`}
+                      </div>
+                    )}
+                    {pdfStatus && <div className="small" style={{ marginTop: 8 }}>{pdfStatus}</div>}
+                    {pdfError && (
+                      <div className="small" style={{ marginTop: 8 }}>
+                        ⚠ {pdfError}
+                      </div>
+                    )}
+                  </div>
+
+                  <details style={{ marginTop: 10 }}>
+                    <summary className="small" style={{ cursor: "pointer" }}>
+                      Advanced: extract from existing local file paths
+                    </summary>
+                    <div className="field" style={{ marginTop: 8 }}>
+                      <textarea
+                        className="textareaCompact"
+                        rows={2}
+                        value={genPdfPaths}
+                        onChange={(e) => setGenPdfPaths(e.target.value)}
+                        placeholder="e.g.\nReliance1.pdf\nReliance2.pdf"
+                      />
+                      <div className="actions" style={{ marginTop: 8 }}>
+                        <button className="ghost" type="button" onClick={handleExtractFinancialsFromPdf} disabled={pdfLoading || !genPdfPaths.trim()}>
+                          {pdfLoading ? "Extracting…" : "Extract from paths"}
+                        </button>
+                      </div>
+                    </div>
+                  </details>
                 </div>
                 <div className="row">
                   <div className="field">
