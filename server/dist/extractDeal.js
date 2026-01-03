@@ -91,6 +91,14 @@ function detectCurrencyScale(rawText) {
         scale = "m";
     return { currency, scale };
 }
+function scaleMultiplier(scale) {
+    if (scale === "m")
+        return 1000000;
+    if (scale === "b")
+        return 1000000000;
+    // crore
+    return 10000000;
+}
 // NOTE: We are intentionally NOT converting currencies right now (nominal values only).
 function parseLatestMetricFromFinancials(rawText, key) {
     // If user pasted a FY table (often from PDF extraction), use the most recent FY block.
@@ -152,21 +160,22 @@ function sanitizeExtractedDeal(rawText, d) {
     const sector = hasExplicitSectorHint(rawText, sectorRaw) ? (0, normalize_1.normalizeSector)(sectorRaw) : "Other";
     const geoExplicit = inferGeographyIfExplicit(rawText);
     const geography = geoExplicit ? (0, normalize_1.normalizeGeography)(geoExplicit) : "";
+    const mult = scaleMultiplier(provided.scale);
     return {
         name,
         sector,
         geography,
         // NOMINAL values (no conversion)
-        revenue: safeRevenueProvided,
-        ebitda: safeEbitdaProvided,
-        dealSize: safeDealSizeProvided,
+        revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
+        ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
+        dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
         description: String(d?.description || rawText).slice(0, 1200),
         provided: {
             currency: provided.currency,
-            scale: provided.scale,
-            revenue: safeRevenueProvided || undefined,
-            ebitda: safeEbitdaProvided || undefined,
-            dealSize: safeDealSizeProvided || undefined,
+            scale: "unit",
+            revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
+            ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
+            dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
         },
     };
 }
@@ -213,21 +222,22 @@ function fallbackExtract(rawText) {
     const safeEbitdaProvided = numberMentioned(text, ebitdaProvided) ? ebitdaProvided : 0;
     const safeDealSizeProvided = numberMentioned(text, dealSizeProvided) ? dealSizeProvided : 0;
     const name = cleanDealName(text, "");
+    const mult = scaleMultiplier(provided.scale);
     return {
         name,
         sector: (0, normalize_1.normalizeSector)(sector),
         geography: geo ? (0, normalize_1.normalizeGeography)(geo) : "",
         // NOMINAL values (no conversion)
-        revenue: safeRevenueProvided,
-        ebitda: safeEbitdaProvided,
-        dealSize: safeDealSizeProvided,
+        revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
+        ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
+        dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
         description: text.slice(0, 1200),
         provided: {
             currency: provided.currency,
-            scale: provided.scale,
-            revenue: safeRevenueProvided || undefined,
-            ebitda: safeEbitdaProvided || undefined,
-            dealSize: safeDealSizeProvided || undefined,
+            scale: "unit",
+            revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
+            ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
+            dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
         },
     };
 }

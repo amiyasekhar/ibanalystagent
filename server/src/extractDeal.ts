@@ -89,6 +89,13 @@ function detectCurrencyScale(rawText: string): { currency: string; scale: Provid
   return { currency, scale };
 }
 
+function scaleMultiplier(scale: ProvidedScale): number {
+  if (scale === "m") return 1_000_000;
+  if (scale === "b") return 1_000_000_000;
+  // crore
+  return 10_000_000;
+}
+
 // NOTE: We are intentionally NOT converting currencies right now (nominal values only).
 
 function parseLatestMetricFromFinancials(rawText: string, key: "Revenue" | "EBITDA" | "EV" | "Deal Size" | "Enterprise Value"): number | null {
@@ -154,21 +161,22 @@ function sanitizeExtractedDeal(rawText: string, d: any): DealInput {
   const geoExplicit = inferGeographyIfExplicit(rawText);
   const geography = geoExplicit ? normalizeGeography(geoExplicit) : "";
 
+  const mult = scaleMultiplier(provided.scale);
   return {
     name,
     sector,
     geography,
     // NOMINAL values (no conversion)
-    revenue: safeRevenueProvided,
-    ebitda: safeEbitdaProvided,
-    dealSize: safeDealSizeProvided,
+    revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
+    ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
+    dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
     description: String(d?.description || rawText).slice(0, 1200),
     provided: {
       currency: provided.currency,
-      scale: provided.scale,
-      revenue: safeRevenueProvided || undefined,
-      ebitda: safeEbitdaProvided || undefined,
-      dealSize: safeDealSizeProvided || undefined,
+      scale: "unit",
+      revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
+      ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
+      dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
     },
   };
 }
@@ -224,22 +232,23 @@ function fallbackExtract(rawText: string): DealInput {
   const safeDealSizeProvided = numberMentioned(text, dealSizeProvided) ? dealSizeProvided : 0;
 
   const name = cleanDealName(text, "");
+  const mult = scaleMultiplier(provided.scale);
 
   return {
     name,
     sector: normalizeSector(sector),
     geography: geo ? normalizeGeography(geo) : "",
     // NOMINAL values (no conversion)
-    revenue: safeRevenueProvided,
-    ebitda: safeEbitdaProvided,
-    dealSize: safeDealSizeProvided,
+    revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
+    ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
+    dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
     description: text.slice(0, 1200),
     provided: {
       currency: provided.currency,
-      scale: provided.scale,
-      revenue: safeRevenueProvided || undefined,
-      ebitda: safeEbitdaProvided || undefined,
-      dealSize: safeDealSizeProvided || undefined,
+      scale: "unit",
+      revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
+      ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
+      dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
     },
   };
 }

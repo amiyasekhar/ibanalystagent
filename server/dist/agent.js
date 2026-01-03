@@ -64,6 +64,24 @@ function buildRationale(m) {
         parts.push(`Tags: ${b.strategyTags.slice(0, 3).join(", ")}`);
     return parts.join(" • ");
 }
+function computeSynergyScore(deal, buyer) {
+    // Deal-specific "synergy propensity" (option 2): computed at match-time.
+    // Heuristic: strategics + synergy-related tags skew higher; PE buy-and-build modestly increases.
+    const tags = (buyer.strategyTags || []).map((t) => String(t).toLowerCase());
+    const has = (t) => tags.includes(t);
+    let score = buyer.type === "Strategic" ? 0.55 : 0.25;
+    if (has("synergies"))
+        score += 0.15;
+    if (has("vertical-integration"))
+        score += 0.10;
+    if (has("carve-out"))
+        score += 0.08;
+    if (has("roll-up") || has("buy-and-build"))
+        score += buyer.type === "Private Equity" ? 0.08 : 0.03;
+    if (deal.sector && has("platform"))
+        score += 0.03;
+    return Math.max(0, Math.min(1, score));
+}
 function applyMandateFilters(scores) {
     // “Mandate fit” + explicit filtering:
     // - must be within deal size and EBITDA bands
@@ -96,8 +114,14 @@ async function scoreAndRankBuyers(deal) {
     });
     // Apply mandate filtering then rank
     const filtered = applyMandateFilters(matches);
-    filtered.sort((a, b) => b.score - a.score);
-    return { modelVersion: py.modelVersion, matches: filtered.slice(0, 5) };
+    // Incorporate deal-specific synergy score into ranking as a small multiplier
+    const withSynergy = filtered.map((m) => {
+        const synergy = computeSynergyScore(deal, m.buyer);
+        const adjusted = clamp01(m.score * (0.92 + 0.16 * synergy));
+        return { ...m, score: adjusted, _synergy: synergy };
+    });
+    withSynergy.sort((a, b) => b.score - a.score);
+    return { modelVersion: py.modelVersion, matches: withSynergy.slice(0, 5) };
 }
 async function runAnalystAgent(deal) {
     logger_1.log.info("[Agent] Start", {

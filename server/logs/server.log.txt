@@ -1,42 +1,122 @@
-[INFO] 2026-01-02T23:16:34.363Z Server running on http://localhost:4000
+[INFO] 2026-01-03T00:46:27.419Z Server running on http://localhost:4000
 Bot: True
-[INFO] 2026-01-02T23:20:46.428Z HTTP request
-{"requestId":"0665b077-aa8d-47cd-a912-8641a72a4c97","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-03T00:48:52.436Z HTTP request
+{"requestId":"18af940a-1fb9-413d-98aa-0b55f4b43d31","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-02T23:20:46.433Z HTTP response
-{"requestId":"0665b077-aa8d-47cd-a912-8641a72a4c97","method":"POST","path":"/api/workflows","status":200,"ms":5}
+[INFO] 2026-01-03T00:48:52.440Z HTTP response
+{"requestId":"18af940a-1fb9-413d-98aa-0b55f4b43d31","method":"POST","path":"/api/workflows","status":200,"ms":4}
 Bot: True
-[INFO] 2026-01-02T23:20:46.445Z HTTP request
-{"requestId":"1b8d5e22-1f79-4c55-a694-7a5d844a7556","method":"POST","path":"/api/workflows/943c17f6-2649-4f40-93b3-aa0ed1d2e5d0/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"1529","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"STRICTLY CONFIDENTIAL\\n\\nReliance\\nSell-Side Opportunity\\n\\nOur client, Reliance, is exploring strategic alternatives and has engaged us to conduct a confidential process to identify qualified buyers or investors.\\n\\nBusiness Overview:\\nReliance is an established enterprise operating across diversified business verticals. The company has demonstrated a strong operational foundation with significant scale and asset base.\\n\\nInvestment Highlights:\\n• Substantial revenue base exceeding ₹98,000 crores with strong EBITDA generation\\n• Robust balance sheet with net worth exceeding ₹100,000 crores and total assets approaching ₹195,000 crores\\n• Proven management team with track record of executing at scale\\n• Platform for continued growth and operational optimization\\n\\nFinancials (as provided, ₹ Crores):\\n\\nFY 2022-23:\\nRevenue: 891,311 | EBITDA: 153,920 | PAT: 66,702 | EPS: 98.59 | Net Worth: 828,881 | Total Assets: 1,607,431\\n\\nFY 2023-24:\\nRevenue: 1,000,122 | EBITDA: 178,677 | PAT: 79,020 | EPS: 102.9 | Net Worth: 925,788 | Total Assets: 1,755,986\\n\\nFY 2024-25:\\nRevenue: 980,136 | EBITDA: 183,422 | PAT: 69,648 | EPS: 51.47 | Net Worth: 1,009,626 | Total Assets: 1,950,121\\n\\nThis represents a unique opportunity to acquire a substantial platform with significant scale and strategic value.\\n\\nInterested parties must execute an NDA to receive additional information. Please contact the undersigned to express interest.\\n\\nThis teaser does not constitute an offer to sell securities.\"}"}
+[INFO] 2026-01-03T00:48:52.448Z HTTP request
+{"requestId":"20c24632-88b9-44da-9275-3f100c67fad5","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"1529","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"STRICTLY CONFIDENTIAL\\n\\nReliance\\nSell-Side Opportunity\\n\\nOur client, Reliance, is exploring strategic alternatives and has engaged us to conduct a confidential process to identify qualified buyers or investors.\\n\\nBusiness Overview:\\nReliance is an established enterprise operating across diversified business verticals. The company has demonstrated a strong operational foundation with significant scale and asset base.\\n\\nInvestment Highlights:\\n• Substantial revenue base exceeding ₹98,000 crores with strong EBITDA generation\\n• Robust balance sheet with net worth exceeding ₹100,000 crores and total assets approaching ₹195,000 crores\\n• Proven management team with track record of executing at scale\\n• Platform for continued growth and operational optimization\\n\\nFinancials (as provided, ₹ Crores):\\n\\nFY 2022-23:\\nRevenue: 891,311 | EBITDA: 153,920 | PAT: 66,702 | EPS: 98.59 | Net Worth: 828,881 | Total Assets: 1,607,431\\n\\nFY 2023-24:\\nRevenue: 1,000,122 | EBITDA: 178,677 | PAT: 79,020 | EPS: 102.9 | Net Worth: 925,788 | Total Assets: 1,755,986\\n\\nFY 2024-25:\\nRevenue: 980,136 | EBITDA: 183,422 | PAT: 69,648 | EPS: 51.47 | Net Worth: 1,009,626 | Total Assets: 1,950,121\\n\\nThis represents a unique opportunity to acquire a substantial platform with significant scale and strategic value.\\n\\nInterested parties must execute an NDA to receive additional information. Please contact the undersigned to express interest.\\n\\nThis teaser does not constitute an offer to sell securities.\"}"}
 Bot: True
-[INFO] 2026-01-02T23:20:46.447Z [ExtractDeal] Start
+[INFO] 2026-01-03T00:48:52.449Z [ExtractDeal] Start
 {"rawTextLen":1468,"detected":{"currency":"INR","scale":"crore"}}
 Bot: True
-[INFO] 2026-01-02T23:20:46.448Z [Claude] Call start
+[INFO] 2026-01-03T00:48:52.449Z [Claude] Call start
 {"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2149}
 Bot: True
-[INFO] 2026-01-02T23:20:51.342Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":4894}
+[INFO] 2026-01-03T00:48:57.231Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4782}
 Bot: True
-[INFO] 2026-01-02T23:20:51.343Z [ExtractDeal] Claude parsed & sanitized
-{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"crore","revenue":980136,"ebitda":183422,"dealSize":98000},"nominal":{"revenue":980136,"ebitda":183422,"dealSize":98000}}
+[INFO] 2026-01-03T00:48:57.233Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":9801360000000,"ebitda":1834220000000,"dealSize":980000000000},"nominal":{"revenue":9801360000000,"ebitda":1834220000000,"dealSize":980000000000}}
 Bot: True
-[INFO] 2026-01-02T23:20:51.343Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4827}
+[INFO] 2026-01-03T00:48:57.234Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4950}
 Bot: True
-[INFO] 2026-01-02T23:20:54.400Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":3057}
+[INFO] 2026-01-03T00:49:01.034Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3800}
 Bot: True
-[INFO] 2026-01-02T23:20:54.401Z [Validator] No unsupported claims detected
+[INFO] 2026-01-03T00:49:01.035Z [Validator] No unsupported claims detected
 Bot: True
-[INFO] 2026-01-02T23:20:54.401Z [ExtractDeal] Used=claude
+[INFO] 2026-01-03T00:49:01.036Z [ExtractDeal] Used=claude
 Bot: True
-[INFO] 2026-01-02T23:20:54.401Z HTTP response
-{"requestId":"1b8d5e22-1f79-4c55-a694-7a5d844a7556","method":"POST","path":"/api/workflows/943c17f6-2649-4f40-93b3-aa0ed1d2e5d0/extract","status":200,"ms":7956}
+[INFO] 2026-01-03T00:49:01.037Z HTTP response
+{"requestId":"20c24632-88b9-44da-9275-3f100c67fad5","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","status":200,"ms":8589}
 Bot: True
-[INFO] 2026-01-02T23:20:54.405Z HTTP request
-{"requestId":"e9ab125e-297f-415b-b48a-1058fd898d10","method":"GET","path":"/api/workflows/943c17f6-2649-4f40-93b3-aa0ed1d2e5d0","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-03T00:49:01.042Z HTTP request
+{"requestId":"978c88fb-17bd-4118-81a8-3857d3db1049","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-02T23:20:54.406Z HTTP response
-{"requestId":"e9ab125e-297f-415b-b48a-1058fd898d10","method":"GET","path":"/api/workflows/943c17f6-2649-4f40-93b3-aa0ed1d2e5d0","status":200,"ms":1}
+[INFO] 2026-01-03T00:49:01.043Z HTTP response
+{"requestId":"978c88fb-17bd-4118-81a8-3857d3db1049","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-03T00:49:29.832Z HTTP request
+{"requestId":"abf5a116-92a6-4191-9a61-7c1bdcded560","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"820","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Reliance\\nSector: Other\\nGeography: \\nRevenue ($m): 9801360000000\\nEBITDA ($m): 1834220000000\\nEV ($m): 980000000000\\nDescription: Reliance is an established enterprise operating across diversified business verticals with significant scale and asset base. The company has demonstrated strong operational foundation with revenue exceeding ₹98,000 crores and robust EBITDA generation. Key highlights include: robust balance sheet with net worth exceeding ₹100,000 crores and total assets approaching ₹195,000 crores, proven management team with track record of executing at scale, and platform for continued growth and operational optimization. FY 2024-25 financials show revenue of ₹980,136 crores, EBITDA of ₹183,422 crores, PAT of ₹69,648 crores, and total assets of ₹1,950,121 crores.\"}"}
+Bot: True
+[INFO] 2026-01-03T00:49:29.833Z [ExtractDeal] Start
+{"rawTextLen":786,"detected":{"currency":"INR","scale":"crore"}}
+Bot: True
+[INFO] 2026-01-03T00:49:29.834Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":1467}
+Bot: True
+[INFO] 2026-01-03T00:49:34.277Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4443}
+Bot: True
+[INFO] 2026-01-03T00:49:34.280Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000},"nominal":{"revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000}}
+Bot: True
+[INFO] 2026-01-03T00:49:34.280Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4400}
+Bot: True
+[INFO] 2026-01-03T00:49:37.976Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3696}
+Bot: True
+[INFO] 2026-01-03T00:49:37.977Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-03T00:49:37.977Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-03T00:49:37.978Z HTTP response
+{"requestId":"abf5a116-92a6-4191-9a61-7c1bdcded560","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","status":200,"ms":8146}
+Bot: True
+[INFO] 2026-01-03T00:49:37.983Z HTTP request
+{"requestId":"392664a7-664b-4ff7-9299-887da9963378","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-03T00:49:37.985Z [Agent] Start
+{"deal":{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000},"nominal":{"revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000}}}
+Bot: True
+[WARN] 2026-01-03T00:49:37.985Z [Agent] Nominal units in use (no conversion). Matching/ML may be unreliable until buyer DB is aligned.
+{"currency":"INR","scale":"unit"}
+Bot: True
+[INFO] 2026-01-03T00:49:37.986Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2026-01-03T00:49:38.020Z Python inference ok
+{"ms":34,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2026-01-03T00:49:38.021Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1427}
+Bot: True
+[INFO] 2026-01-03T00:49:56.405Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":18384}
+Bot: True
+[WARN] 2026-01-03T00:49:56.406Z [Agent] Heuristic failed: email introduced unsupported numbers
+Bot: True
+[INFO] 2026-01-03T00:49:56.406Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":8121}
+Bot: True
+[INFO] 2026-01-03T00:50:01.734Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":5328}
+Bot: True
+[WARN] 2026-01-03T00:50:01.735Z [Validator] Unsupported claims detected
+{"count":19,"claims":["18.7% margin profile","operating across multiple high-growth verticals in India","exceptional scale and market positioning","FY25","total assets approaching ₹19.5 lakh crores","net worth exceeding ₹10 lakh crores","blue-chip Indian franchise","entrenched competitive advantages","demonstrated track record of value creation at scale","India's structural growth story"]}
+Bot: True
+[WARN] 2026-01-03T00:50:01.735Z [Agent] Regenerating due to validation issues
+{"validatorIssues":["18.7% margin profile","operating across multiple high-growth verticals in India","exceptional scale and market positioning","FY25","total assets approaching ₹19.5 lakh crores","net worth exceeding ₹10 lakh crores","blue-chip Indian franchise","entrenched competitive advantages"],"heuristicOk":false}
+Bot: True
+[INFO] 2026-01-03T00:50:01.735Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":2487}
+Bot: True
+[INFO] 2026-01-03T00:50:12.996Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":11261}
+Bot: True
+[WARN] 2026-01-03T00:50:12.997Z [Agent] Regeneration still violated heuristic; using fallback drafts
+Bot: True
+[INFO] 2026-01-03T00:50:12.998Z HTTP response
+{"requestId":"392664a7-664b-4ff7-9299-887da9963378","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/match","status":200,"ms":35015}
+Bot: True
+[INFO] 2026-01-03T00:50:13.004Z HTTP request
+{"requestId":"1bfc63c7-7aa6-4c6c-9a82-5a61f9953183","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"4bd-cjGaQzTRppdNrhauL92bhWcgm1g\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-03T00:50:13.006Z HTTP response
+{"requestId":"1bfc63c7-7aa6-4c6c-9a82-5a61f9953183","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","status":200,"ms":2}
 Bot: True

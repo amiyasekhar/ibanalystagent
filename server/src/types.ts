@@ -19,8 +19,9 @@ export interface DealInput {
   description: string;
   // Original metrics as provided in source text (currency + scale)
   provided?: {
-    currency: string; // e.g. USD, INR, EUR
-    scale: "m" | "crore" | "b"; // millions, crores, billions
+    // informational only; we do not normalize currencies right now
+    currency: string; // e.g. USD, INR, EUR (best-effort)
+    scale: "m" | "crore" | "b" | "unit"; // unit indicates already expanded to full nominal units
     revenue?: number;
     ebitda?: number;
     dealSize?: number;
@@ -33,11 +34,12 @@ export interface BuyerProfile {
   type: "Private Equity" | "Strategic";
   sectorFocus: Sector[];
   geographies: string[];
+  // All monetary fields are fully written-out nominal values (no implicit "millions").
   minEbitda: number;
   maxEbitda: number;
   minDealSize: number;
   maxDealSize: number;
-  dryPowder: number;       // available capital in millions
+  dryPowder: number;       // nominal "cash/capacity" number
   pastDeals: number;       // count
   strategyTags: string[];  // e.g. "buy-and-build", "roll-up", "platform"
 }

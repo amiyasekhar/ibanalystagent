@@ -711,7 +711,7 @@ export default function App() {
                   )}
                 </div>
 
-                {(showConfirmBanner || sector === "Other" || !geo.trim()) && rawIntake.trim() && (
+                {showConfirmBanner && rawIntake.trim() && (
                   <div className="warnBox">
                     <div className="warnTitle">Confirm sector & geography</div>
                     <div className="small" style={{ marginTop: 4 }}>
@@ -743,14 +743,20 @@ export default function App() {
               </div>
               <div className="field">
                 <label>Sector</label>
-                <select value={sector} onChange={(e) => setSector(e.target.value)}>
-                  <option>Software</option>
-                  <option>Healthcare</option>
-                  <option>Manufacturing</option>
-                  <option>Business Services</option>
-                  <option>Consumer</option>
-                  <option>Other</option>
-                </select>
+                <input
+                  list="sectorOptions"
+                  value={sector}
+                  onChange={(e) => setSector(e.target.value)}
+                  placeholder="Type or pick (e.g. Software)"
+                />
+                <datalist id="sectorOptions">
+                  <option value="Software" />
+                  <option value="Healthcare" />
+                  <option value="Manufacturing" />
+                  <option value="Business Services" />
+                  <option value="Consumer" />
+                  <option value="Other" />
+                </datalist>
               </div>
             </div>
 
@@ -769,8 +775,8 @@ export default function App() {
                   value={revenue}
                   onChange={(e) => setRevenue(parseFloat(e.target.value))}
                 />
-                {providedInfo?.currency && providedInfo?.scale && (
-                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                {providedInfo?.currency && (
+                  <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
                 )}
               </div>
 
@@ -783,8 +789,8 @@ export default function App() {
                   value={ebitda}
                   onChange={(e) => setEbitda(parseFloat(e.target.value))}
                 />
-                {providedInfo?.currency && providedInfo?.scale && (
-                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                {providedInfo?.currency && (
+                  <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
                 )}
               </div>
 
@@ -797,8 +803,8 @@ export default function App() {
                   value={dealSize}
                   onChange={(e) => setDealSize(parseFloat(e.target.value))}
                 />
-                {providedInfo?.currency && providedInfo?.scale && (
-                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                {providedInfo?.currency && (
+                  <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
                 )}
               </div>
             </div>
@@ -806,11 +812,41 @@ export default function App() {
             <div className="kpis">
               <div className="kpi">
                 <div className="k">EBITDA margin</div>
-                <div className="v">{quickMetrics.margin.toFixed(1)}%</div>
+                <div className="kpiEditRow">
+                  <input
+                    className="kpiInput"
+                    type="number"
+                    step={0.1}
+                    min={-100}
+                    value={Number.isFinite(quickMetrics.margin) ? Number(quickMetrics.margin.toFixed(1)) : 0}
+                    onChange={(e) => {
+                      const m = Number(e.target.value);
+                      if (!Number.isFinite(m) || revenue <= 0) return;
+                      const newE = (revenue * m) / 100;
+                      setEbitda(Number.isFinite(newE) ? newE : 0);
+                    }}
+                  />
+                  <div className="kpiSuffix">%</div>
+                </div>
               </div>
               <div className="kpi">
                 <div className="k">EV / EBITDA</div>
-                <div className="v">{quickMetrics.multiple.toFixed(1)}×</div>
+                <div className="kpiEditRow">
+                  <input
+                    className="kpiInput"
+                    type="number"
+                    step={0.1}
+                    min={0}
+                    value={Number.isFinite(quickMetrics.multiple) ? Number(quickMetrics.multiple.toFixed(1)) : 0}
+                    onChange={(e) => {
+                      const x = Number(e.target.value);
+                      if (!Number.isFinite(x) || ebitda <= 0) return;
+                      const newEv = ebitda * x;
+                      setDealSize(Number.isFinite(newEv) ? newEv : 0);
+                    }}
+                  />
+                  <div className="kpiSuffix">×</div>
+                </div>
               </div>
             </div>
 

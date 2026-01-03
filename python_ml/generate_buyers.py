@@ -73,14 +73,14 @@ def generate_buyer(i: int) -> Dict[str, Any]:
         max_deal = max(30.0, min(800.0, dry_powder * (0.35 + random.random() * 0.55)))
         min_deal = max(5.0, max_deal * (0.12 + random.random() * 0.18))
         past_deals = int(clamp01(random.random() ** 0.55) * 28) + 2
-        synergy_propensity = 0.25 + random.random() * 0.25
+        # synergyPropensity is no longer stored in the DB; computed deal-specifically at match-time.
     else:
         # strategics: balance sheet, set dryPowder=0 but higher synergy propensity
         dry_powder = 0.0
         max_deal = random.choice([150.0, 250.0, 400.0, 600.0, 900.0])
         min_deal = max(25.0, max_deal * (0.08 + random.random() * 0.10))
         past_deals = int(clamp01(random.random() ** 0.6) * 22) + 3
-        synergy_propensity = 0.65 + random.random() * 0.25
+        # synergyPropensity is no longer stored in the DB; computed deal-specifically at match-time.
 
     # EBITDA bands correlate with deal size
     min_ebitda = max(1.0, min_deal / (12.0 + random.random() * 8.0))
@@ -106,23 +106,27 @@ def generate_buyer(i: int) -> Dict[str, Any]:
 
     ownership = "Majority" if random.random() < 0.7 else "Minority"
 
+    # Convert all monetary values from "$m" to fully written-out nominal values (no implicit millions).
+    # We intentionally do not encode currency; values are raw nominal units.
+    def to_nominal(x_m: float) -> int:
+        return int(round(float(x_m) * 1_000_000.0))
+
     return {
         "id": f"syn_b{i}",
         "name": buyer_name(i, buyer_type),
         "type": buyer_type,
         "sectorFocus": sector_focus,
         "geographies": geos,
-        "minEbitda": round(min_ebitda, 3),
-        "maxEbitda": round(max_ebitda, 3),
-        "minDealSize": round(min_deal, 3),
-        "maxDealSize": round(max_deal, 3),
-        "dryPowder": round(dry_powder, 3),
+        "minEbitda": to_nominal(min_ebitda),
+        "maxEbitda": to_nominal(max_ebitda),
+        "minDealSize": to_nominal(min_deal),
+        "maxDealSize": to_nominal(max_deal),
+        "dryPowder": to_nominal(dry_powder),
         "pastDeals": int(past_deals),
         "strategyTags": tags,
         # extras for simulator / future features
         "_meta": {
             "version": str(date.today()),
-            "synergyPropensity": round(float(synergy_propensity), 4),
             "ownershipPreference": ownership,
         },
     }
