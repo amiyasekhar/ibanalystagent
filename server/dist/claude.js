@@ -15,6 +15,15 @@ const client = new sdk_1.default({
     apiKey: apiKey || "missing",
 });
 const DEFAULT_MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-5-20250929";
+const LOG_LLM_PROMPTS = String(process.env.LOG_LLM_PROMPTS || "").trim() === "1";
+const LOG_LLM_RAW = String(process.env.LOG_LLM_RAW || "").trim() === "1";
+function truncate(s, max = 1800) {
+    if (!s)
+        return s;
+    if (s.length <= max)
+        return s;
+    return s.slice(0, max) + `…(+${s.length - max} chars)`;
+}
 function extractJsonObject(text) {
     // Try to find the first JSON object in the response
     const start = text.indexOf("{");
@@ -35,12 +44,25 @@ async function claudeJson(opts) {
     }
     const startedAt = Date.now();
     try {
+        logger_1.log.info("[Claude] Call start", {
+            model: DEFAULT_MODEL,
+            maxTokens: opts.maxTokens ?? 1200,
+            temperature: opts.temperature ?? 0.2,
+            systemLen: opts.system?.length ?? 0,
+            promptLen: opts.prompt?.length ?? 0,
+            ...(LOG_LLM_PROMPTS
+                ? {
+                    systemPreview: truncate(opts.system, 1200),
+                    promptPreview: truncate(opts.prompt, 1600),
+                }
+                : {}),
+        });
         const msg = await client.messages.create({
             model: DEFAULT_MODEL,
             max_tokens: opts.maxTokens ?? 1200,
             system: opts.system,
             messages: [{ role: "user", content: opts.prompt }],
-            temperature: 0.2,
+            temperature: opts.temperature ?? 0.2,
         });
         // SDK returns array blocks; common is text blocks
         const rawText = msg.content
@@ -52,12 +74,14 @@ async function claudeJson(opts) {
             logger_1.log.warn("[Claude] Response was not valid JSON", {
                 model: DEFAULT_MODEL,
                 ms: Date.now() - startedAt,
+                ...(LOG_LLM_RAW ? { rawPreview: truncate(rawText, 1800) } : {}),
             });
             return { ok: false, error: "Claude did not return valid JSON", raw: rawText };
         }
         logger_1.log.info("[Claude] Call succeeded", {
             model: DEFAULT_MODEL,
             ms: Date.now() - startedAt,
+            ...(LOG_LLM_RAW ? { rawPreview: truncate(rawText, 1800) } : {}),
         });
         return { ok: true, data: parsed };
     }

@@ -18,6 +18,16 @@ function ensureLogDir(filePath: string) {
   }
 }
 
+function clearLogFile() {
+  const filePath = getLogFilePath();
+  ensureLogDir(filePath);
+  try {
+    fs.writeFileSync(filePath, "", "utf-8");
+  } catch {
+    // ignore
+  }
+}
+
 function safeMeta(meta?: Record<string, unknown>) {
   if (!meta) return undefined;
   const out: Record<string, unknown> = {};
@@ -66,6 +76,7 @@ export const log = {
   error: (message: string, meta?: Record<string, unknown>) => write("ERROR", message, meta),
   // helpful for debugging
   filePath: () => getLogFilePath(),
+  clear: () => clearLogFile(),
 };
 
 

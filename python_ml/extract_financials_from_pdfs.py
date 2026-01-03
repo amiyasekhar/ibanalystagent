@@ -109,6 +109,7 @@ def main() -> None:
                 return
             sys.stdout.write(json.dumps({"ok": False, "error": f"Gemini extraction failed: {msg}"}))
             return
+        y["_sourcePdf"] = os.path.basename(path)
         y["year_label"] = t.norm_year_label(y.get("year_label"))
         t.normalize_units_in_place(y)
 

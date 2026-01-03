@@ -21,6 +21,16 @@ function ensureLogDir(filePath) {
         // ignore
     }
 }
+function clearLogFile() {
+    const filePath = getLogFilePath();
+    ensureLogDir(filePath);
+    try {
+        node_fs_1.default.writeFileSync(filePath, "", "utf-8");
+    }
+    catch {
+        // ignore
+    }
+}
 function safeMeta(meta) {
     if (!meta)
         return undefined;
@@ -71,4 +81,5 @@ exports.log = {
     error: (message, meta) => write("ERROR", message, meta),
     // helpful for debugging
     filePath: () => getLogFilePath(),
+    clear: () => clearLogFile(),
 };

@@ -53,6 +53,7 @@ export default function App() {
   const [pdfDragging, setPdfDragging] = useState(false);
   const [pdfQueuedFiles, setPdfQueuedFiles] = useState<File[]>([]);
   const [pdfUploadedNames, setPdfUploadedNames] = useState<string[]>([]);
+  const [pdfExtractYears, setPdfExtractYears] = useState<any[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [genLoading, setGenLoading] = useState(false);
   const [genError, setGenError] = useState<string | null>(null);
@@ -73,6 +74,8 @@ export default function App() {
   const [rawIntake, setRawIntake] = useState<string>("");
   const [extracting, setExtracting] = useState(false);
   const [extractError, setExtractError] = useState<string | null>(null);
+  const [showConfirmBanner, setShowConfirmBanner] = useState(false);
+  const [providedInfo, setProvidedInfo] = useState<{ currency: string; scale: string; revenue?: number; ebitda?: number; dealSize?: number } | null>(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -197,6 +200,7 @@ export default function App() {
       if (!res.ok) throw new Error(data?.error || `Upload API returned ${res.status}`);
       if (!data?.ok || typeof data?.tableText !== "string") throw new Error(data?.error || "Bad upload response");
       setGenFinancialText(String(data.tableText));
+      setPdfExtractYears(Array.isArray(data?.years) ? data.years : []);
       const uploaded = Array.isArray(data?.uploaded) ? data.uploaded : [];
       const years = Array.isArray(data?.years) ? data.years : [];
       const yearLabels = years
@@ -293,6 +297,9 @@ export default function App() {
       setEbitda(Number(data.deal.ebitda || 0));
       setDealSize(Number(data.deal.dealSize || 0));
       setDescription(String(data.deal.description || ""));
+      setProvidedInfo(data?.deal?.provided ? (data.deal.provided as any) : null);
+      const needsConfirm = String(data.deal.sector || "Other") === "Other" || !String(data.deal.geography || "").trim();
+      setShowConfirmBanner(needsConfirm);
       await refreshWorkflow(id);
     } catch (err: any) {
       setExtractError(err?.message || "Extraction failed");
@@ -513,6 +520,7 @@ export default function App() {
                             setPdfQueuedFiles([]);
                             setPdfStatus(null);
                             setPdfError(null);
+                            setPdfExtractYears([]);
                           }}
                         >
                           Clear PDFs
@@ -529,6 +537,7 @@ export default function App() {
                             setGenFinancialText("");
                             setPdfStatus(null);
                             setPdfError(null);
+                            setPdfExtractYears([]);
                           }}
                         >
                           Clear financials
@@ -548,6 +557,55 @@ export default function App() {
                       <div className="small" style={{ marginTop: 8 }}>
                         ⚠ {pdfError}
                       </div>
+                    )}
+
+                    {pdfExtractYears.length > 0 && (
+                      <details style={{ marginTop: 10 }} onClick={(e) => e.stopPropagation()}>
+                        <summary className="small" style={{ cursor: "pointer" }}>
+                          Evidence (page references)
+                        </summary>
+                        <div className="evidenceBox">
+                          {pdfExtractYears.slice(0, 12).map((y: any, idx: number) => {
+                            const pdf = String(y?._sourcePdf || "");
+                            const yearLabel = String(y?.year_label || "");
+                            const metrics = [
+                              ["Revenue", y?.revenue],
+                              ["EBITDA", y?.ebitda],
+                              ["PAT", y?.pat],
+                              ["EPS", y?.eps],
+                              ["Net worth", y?.networth],
+                              ["Total assets", y?.total_assets],
+                            ] as const;
+                            return (
+                              <div key={`${pdf}-${yearLabel}-${idx}`} className="evidenceItem">
+                                <div className="evidenceTitle">
+                                  {pdf ? `${pdf} • ` : ""}{yearLabel ? `FY${yearLabel}` : `Year ${idx + 1}`}
+                                </div>
+                                <div className="evidenceGrid">
+                                  {metrics.map(([label, obj]) => {
+                                    const src = obj?.source || {};
+                                    const page = Number(src?.page || 0);
+                                    const section = String(src?.section || "");
+                                    const snippet = String(src?.snippet || "");
+                                    if (!page || !snippet) return null;
+                                    return (
+                                      <div key={label} className="evidenceRow">
+                                        <div className="evidenceMetric">{label}</div>
+                                        <div className="evidenceRef">
+                                          <span className="evidencePill">page {page}</span>
+                                          {section ? <span className="evidencePill">{section}</span> : null}
+                                          <div className="evidenceSnippet">“{snippet}”</div>
+                                        </div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            );
+                          })}
+                          {pdfExtractYears.length > 12 && <div className="small">Showing first 12 extracted years.</div>}
+                        </div>
+                      </details>
                     )}
                   </div>
 
@@ -653,6 +711,27 @@ export default function App() {
                   )}
                 </div>
 
+                {(showConfirmBanner || sector === "Other" || !geo.trim()) && rawIntake.trim() && (
+                  <div className="warnBox">
+                    <div className="warnTitle">Confirm sector & geography</div>
+                    <div className="small" style={{ marginTop: 4 }}>
+                      We default to <b>Other</b> / blank unless the text explicitly supports a sector/geo (prevents silent hallucinations).
+                      If you know it, override below before matching.
+                    </div>
+                    <div className="actions" style={{ marginTop: 10 }}>
+                      <button
+                        className="ghost"
+                        type="button"
+                        onClick={() => {
+                          setShowConfirmBanner(false);
+                        }}
+                      >
+                        Dismiss
+                      </button>
+                    </div>
+                  </div>
+                )}
+
             <div className="row">
               <div className="field">
                 <label>Deal name</label>
@@ -666,10 +745,10 @@ export default function App() {
                 <label>Sector</label>
                 <select value={sector} onChange={(e) => setSector(e.target.value)}>
                   <option>Software</option>
-                  <option>Industrial</option>
                   <option>Healthcare</option>
+                  <option>Manufacturing</option>
+                  <option>Business Services</option>
                   <option>Consumer</option>
-                  <option>Fintech</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -682,7 +761,7 @@ export default function App() {
               </div>
 
               <div className="field">
-                <label>Revenue ($m)</label>
+                <label>Revenue</label>
                 <input
                   type="number"
                   min={0}
@@ -690,10 +769,13 @@ export default function App() {
                   value={revenue}
                   onChange={(e) => setRevenue(parseFloat(e.target.value))}
                 />
+                {providedInfo?.currency && providedInfo?.scale && (
+                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                )}
               </div>
 
               <div className="field">
-                <label>EBITDA ($m)</label>
+                <label>EBITDA</label>
                 <input
                   type="number"
                   min={0}
@@ -701,10 +783,13 @@ export default function App() {
                   value={ebitda}
                   onChange={(e) => setEbitda(parseFloat(e.target.value))}
                 />
+                {providedInfo?.currency && providedInfo?.scale && (
+                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                )}
               </div>
 
               <div className="field">
-                <label>EV / Deal Size ($m)</label>
+                <label>EV / Deal Size</label>
                 <input
                   type="number"
                   min={0}
@@ -712,6 +797,9 @@ export default function App() {
                   value={dealSize}
                   onChange={(e) => setDealSize(parseFloat(e.target.value))}
                 />
+                {providedInfo?.currency && providedInfo?.scale && (
+                  <div className="small">Units: {providedInfo.currency} {providedInfo.scale}</div>
+                )}
               </div>
             </div>
 

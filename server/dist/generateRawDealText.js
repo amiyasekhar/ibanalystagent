@@ -8,6 +8,24 @@ const ReqSchema = zod_1.z.object({
     companyDescription: zod_1.z.string().optional().default(""),
     financialText: zod_1.z.string().optional().default(""),
 });
+function hasInventedCodename(companyName, rawText) {
+    const name = (companyName || "").trim().toLowerCase();
+    const out = (rawText || "").trim();
+    const low = out.toLowerCase();
+    if (!name)
+        return false;
+    // Must mention the provided company name somewhere.
+    if (!low.includes(name))
+        return true;
+    // If user didn't provide a "Project X" name, forbid introducing "Project ___".
+    const userHasProject = name.includes("project ");
+    if (!userHasProject && /\bproject\s+[A-Z][a-zA-Z]+\b/.test(out))
+        return true;
+    // Also forbid "Project [Word]" in all-caps headers.
+    if (!userHasProject && /\bPROJECT\s+[A-Z][A-Z]+\b/.test(out))
+        return true;
+    return false;
+}
 function fallbackRawText(input) {
     const name = input.companyName.trim();
     const desc = input.companyDescription.trim();
@@ -47,13 +65,32 @@ Requirements:
 - Output should look like something a banker would paste into a teaser (short sections, readable).
 - If financialText is present, include a "Financials (as provided)" section and do NOT invent numbers beyond what is provided.
 - Do not fabricate customers, growth rates, or metrics not present.
+- Use the company name EXACTLY as provided. Do NOT invent a codename (e.g., "Project Titan") unless the company name itself contains it.
+- Do NOT introduce any other company/project names besides the provided company name.
 - Keep it concise (~150–300 words).
 
 Return STRICT JSON:
 { "rawText": "string" }`;
-    const llm = await (0, claude_1.claudeJson)({ system, prompt, maxTokens: 950 });
+    const llm = await (0, claude_1.claudeJson)({ system, prompt, maxTokens: 950, temperature: 0.2 });
     if (llm.ok && typeof llm.data?.rawText === "string") {
         const rawText = String(llm.data.rawText).trim();
+        // Post-check: if the model invented a codename or failed to include the company name, retry once with stricter rules.
+        if (hasInventedCodename(companyName, rawText)) {
+            const strictPrompt = prompt +
+                `\n\nABSOLUTE CONSTRAINTS:\n` +
+                `- The ONLY allowed name is exactly: "${companyName}".\n` +
+                `- Do NOT use "Project ___" or any substitute name.\n` +
+                `- Do NOT add claims or numbers not present in financialText.\n`;
+            const llm2 = await (0, claude_1.claudeJson)({ system, prompt: strictPrompt, maxTokens: 950, temperature: 0.1 });
+            if (llm2.ok && typeof llm2.data?.rawText === "string") {
+                const rawText2 = String(llm2.data.rawText).trim();
+                if (!hasInventedCodename(companyName, rawText2)) {
+                    return { ok: true, used: "claude", rawText: rawText2.slice(0, 6000) };
+                }
+            }
+            // If still violating, fall back to template to guarantee correctness.
+            return { ok: true, used: "fallback", rawText: fallbackRawText(parsed.data) };
+        }
         return { ok: true, used: "claude", rawText: rawText.slice(0, 6000) };
     }
     return { ok: true, used: "fallback", rawText: fallbackRawText(parsed.data) };

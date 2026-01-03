@@ -12,10 +12,19 @@ export interface DealInput {
   name: string;
   sector: Sector;
   geography: string;
-  ebitda: number;        // in millions
-  revenue: number;       // in millions
-  dealSize: number;      // enterprise value in millions
+  // Deal metrics as-provided (nominal numbers). Interpretation depends on provided.currency/scale.
+  ebitda: number;
+  revenue: number;
+  dealSize: number;
   description: string;
+  // Original metrics as provided in source text (currency + scale)
+  provided?: {
+    currency: string; // e.g. USD, INR, EUR
+    scale: "m" | "crore" | "b"; // millions, crores, billions
+    revenue?: number;
+    ebitda?: number;
+    dealSize?: number;
+  };
 }
 
 export interface BuyerProfile {

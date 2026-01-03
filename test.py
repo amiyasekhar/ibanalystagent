@@ -42,6 +42,28 @@ CRORE_TO_INR = 10_000_000.0
 # -------------------------
 # Prompts
 # -------------------------
+LOCATOR_PROMPT = r"""
+You are a PDF navigator for a public-company annual report.
+
+Task: identify the physical PDF page numbers (1-based) where the following CONSOLIDATED statements appear for the CURRENT report year:
+1) Consolidated Statement of Profit and Loss (or Income Statement)
+2) Consolidated Balance Sheet
+3) Earnings per Equity Share (EPS) table/row (basic/diluted)
+
+Return STRICT JSON ONLY:
+{
+  "income_statement_pages": [number, ...],
+  "balance_sheet_pages": [number, ...],
+  "eps_pages": [number, ...]
+}
+
+Rules:
+- Prefer the main consolidated statements (not notes unless the statement itself is in notes).
+- Use physical PDF page numbers (1-based).
+- If unsure, return an empty list for that item.
+- JSON only. No markdown.
+"""
+
 EXTRACTION_PROMPT = r"""
 You are a precise financial table extractor working on a PDF.
 
@@ -225,17 +247,54 @@ def page_passes_constraints(metric: str, page_text: str, snippet: str = "") -> b
 # -------------------------
 # Gemini calls
 # -------------------------
-def _gemini_pdf_call(pdf_path: str, prompt: str) -> Dict[str, Any]:
+def _wrap_prompt_with_page_map(prompt: str, page_map: Optional[List[int]]) -> str:
+    if not page_map:
+        return prompt
+    # page_map[i] = original physical page number for subset page (i+1)
+    mapping = ", ".join([f"{i+1}->{p}" for i, p in enumerate(page_map[:120])])
+    return (
+        "NOTE: You are provided a SUBSET PDF composed of selected pages from the original annual report.\n"
+        "When you return source.page, you MUST use the ORIGINAL physical PDF page numbers.\n"
+        "Subset-to-original page mapping (subset_index->original_page):\n"
+        f"{mapping}\n\n"
+        + prompt
+    )
+
+def _subset_pdf(pdf_path: str, pages_1based: List[int]) -> Tuple[str, List[int]]:
+    import tempfile
+    pages = sorted(set([p for p in pages_1based if isinstance(p, int) and p > 0]))
+    if not pages:
+        return pdf_path, []
+    doc = fitz.open(pdf_path)
+    out = fitz.open()
+    page_map: List[int] = []
+    for p in pages:
+        idx = p - 1
+        if 0 <= idx < len(doc):
+            out.insert_pdf(doc, from_page=idx, to_page=idx)
+            page_map.append(p)
+    tmp = tempfile.NamedTemporaryFile(prefix="subset_", suffix=".pdf", delete=False)
+    tmp.close()
+    out.save(tmp.name)
+    out.close()
+    doc.close()
+    return tmp.name, page_map
+
+def gemini_locate_pages(pdf_path: str) -> Dict[str, Any]:
+    return _gemini_pdf_call(pdf_path, LOCATOR_PROMPT)
+
+def _gemini_pdf_call(pdf_path: str, prompt: str, page_map: Optional[List[int]] = None) -> Dict[str, Any]:
     with open(pdf_path, "rb") as f:
         pdf_bytes = f.read()
     pdf_part = genai.types.Part.from_bytes(data=pdf_bytes, mime_type="application/pdf")
     last_err: Optional[Exception] = None
+    wrapped_prompt = _wrap_prompt_with_page_map(prompt, page_map)
     # Transient TLS/network issues can happen with large PDF uploads. Retry a few times.
     for attempt in range(1, 4):
         try:
             resp = client.models.generate_content(
                 model=MODEL_NAME,
-                contents=[pdf_part, prompt],
+                contents=[pdf_part, wrapped_prompt],
                 config=genai.types.GenerateContentConfig(
                     temperature=0.2,
                     top_p=0.9,
@@ -254,7 +313,32 @@ def _gemini_pdf_call(pdf_path: str, prompt: str) -> Dict[str, Any]:
     raise last_err if last_err else RuntimeError("Gemini PDF call failed")
 
 def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
-    return _gemini_pdf_call(pdf_path, EXTRACTION_PROMPT)
+    # Two-step: locate relevant pages first, then extract from subset PDF for speed/accuracy.
+    try:
+        loc = gemini_locate_pages(pdf_path) or {}
+        pages = []
+        pages += list(loc.get("income_statement_pages") or [])
+        pages += list(loc.get("balance_sheet_pages") or [])
+        pages += list(loc.get("eps_pages") or [])
+        # Add neighbors to handle split statements across pages
+        expanded = []
+        for p in pages:
+            try:
+                p = int(p)
+            except Exception:
+                continue
+            expanded.extend([p - 1, p, p + 1])
+        subset_path, page_map = _subset_pdf(pdf_path, expanded)
+        try:
+            return _gemini_pdf_call(subset_path, EXTRACTION_PROMPT, page_map=page_map)
+        finally:
+            if subset_path != pdf_path:
+                try:
+                    os.remove(subset_path)
+                except Exception:
+                    pass
+    except Exception:
+        return _gemini_pdf_call(pdf_path, EXTRACTION_PROMPT)
 
 def gemini_extract_pat_attrib_owners(pdf_path: str) -> Dict[str, Any]:
     return _gemini_pdf_call(pdf_path, PAT_ATTRIB_PROMPT)

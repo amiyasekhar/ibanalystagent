@@ -52,6 +52,16 @@ const generateRawDealText_1 = require("./generateRawDealText");
 const pdfFinancials_1 = require("./pdfFinancials");
 const multer_1 = __importDefault(require("multer"));
 const uploadUtils_1 = require("./uploadUtils");
+// Clear server log on each (re)start so it doesn't contain old runs.
+// Set LOG_APPEND=1 to keep appending across restarts.
+if (String(process.env.LOG_APPEND || "").trim() !== "1") {
+    try {
+        logger_1.log.clear();
+    }
+    catch {
+        // ignore
+    }
+}
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({ origin: true }));
 app.use(express_1.default.json({ limit: "1mb" }));

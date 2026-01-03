@@ -2,6 +2,9 @@ import { claudeJson } from "./claude";
 import { BUYERS } from "./buyers";
 import { inferBuyerScoresPython } from "./pythonMl";
 import { BuyerMatchScore, DealInput } from "./types";
+import { z } from "zod";
+import { validateUnsupportedClaims } from "./llmValidation";
+import { log } from "./logger";
 
 export type BuyerMatch = { name: string; score: number; rationale: string };
 export type OutreachDraft = { buyerName: string; emailSubject: string; emailBody: string };
@@ -15,6 +18,44 @@ export type AgentResult = {
   llmUsed?: boolean;
   llmError?: string;
 };
+
+const AgentLlmSchema = z
+  .object({
+    dealSummary: z.string(),
+    outreachDrafts: z
+      .array(
+        z.object({
+          buyerName: z.string(),
+          emailSubject: z.string(),
+          emailBody: z.string(),
+        })
+      )
+      .default([]),
+  })
+  .strict();
+
+function extractNumbers(text: string): number[] {
+  const matches = text.match(/(\d+(\.\d+)?)/g) || [];
+  return matches.map((m) => Number(m)).filter((n) => Number.isFinite(n));
+}
+
+function approxEqual(a: number, b: number, tol = 0.75): boolean {
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return false;
+  return Math.abs(a - b) <= tol;
+}
+
+function emailHasOnlyDealNumbers(emailBody: string, deal: DealInput): boolean {
+  const nums = extractNumbers(emailBody);
+  if (!nums.length) return true;
+  const allowed = [deal.revenue, deal.ebitda, deal.dealSize];
+  for (const n of nums) {
+    // allow trivial list numbering
+    if (n >= 1 && n <= 10 && /\n\s*\d+[\)\.]/.test(emailBody)) continue;
+    const ok = allowed.some((a) => approxEqual(n, a) || approxEqual(n, Math.round(a)));
+    if (!ok) return false;
+  }
+  return true;
+}
 
 function clamp01(x: number) {
   if (!Number.isFinite(x)) return 0;
@@ -77,6 +118,21 @@ export async function scoreAndRankBuyers(deal: DealInput): Promise<{ modelVersio
 }
 
 export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
+  log.info("[Agent] Start", {
+    deal: {
+      name: deal.name,
+      sector: deal.sector,
+      geography: deal.geography,
+      provided: deal.provided,
+      nominal: { revenue: deal.revenue, ebitda: deal.ebitda, dealSize: deal.dealSize },
+    },
+  });
+  if (deal.provided?.currency && (deal.provided.currency !== "USD" || deal.provided.scale !== "m")) {
+    log.warn("[Agent] Nominal units in use (no conversion). Matching/ML may be unreliable until buyer DB is aligned.", {
+      currency: deal.provided.currency,
+      scale: deal.provided.scale,
+    });
+  }
   // 1) ML ranking + mandate filtering
   const { modelVersion, matches } = await scoreAndRankBuyers(deal);
   const top = matches.slice(0, 5);
@@ -96,9 +152,9 @@ Return STRICT JSON only. No markdown. No extra commentary.`;
 - Name: ${deal.name}
 - Sector: ${deal.sector}
 - Geography: ${deal.geography}
-- Revenue ($m): ${deal.revenue}
-- EBITDA ($m): ${deal.ebitda}
-- EV / Deal Size ($m): ${deal.dealSize}
+- Revenue: ${deal.revenue}
+- EBITDA: ${deal.ebitda}
+- EV / Deal Size: ${deal.dealSize}
 - Description: ${deal.description}
 
 Ranked buyers (already scored by our ML matching model):
@@ -129,27 +185,109 @@ Rules:
 
   const fallbackSummary = `Teaser: ${deal.name} is a ${deal.sector} business in ${deal.geography} with ~$${deal.revenue}m revenue and ~$${deal.ebitda}m EBITDA. The transaction contemplates an EV of ~$${deal.dealSize}m. ${deal.description}`;
 
-  const outreachDrafts: OutreachDraft[] =
-    llm.ok && Array.isArray(llm.data.outreachDrafts) && llm.data.outreachDrafts.length
-      ? llm.data.outreachDrafts.slice(0, 3)
-      : buyers.slice(0, 3).map((b) => ({
-          buyerName: b.name,
-          emailSubject: `Opportunity: ${deal.name} (${deal.sector}, ${deal.geography})`,
-          emailBody:
-            `Hi ${b.name} team,\n\n` +
-            `Sharing a new opportunity: ${deal.name} — ${deal.sector} in ${deal.geography} with ~$${deal.revenue}m revenue and ~$${deal.ebitda}m EBITDA. We’re exploring interest around an EV of ~$${deal.dealSize}m.\n\n` +
-            `If this aligns with your mandate, happy to share a short teaser + set up a quick call.\n\n` +
-            `Best,\nAmiya`,
-        }));
+  const fallbackDrafts: OutreachDraft[] = buyers.slice(0, 3).map((b) => ({
+    buyerName: b.name,
+    emailSubject: `Opportunity: ${deal.name} (${deal.sector}, ${deal.geography})`,
+    emailBody:
+      `Hi ${b.name} team,\n\n` +
+      `Sharing a new opportunity: ${deal.name} — ${deal.sector} in ${deal.geography} with ~$${deal.revenue}m revenue and ~$${deal.ebitda}m EBITDA. We’re exploring interest around an EV of ~$${deal.dealSize}m.\n\n` +
+      `If this aligns with your mandate, happy to share a short teaser + set up a quick call.\n\n` +
+      `Best,\nAmiya`,
+  }));
 
-  const dealSummary = llm.ok && typeof llm.data.dealSummary === "string" ? llm.data.dealSummary : fallbackSummary;
+  let dealSummary = fallbackSummary;
+  let outreachDrafts: OutreachDraft[] = fallbackDrafts;
+  let llmUsed = false;
+  let llmError: string | undefined = llm.ok ? undefined : llm.error;
+
+  if (llm.ok) {
+    const parsed = AgentLlmSchema.safeParse(llm.data);
+    if (parsed.success) {
+      dealSummary = String(parsed.data.dealSummary || "").slice(0, 2200) || fallbackSummary;
+      outreachDrafts = parsed.data.outreachDrafts.slice(0, 3).map((d) => ({
+        buyerName: String(d.buyerName || "").slice(0, 120),
+        emailSubject: String(d.emailSubject || "").slice(0, 200),
+        emailBody: String(d.emailBody || "").slice(0, 4000),
+      }));
+      llmUsed = true;
+    } else {
+      llmError = "Claude response schema invalid";
+      log.warn("[Agent] Claude schema invalid; using fallback drafts");
+    }
+  }
+
+  // Extra guardrail: forbid introducing numbers not in Deal
+  const heuristicOk = outreachDrafts.every((d) => emailHasOnlyDealNumbers(d.emailBody, deal));
+  if (!heuristicOk) log.warn("[Agent] Heuristic failed: email introduced unsupported numbers");
+
+  // Second pass LLM validation: detect unsupported claims and regenerate once if needed
+  if (llmUsed && outreachDrafts.length) {
+    const candidateText =
+      `Deal summary:\n${dealSummary}\n\n` +
+      outreachDrafts.map((d) => `To: ${d.buyerName}\nSubj: ${d.emailSubject}\nBody:\n${d.emailBody}`).join("\n\n---\n\n");
+
+    const val = await validateUnsupportedClaims({
+      deal,
+      candidateJson: { dealSummary, outreachDrafts },
+      candidateText,
+    });
+
+    const hasIssues = (val.ok && val.unsupportedClaims.length > 0) || !heuristicOk;
+
+    if (hasIssues) {
+      log.warn("[Agent] Regenerating due to validation issues", {
+        validatorIssues: val.ok ? val.unsupportedClaims.slice(0, 8) : undefined,
+        heuristicOk,
+      });
+      const strictPrompt =
+        prompt +
+        `\n\nIMPORTANT STRICTNESS:\n` +
+        `- You MUST NOT introduce ANY numbers, geographies, customers, margins, growth rates, or claims not explicitly present in the Deal fields above.\n` +
+        `- Only mention: name, sector, geography, revenue, EBITDA, EV, and the provided description.\n` +
+        `- If unsure, omit.\n` +
+        (val.ok && val.unsupportedClaims.length ? `\nRemove/avoid these unsupported claims:\n- ${val.unsupportedClaims.join("\n- ")}\n` : "");
+
+      const llm2 = await claudeJson<{ dealSummary: string; outreachDrafts: OutreachDraft[] }>({
+        system,
+        prompt: strictPrompt,
+        maxTokens: 1100,
+      });
+
+      if (llm2.ok) {
+        const parsed2 = AgentLlmSchema.safeParse(llm2.data);
+        if (parsed2.success) {
+          const dealSummary2 = String(parsed2.data.dealSummary || "").slice(0, 2200) || fallbackSummary;
+          const drafts2 = parsed2.data.outreachDrafts.slice(0, 3).map((d) => ({
+            buyerName: String(d.buyerName || "").slice(0, 120),
+            emailSubject: String(d.emailSubject || "").slice(0, 200),
+            emailBody: String(d.emailBody || "").slice(0, 4000),
+          }));
+
+          if (drafts2.length && drafts2.every((d) => emailHasOnlyDealNumbers(d.emailBody, deal))) {
+            dealSummary = dealSummary2;
+            outreachDrafts = drafts2;
+            log.info("[Agent] Regeneration succeeded");
+          } else {
+            outreachDrafts = fallbackDrafts;
+            log.warn("[Agent] Regeneration still violated heuristic; using fallback drafts");
+          }
+        } else {
+          outreachDrafts = fallbackDrafts;
+          log.warn("[Agent] Regeneration schema invalid; using fallback drafts");
+        }
+      } else {
+        outreachDrafts = fallbackDrafts;
+        log.warn("[Agent] Regeneration call failed; using fallback drafts", { error: llm2.error });
+      }
+    }
+  }
 
   return {
     dealSummary,
     buyers,
     outreachDrafts,
     modelVersion,
-    llmUsed: llm.ok,
-    llmError: llm.ok ? undefined : llm.error,
+    llmUsed,
+    llmError,
   };
 }
