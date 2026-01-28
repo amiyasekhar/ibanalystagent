@@ -10,11 +10,11 @@ const FALLBACK_BUYERS: BuyerProfile[] = [
     type: "Private Equity",
     sectorFocus: ["Software", "Business Services"],
     geographies: ["US", "Canada", "UK"],
-    minEbitda: 3,
-    maxEbitda: 20,
-    minDealSize: 20,
-    maxDealSize: 150,
-    dryPowder: 500,
+    minEbitda: 3_000_000,      // $3M
+    maxEbitda: 20_000_000,     // $20M
+    minDealSize: 20_000_000,   // $20M
+    maxDealSize: 150_000_000,  // $150M
+    dryPowder: 500_000_000,    // $500M
     pastDeals: 18,
     strategyTags: ["buy-and-build", "roll-up", "majority-stake"],
   },

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Memo Generator - CrossCourt AI Prototype</title>
+  <style>
+    :root {
+      --bg0: #070A12;
+      --bg1: #0A0F1E;
+      --card: rgba(255, 255, 255, .06);
+      --card2: rgba(255, 255, 255, .04);
+      --stroke: rgba(255, 255, 255, .10);
+      --stroke2: rgba(255, 255, 255, .14);
+      --text: rgba(255, 255, 255, .92);
+      --muted: rgba(255, 255, 255, .62);
+      --muted2: rgba(255, 255, 255, .45);
+      --shadow: 0 18px 55px rgba(0, 0, 0, .55);
+      --r: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background: radial-gradient(800px 400px at 25% 15%, rgba(118, 84, 255, .22), transparent 55%),
+        radial-gradient(900px 450px at 85% 18%, rgba(46, 255, 182, .14), transparent 55%),
+        radial-gradient(700px 400px at 55% 95%, rgba(0, 149, 255, .10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .back-link {
+      color: rgba(118, 84, 255, 0.9);
+      text-decoration: none;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .tabs button {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .tabs button:hover {
+      color: var(--text);
+    }
+
+    .tabs button.active {
+      color: var(--text);
+      border-bottom-color: rgba(118, 84, 255, 0.8);
+    }
+
+    .tab-content {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-content h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .tab-content h3 {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .form-group textarea {
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    button.primary-btn {
+      background: linear-gradient(135deg, rgba(118, 84, 255, 0.8), rgba(46, 255, 182, 0.6));
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 16px;
+    }
+
+    button.primary-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(118, 84, 255, 0.4);
+    }
+
+    button.primary-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .upload-section {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .upload-section input[type="file"] {
+      display: none;
+    }
+
+    .precedents-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .precedent-card {
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .precedent-name {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .precedent-meta {
+      font-size: 12px;
+      color: var(--muted2);
+    }
+
+    .error {
+      background: rgba(255, 80, 80, 0.15);
+      border: 1px solid rgba(255, 80, 80, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      color: #ff9999;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .success {
+      background: rgba(46, 255, 182, 0.15);
+      border: 1px solid rgba(46, 255, 182, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      color: #6fffb6;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .memo-preview {
+      margin-top: 32px;
+      background: var(--card2);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 24px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .memo-section {
+      margin-bottom: 24px;
+    }
+
+    .memo-section h4 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .memo-section p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to Main App</a>
+
+    <h1>Investment Memo Generator</h1>
+    <p class="subtitle">CrossCourt AI Prototype - 80% Memo Automation</p>
+
+    <div class="tabs">
+      <button data-tab="upload" class="active">1. Upload Precedents</button>
+      <button data-tab="generate">2. Generate Memo</button>
+      <button data-tab="view">3. View Memos</button>
+    </div>
+
+    <!-- Upload Tab -->
+    <div id="upload-tab" class="tab-content active">
+      <h2>Upload Precedent Investment Memos</h2>
+      <p>Upload 3-5 example investment memos (PDF or DOCX) to teach the system your firm's writing style.</p>
+
+      <div class="upload-section">
+        <input type="file" id="file-input" multiple accept=".pdf,.docx,.doc">
+        <button class="primary-btn" onclick="document.getElementById('file-input').click()">Choose Files</button>
+        <button class="primary-btn" onclick="uploadPrecedents()">Upload</button>
+      </div>
+
+      <div id="upload-status"></div>
+
+      <h3>Uploaded Precedents (<span id="precedent-count">0</span>)</h3>
+      <div id="precedents-list" class="precedents-list"></div>
+    </div>
+
+    <!-- Generate Tab -->
+    <div id="generate-tab" class="tab-content">
+      <h2>Generate Investment Memo</h2>
+      <p>Provide deal details and the system will generate a complete investment memo in 5-10 minutes.</p>
+
+      <div class="form-group">
+        <label>Deal Name *</label>
+        <input type="text" id="deal-name" placeholder="e.g., Acme SaaS Acquisition">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Sector</label>
+          <select id="sector">
+            <option value="Software">Software</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Business Services">Business Services</option>
+            <option value="Consumer">Consumer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Geography</label>
+          <input type="text" id="geography" value="US" placeholder="e.g., US, Europe">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Revenue ($M)</label>
+          <input type="number" id="revenue" value="0">
+        </div>
+
+        <div class="form-group">
+          <label>EBITDA ($M)</label>
+          <input type="number" id="ebitda" value="0">
+        </div>
+
+        <div class="form-group">
+          <label>Deal Size ($M)</label>
+          <input type="number" id="deal-size" value="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Description *</label>
+        <textarea id="description" rows="4" placeholder="Describe the company, products, market position..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Highlights (one per line, optional)</label>
+        <textarea id="highlights" rows="3" placeholder="Strong market position&#10;Recurring revenue model&#10;Experienced management team"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Risk Factors (one per line, optional)</label>
+        <textarea id="risk-factors" rows="3" placeholder="Customer concentration&#10;Competitive market&#10;Technology risk"></textarea>
+      </div>
+
+      <div id="generate-status"></div>
+
+      <button class="primary-btn" onclick="generateMemo()" id="generate-btn">Generate Investment Memo</button>
+    </div>
+
+    <!-- View Tab -->
+    <div id="view-tab" class="tab-content">
+      <h2>Generated Memos (<span id="memos-count">0</span>)</h2>
+
+      <div id="memos-list" class="precedents-list"></div>
+      <div id="memo-preview"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:4000';
+
+    // Tab switching
+    document.querySelectorAll('.tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.dataset.tab;
+
+        // Update buttons
+        document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update content
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+
+        // Load data
+        if (tabName === 'upload') loadPrecedents();
+        if (tabName === 'view') loadGeneratedMemos();
+      });
+    });
+
+    // Load precedents
+    async function loadPrecedents() {
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/precedents`);
+        const data = await res.json();
+
+        if (data.ok) {
+          document.getElementById('precedent-count').textContent = data.precedents.length;
+          const list = document.getElementById('precedents-list');
+
+          if (data.precedents.length === 0) {
+            list.innerHTML = '<p style="grid-column: 1/-1">No precedents uploaded yet.</p>';
+          } else {
+            list.innerHTML = data.precedents.map(p => `
+              <div class="precedent-card">
+                <div class="precedent-name">${p.filename}</div>
+                <div class="precedent-meta">${p.sectionsCount} sections • ${new Date(p.uploadedAt).toLocaleDateString()}</div>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load precedents:', e);
+      }
+    }
+
+    // Upload precedents
+    async function uploadPrecedents() {
+      const fileInput = document.getElementById('file-input');
+      const files = fileInput.files;
+
+      if (!files || files.length === 0) {
+        alert('Please select files to upload');
+        return;
+      }
+
+      const statusDiv = document.getElementById('upload-status');
+      statusDiv.innerHTML = '<p style="color: var(--muted)">Uploading...</p>';
+
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append('precedents', files[i]);
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/precedents/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          statusDiv.innerHTML = `<div class="success">Successfully uploaded ${data.uploaded} file(s)</div>`;
+          fileInput.value = '';
+          await loadPrecedents();
+        } else {
+          statusDiv.innerHTML = `<div class="error">${data.error || 'Upload failed'}</div>`;
+        }
+      } catch (e) {
+        statusDiv.innerHTML = `<div class="error">${e.message || 'Upload failed'}</div>`;
+      }
+    }
+
+    // Generate memo
+    async function generateMemo() {
+      const dealName = document.getElementById('deal-name').value;
+      const description = document.getElementById('description').value;
+
+      if (!dealName || !description) {
+        alert('Deal name and description are required');
+        return;
+      }
+
+      const statusDiv = document.getElementById('generate-status');
+      const btn = document.getElementById('generate-btn');
+
+      statusDiv.innerHTML = '<p style="color: var(--muted)">Generating memo (this may take 5-10 minutes)...</p>';
+      btn.disabled = true;
+      btn.textContent = 'Generating...';
+
+      const highlights = document.getElementById('highlights').value
+        .split('\n')
+        .filter(h => h.trim());
+
+      const riskFactors = document.getElementById('risk-factors').value
+        .split('\n')
+        .filter(r => r.trim());
+
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            dealName,
+            dealData: {
+              sector: document.getElementById('sector').value,
+              geography: document.getElementById('geography').value,
+              revenue: Number(document.getElementById('revenue').value),
+              ebitda: Number(document.getElementById('ebitda').value),
+              dealSize: Number(document.getElementById('deal-size').value),
+              description,
+              highlights: highlights.length > 0 ? highlights : undefined,
+              riskFactors: riskFactors.length > 0 ? riskFactors : undefined
+            },
+            useDefaultTemplate: true
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          statusDiv.innerHTML = '<div class="success">Memo generated successfully! Check the "View Memos" tab.</div>';
+
+          // Switch to view tab and show the memo
+          document.querySelector('[data-tab="view"]').click();
+          await loadGeneratedMemos();
+          await showMemo(data.memo.id);
+        } else {
+          statusDiv.innerHTML = `<div class="error">${data.error || 'Generation failed'}</div>`;
+        }
+      } catch (e) {
+        statusDiv.innerHTML = `<div class="error">${e.message || 'Generation failed'}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Generate Investment Memo';
+      }
+    }
+
+    // Load generated memos
+    async function loadGeneratedMemos() {
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/generated`);
+        const data = await res.json();
+
+        if (data.ok) {
+          document.getElementById('memos-count').textContent = data.memos.length;
+          const list = document.getElementById('memos-list');
+
+          if (data.memos.length === 0) {
+            list.innerHTML = '<p style="grid-column: 1/-1">No memos generated yet.</p>';
+          } else {
+            list.innerHTML = data.memos.map(m => `
+              <div class="precedent-card" style="cursor: pointer" onclick="showMemo('${m.id}')">
+                <div class="precedent-name">${m.dealName}</div>
+                <div class="precedent-meta">${m.sectionsCount} sections • ${m.status} • ${new Date(m.generatedAt).toLocaleDateString()}</div>
+                <button class="primary-btn" style="margin-top: 12px; padding: 8px 16px; font-size: 12px" onclick="event.stopPropagation(); exportMemo('${m.id}')">Export to Word</button>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load memos:', e);
+      }
+    }
+
+    // Show specific memo
+    async function showMemo(id) {
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/generated/${id}`);
+        const data = await res.json();
+
+        if (data.ok) {
+          const memo = data.memo;
+          const preview = document.getElementById('memo-preview');
+
+          preview.innerHTML = `
+            <div class="memo-preview">
+              <h3>${memo.title}</h3>
+              ${memo.sections.map(section => `
+                <div class="memo-section">
+                  <h4>${section.heading}</h4>
+                  ${Array.isArray(section.content)
+                    ? section.content.map(para => `<p>${para}</p>`).join('')
+                    : `<p>${section.content}</p>`
+                  }
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+      } catch (e) {
+        console.error('Failed to load memo:', e);
+      }
+    }
+
+    // Export memo
+    async function exportMemo(id) {
+      try {
+        const res = await fetch(`${API_BASE}/api/memos/generated/${id}/export`, {
+          method: 'POST'
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          window.open(`${API_BASE}/api/memos/download/${data.filename}`, '_blank');
+          alert('Memo exported! Download should start automatically.');
+        } else {
+          alert(`Export failed: ${data.error}`);
+        }
+      } catch (e) {
+        alert(`Export failed: ${e.message}`);
+      }
+    }
+
+    // Load initial data
+    loadPrecedents();
+  </script>
+</body>
+</html>

@@ -12,7 +12,7 @@ Output (stdout JSON):
 {
   "ok": true,
   "company": "string",
-  "currency": "INR crore",
+  "currency": "detected from document (e.g. USD, INR)",
   "years": [ ... year objects ... ],
   "tableText": "string"
 }
@@ -39,7 +39,16 @@ def to_table_text(years: List[Dict[str, Any]]) -> str:
                 return str(y.get("year_label", ""))
             v = (y.get(k, {}) or {}).get("value", 0)
             try:
-                return str(float(v)).rstrip("0").rstrip(".") if isinstance(v, (int, float)) else str(v)
+                num = float(v) if isinstance(v, (int, float)) else 0
+                if num == 0:
+                    return "0"
+                # For EPS, show as-is (already per share)
+                if k == "eps":
+                    return f"{num:.2f}"
+                # For other metrics, multiply by 1,000,000 to show full number (values are in millions)
+                # Display as "26914000000" or with commas
+                full_num = int(num * 1_000_000)
+                return f"{full_num:,}"
             except Exception:
                 return str(v)
 
@@ -155,8 +164,8 @@ def main() -> None:
     years_sorted = sorted(years, key=lambda yy: yy.get("year_label", ""))
     out = {
         "ok": True,
-        "company": "Reliance Industries Limited" if years_sorted else "",
-        "currency": "INR crore",
+        "company": "",  # Company name detection can be added later if needed
+        "currency": "Detected from document",  # Currency detection handled by extract logic
         "years": years_sorted,
         "tableText": to_table_text(years_sorted),
     }

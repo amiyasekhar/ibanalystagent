@@ -1,122 +1,155 @@
-[INFO] 2026-01-03T00:46:27.419Z Server running on http://localhost:4000
+[INFO] 2026-01-25T16:16:09.118Z Server running on http://localhost:4000
 Bot: True
-[INFO] 2026-01-03T00:48:52.436Z HTTP request
-{"requestId":"18af940a-1fb9-413d-98aa-0b55f4b43d31","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-25T16:20:28.672Z HTTP request
+{"requestId":"7d8c8955-76a4-4907-b79d-b5b3e6623283","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"130138898","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryqSJfYnPHFqC2jt33","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-03T00:48:52.440Z HTTP response
-{"requestId":"18af940a-1fb9-413d-98aa-0b55f4b43d31","method":"POST","path":"/api/workflows","status":200,"ms":4}
+[INFO] 2026-01-25T16:20:28.819Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":4}
 Bot: True
-[INFO] 2026-01-03T00:48:52.448Z HTTP request
-{"requestId":"20c24632-88b9-44da-9275-3f100c67fad5","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"1529","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"STRICTLY CONFIDENTIAL\\n\\nReliance\\nSell-Side Opportunity\\n\\nOur client, Reliance, is exploring strategic alternatives and has engaged us to conduct a confidential process to identify qualified buyers or investors.\\n\\nBusiness Overview:\\nReliance is an established enterprise operating across diversified business verticals. The company has demonstrated a strong operational foundation with significant scale and asset base.\\n\\nInvestment Highlights:\\n• Substantial revenue base exceeding ₹98,000 crores with strong EBITDA generation\\n• Robust balance sheet with net worth exceeding ₹100,000 crores and total assets approaching ₹195,000 crores\\n• Proven management team with track record of executing at scale\\n• Platform for continued growth and operational optimization\\n\\nFinancials (as provided, ₹ Crores):\\n\\nFY 2022-23:\\nRevenue: 891,311 | EBITDA: 153,920 | PAT: 66,702 | EPS: 98.59 | Net Worth: 828,881 | Total Assets: 1,607,431\\n\\nFY 2023-24:\\nRevenue: 1,000,122 | EBITDA: 178,677 | PAT: 79,020 | EPS: 102.9 | Net Worth: 925,788 | Total Assets: 1,755,986\\n\\nFY 2024-25:\\nRevenue: 980,136 | EBITDA: 183,422 | PAT: 69,648 | EPS: 51.47 | Net Worth: 1,009,626 | Total Assets: 1,950,121\\n\\nThis represents a unique opportunity to acquire a substantial platform with significant scale and strategic value.\\n\\nInterested parties must execute an NDA to receive additional information. Please contact the undersigned to express interest.\\n\\nThis teaser does not constitute an offer to sell securities.\"}"}
+[INFO] 2026-01-25T16:25:12.315Z HTTP request
+{"requestId":"08388abb-0c09-41da-9e9c-2b3a738ddcb5","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"41968591","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryIGreepNpYbDpRvZl","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-03T00:48:52.449Z [ExtractDeal] Start
-{"rawTextLen":1468,"detected":{"currency":"INR","scale":"crore"}}
+[INFO] 2026-01-25T16:25:12.378Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":1}
 Bot: True
-[INFO] 2026-01-03T00:48:52.449Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2149}
+[INFO] 2026-01-25T16:26:28.698Z HTTP request
+{"requestId":"b6f4b3d2-dea3-4489-896c-bbd7ec0b3759","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"0","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-03T00:48:57.231Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":4782}
+[INFO] 2026-01-25T16:26:28.703Z HTTP response
+{"requestId":"b6f4b3d2-dea3-4489-896c-bbd7ec0b3759","method":"POST","path":"/api/workflows","status":200,"ms":5}
 Bot: True
-[INFO] 2026-01-03T00:48:57.233Z [ExtractDeal] Claude parsed & sanitized
-{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":9801360000000,"ebitda":1834220000000,"dealSize":980000000000},"nominal":{"revenue":9801360000000,"ebitda":1834220000000,"dealSize":980000000000}}
+[INFO] 2026-01-25T16:26:28.718Z HTTP request
+{"requestId":"ef6f313d-877e-4dce-a650-96789edcfeaa","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/extract","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"3342","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","content-type":"application/json","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{\"rawText\":\"Project Atlas – Vertical SaaS Platform\\n\\n  Our client, a leading provider of cloud-based workflow automation and carrier management software for the logistics industry, is exploring\\n  strategic alternatives. The Company has established itself as a mission-critical platform for mid-market freight brokers and 3PL providers\\n  across North America.\\n\\n  The platform enables customers to automate load management, carrier sourcing, rate optimization, and real-time tracking through a modern\\n  API-first architecture. The Company serves 280+ active customers with an average contract value of $48K annually and net revenue retention of\\n  118%, driven by strong product-market fit and recurring module expansion.\\n\\n  Founded in 2016, the business has achieved profitability while maintaining 30%+ YoY growth. The Company's technology differentiation stems from\\n  proprietary carrier network integrations (2,400+ carriers), embedded financial services (factoring, fuel cards), and vertical-specific workflow\\n  templates that reduce implementation time from months to weeks.\\n\\n  Financials (as provided):\\n\\n  Revenue grew from $11.2M (2022) to $24.8M (2025), reflecting 30% CAGR\\n  EBITDA increased from $2.1M (2022) to $8.4M (2025)\\n  Net income scaled from $1.6M (2022) to $6.8M (2025)\\n  ARR reached $26.2M with 94% recurring revenue mix\\n  Rule of 40 score: 64 (growth + margin)\\n\\n  Investment Highlights:\\n\\n  - Market-leading vertical SaaS with 94% gross revenue retention\\n  - Significant whitespace opportunity: 15K+ addressable mid-market logistics companies in North Americ…(+1738 chars)"}
 Bot: True
-[INFO] 2026-01-03T00:48:57.234Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4950}
+[INFO] 2026-01-25T16:26:28.721Z [ExtractDeal] Start
+{"rawTextLen":3273,"detected":{"currency":"USD","scale":"m"}}
 Bot: True
-[INFO] 2026-01-03T00:49:01.034Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":3800}
+[INFO] 2026-01-25T16:26:28.721Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":4216}
 Bot: True
-[INFO] 2026-01-03T00:49:01.035Z [Validator] No unsupported claims detected
+[INFO] 2026-01-25T16:26:37.987Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":9266}
 Bot: True
-[INFO] 2026-01-03T00:49:01.036Z [ExtractDeal] Used=claude
+[INFO] 2026-01-25T16:26:37.995Z [ExtractDeal] Deal size EV context check
+{"dealSizeProvided":11200000,"valStr":"11.2","fullValStr":"11200000","hasEvContext":false,"patternAbbrev":"/(\\bev\\b|enterprise value|deal size|valuation|implied.*value)[^\\d]{0,80}?\\$?\\s*11\\.2/i","patternFull":"/(\\bev\\b|enterprise value|deal size|valuation)\\s*\\([^)]*\\)[^\\d]{0,20}?11200000/i"}
 Bot: True
-[INFO] 2026-01-03T00:49:01.037Z HTTP response
-{"requestId":"20c24632-88b9-44da-9275-3f100c67fad5","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","status":200,"ms":8589}
+[INFO] 2026-01-25T16:26:37.996Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":0}}
 Bot: True
-[INFO] 2026-01-03T00:49:01.042Z HTTP request
-{"requestId":"978c88fb-17bd-4118-81a8-3857d3db1049","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-25T16:26:37.996Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":7850}
 Bot: True
-[INFO] 2026-01-03T00:49:01.043Z HTTP response
-{"requestId":"978c88fb-17bd-4118-81a8-3857d3db1049","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","status":200,"ms":1}
+[INFO] 2026-01-25T16:26:42.804Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4808}
 Bot: True
-[INFO] 2026-01-03T00:49:29.832Z HTTP request
-{"requestId":"abf5a116-92a6-4191-9a61-7c1bdcded560","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"820","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Reliance\\nSector: Other\\nGeography: \\nRevenue ($m): 9801360000000\\nEBITDA ($m): 1834220000000\\nEV ($m): 980000000000\\nDescription: Reliance is an established enterprise operating across diversified business verticals with significant scale and asset base. The company has demonstrated strong operational foundation with revenue exceeding ₹98,000 crores and robust EBITDA generation. Key highlights include: robust balance sheet with net worth exceeding ₹100,000 crores and total assets approaching ₹195,000 crores, proven management team with track record of executing at scale, and platform for continued growth and operational optimization. FY 2024-25 financials show revenue of ₹980,136 crores, EBITDA of ₹183,422 crores, PAT of ₹69,648 crores, and total assets of ₹1,950,121 crores.\"}"}
+[INFO] 2026-01-25T16:26:42.805Z [Validator] No unsupported claims detected
 Bot: True
-[INFO] 2026-01-03T00:49:29.833Z [ExtractDeal] Start
-{"rawTextLen":786,"detected":{"currency":"INR","scale":"crore"}}
+[INFO] 2026-01-25T16:26:42.806Z [ExtractDeal] Used=claude
 Bot: True
-[INFO] 2026-01-03T00:49:29.834Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":1467}
+[INFO] 2026-01-25T16:26:42.807Z HTTP response
+{"requestId":"ef6f313d-877e-4dce-a650-96789edcfeaa","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/extract","status":200,"ms":14089}
 Bot: True
-[INFO] 2026-01-03T00:49:34.277Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":4443}
+[INFO] 2026-01-25T16:26:42.811Z HTTP request
+{"requestId":"b8fc6302-dc78-498b-9223-2153cc976a7e","method":"GET","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb","headers":{"host":"localhost:4000","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{}"}
 Bot: True
-[INFO] 2026-01-03T00:49:34.280Z [ExtractDeal] Claude parsed & sanitized
-{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000},"nominal":{"revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000}}
+[INFO] 2026-01-25T16:26:42.812Z HTTP response
+{"requestId":"b8fc6302-dc78-498b-9223-2153cc976a7e","method":"GET","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb","status":200,"ms":1}
 Bot: True
-[INFO] 2026-01-03T00:49:34.280Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4400}
+[INFO] 2026-01-25T16:27:26.085Z HTTP request
+{"requestId":"399688bb-3514-47d1-a058-d0c7491ac5c6","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/extract","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"1214","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","content-type":"application/json","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{\"rawText\":\"Name: Project Atlas\\nSector: Software\\nGeography: US\\nRevenue ($m): 24800000\\nEBITDA ($m): 8400000\\nEV ($m): 5000000\\nDescription: Leading provider of cloud-based workflow automation and carrier management software for the logistics industry. Mission-critical vertical SaaS platform serving 280+ mid-market freight brokers and 3PL providers across North America. Platform enables automated load management, carrier sourcing, rate optimization, and real-time tracking via API-first architecture. Founded 2016, achieved profitability with 30%+ YoY growth. Key metrics: $26.2M ARR, 94% recurring revenue, 118% net revenue retention, $48K average contract value, 94% gross revenue retention. Technology differentiation: 2,400+ proprietary carrier network integrations, embedded financial services (factoring, fuel cards), vertical-specific workflow templates. Revenue grew from $11.2M (2022) to $24.8M (2025) at 30% CAGR. EBITDA increased from $2.1M to $8.4M. Rule of 40 score: 64. Capital-efficient with <$1.5M annual S&M spend, 6-month payback. Significant whitespace: 15K+ addressable mid-market logistics companies. Scalable platform supporting 10x customer growth with minimal incremental headcount.\"}"}
 Bot: True
-[INFO] 2026-01-03T00:49:37.976Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":3696}
+[INFO] 2026-01-25T16:27:26.087Z [ExtractDeal] Start
+{"rawTextLen":1194,"detected":{"currency":"USD","scale":"m"}}
 Bot: True
-[INFO] 2026-01-03T00:49:37.977Z [Validator] No unsupported claims detected
+[INFO] 2026-01-25T16:27:26.087Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2137}
 Bot: True
-[INFO] 2026-01-03T00:49:37.977Z [ExtractDeal] Used=claude
+[INFO] 2026-01-25T16:27:29.739Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3652}
 Bot: True
-[INFO] 2026-01-03T00:49:37.978Z HTTP response
-{"requestId":"abf5a116-92a6-4191-9a61-7c1bdcded560","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/extract","status":200,"ms":8146}
+[INFO] 2026-01-25T16:27:29.741Z [ExtractDeal] Deal size EV context check
+{"dealSizeProvided":24800000,"valStr":"24.8","fullValStr":"24800000","hasEvContext":false,"patternAbbrev":"/(\\bev\\b|enterprise value|deal size|valuation|implied.*value)[^\\d]{0,80}?\\$?\\s*24\\.8/i","patternFull":"/(\\bev\\b|enterprise value|deal size|valuation)\\s*\\([^)]*\\)[^\\d]{0,20}?24800000/i"}
 Bot: True
-[INFO] 2026-01-03T00:49:37.983Z HTTP request
-{"requestId":"392664a7-664b-4ff7-9299-887da9963378","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-25T16:27:29.742Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":0}}
 Bot: True
-[INFO] 2026-01-03T00:49:37.985Z [Agent] Start
-{"deal":{"name":"Reliance","sector":"Other","geography":"","provided":{"currency":"INR","scale":"unit","revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000},"nominal":{"revenue":98013600000000000000,"ebitda":18342200000000000000,"dealSize":98013600000000000000}}}
+[INFO] 2026-01-25T16:27:29.742Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":5516}
 Bot: True
-[WARN] 2026-01-03T00:49:37.985Z [Agent] Nominal units in use (no conversion). Matching/ML may be unreliable until buyer DB is aligned.
-{"currency":"INR","scale":"unit"}
+[INFO] 2026-01-25T16:27:32.298Z PDF financial extraction ok
+{"ms":139920}
 Bot: True
-[INFO] 2026-01-03T00:49:37.986Z Python inference start
+[INFO] 2026-01-25T16:27:32.299Z HTTP response
+{"requestId":"08388abb-0c09-41da-9e9c-2b3a738ddcb5","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":139984}
+Bot: True
+[INFO] 2026-01-25T16:27:32.315Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2573}
+Bot: True
+[INFO] 2026-01-25T16:27:32.315Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-25T16:27:32.316Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-25T16:27:32.316Z HTTP response
+{"requestId":"399688bb-3514-47d1-a058-d0c7491ac5c6","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/extract","status":200,"ms":6231}
+Bot: True
+[INFO] 2026-01-25T16:27:32.317Z HTTP request
+{"requestId":"0e1ffa25-e821-4909-861f-dbbc80fbb124","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/match","headers":{"host":"localhost:4000","connection":"keep-alive","content-length":"0","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-25T16:27:32.317Z [Agent] Start
+{"deal":{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":0}}}
+Bot: True
+[INFO] 2026-01-25T16:27:32.318Z Python inference start
 {"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
 Bot: True
-[INFO] 2026-01-03T00:49:38.020Z Python inference ok
-{"ms":34,"modelVersion":"2025-12-12"}
+[INFO] 2026-01-25T16:27:32.337Z Python inference ok
+{"ms":19,"modelVersion":"2025-12-12"}
 Bot: True
-[INFO] 2026-01-03T00:49:38.021Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1427}
+[INFO] 2026-01-25T16:27:32.338Z [Agent] Mandate filtering
+{"beforeFiltering":250,"deal":{"sector":"Software","geography":"(blank)","dealSize":0,"ebitda":8400000}}
 Bot: True
-[INFO] 2026-01-03T00:49:56.405Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":18384}
+[INFO] 2026-01-25T16:27:32.338Z [Agent] After mandate filtering
+{"afterFiltering":74,"filtered":-176}
 Bot: True
-[WARN] 2026-01-03T00:49:56.406Z [Agent] Heuristic failed: email introduced unsupported numbers
+[INFO] 2026-01-25T16:27:32.338Z [Agent] Top buyer matches
+{"totalMatches":5,"top5":[{"name":"Lakeshore Investments 193","score":"16.3%","features":{"sectorMatch":1,"geoMatch":0,"sizeFit":0,"ebitdaFit":1,"activityLevel":"100%","dryPowderFit":"100%"},"buyer":{"sectorFocus":["Software","Manufacturing","Consumer"],"geographies":["US","Europe"],"dealSizeRange":"$45.5M-$216.2M","ebitdaRange":"$2.7M-$21.3M"}},{"name":"Silver Equity 38","score":"16.1%","features":{"sectorMatch":1,"geoMatch":0,"sizeFit":0,"ebitdaFit":1,"activityLevel":"100%","dryPowderFit":"100%"},"buyer":{"sectorFocus":["Software","Healthcare"],"geographies":["US","Canada"],"dealSizeRange":"$44.4M-$159.0M","ebitdaRange":"$2.2M-$12.7M"}},{"name":"Atlas Technologies 199","score":"16.1%","features":{"sectorMatch":1,"geoMatch":0,"sizeFit":0,"ebitdaFit":1,"activityLevel":"100%","dryPowderFit":"65%"},"buyer":{"sectorFocus":["Software","Consumer"],"geographies":["US"],"dealSizeRange":"$25.0M-$150.0M","ebitdaRange":"$2.0M-$13.1M"}},{"name":"Oak Partners 179","score":"16.0%","features":{"sectorMatch":1,"geoMatch":0,"sizeFit":0,"ebitdaFit":1,"activityLevel":"100%","dryPowderFit":"100%"},"buyer":{"sectorFocus":["Consumer","Software","Business Services"],"geographies":["US","Europe"],"dealSizeRange":"$77.0M-$319.4M","ebitdaRange":"$5.9M-$27.1M"}},{"name":"Pioneer Equity 122","score":"15.9%","features":{"sectorMatch":1,"geoMatch":0,"sizeFit":0,"ebitdaFit":1,"activityLevel":"100%","dryPowderFit":"100%"},"buyer":{"sectorFocus":["Software"],"geographies":["US","Europe"],"dealSizeRange":"$54.3M-$219.0M","ebitdaRange":"$3.0M-$28.7M"}}]}
 Bot: True
-[INFO] 2026-01-03T00:49:56.406Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":8121}
+[INFO] 2026-01-25T16:27:32.338Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1886}
 Bot: True
-[INFO] 2026-01-03T00:50:01.734Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":5328}
+[INFO] 2026-01-25T16:27:54.685Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":22347}
 Bot: True
-[WARN] 2026-01-03T00:50:01.735Z [Validator] Unsupported claims detected
-{"count":19,"claims":["18.7% margin profile","operating across multiple high-growth verticals in India","exceptional scale and market positioning","FY25","total assets approaching ₹19.5 lakh crores","net worth exceeding ₹10 lakh crores","blue-chip Indian franchise","entrenched competitive advantages","demonstrated track record of value creation at scale","India's structural growth story"]}
+[WARN] 2026-01-25T16:27:54.687Z [Agent] Heuristic failed: email introduced unsupported numbers
 Bot: True
-[WARN] 2026-01-03T00:50:01.735Z [Agent] Regenerating due to validation issues
-{"validatorIssues":["18.7% margin profile","operating across multiple high-growth verticals in India","exceptional scale and market positioning","FY25","total assets approaching ₹19.5 lakh crores","net worth exceeding ₹10 lakh crores","blue-chip Indian franchise","entrenched competitive advantages"],"heuristicOk":false}
+[INFO] 2026-01-25T16:27:54.688Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":8875}
 Bot: True
-[INFO] 2026-01-03T00:50:01.735Z [Claude] Call start
-{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":2487}
+[INFO] 2026-01-25T16:28:03.990Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":9302}
 Bot: True
-[INFO] 2026-01-03T00:50:12.996Z [Claude] Call succeeded
-{"model":"claude-sonnet-4-5-20250929","ms":11261}
+[WARN] 2026-01-25T16:28:03.991Z [Validator] Unsupported claims detected
+{"count":3,"claims":["34% margin - EBITDA margin is 33.87% (8.4/24.8), not 34%","profitability since inception - Deal states 'achieved profitability' and 'Founded 2016' but does not confirm profitable since founding","$15K+ mid-market opportunity - Deal states '15K+ addressable mid-market logistics companies' (company count, not dollar opportunity)"]}
 Bot: True
-[WARN] 2026-01-03T00:50:12.997Z [Agent] Regeneration still violated heuristic; using fallback drafts
+[WARN] 2026-01-25T16:28:03.991Z [Agent] Regenerating due to validation issues
+{"validatorIssues":["34% margin - EBITDA margin is 33.87% (8.4/24.8), not 34%","profitability since inception - Deal states 'achieved profitability' and 'Founded 2016' but does not confirm profitable since founding","$15K+ mid-market opportunity - Deal states '15K+ addressable mid-market logistics companies' (company count, not dollar opportunity)"],"heuristicOk":false}
 Bot: True
-[INFO] 2026-01-03T00:50:12.998Z HTTP response
-{"requestId":"392664a7-664b-4ff7-9299-887da9963378","method":"POST","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5/match","status":200,"ms":35015}
+[INFO] 2026-01-25T16:28:03.991Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":2536}
 Bot: True
-[INFO] 2026-01-03T00:50:13.004Z HTTP request
-{"requestId":"1bfc63c7-7aa6-4c6c-9a82-5a61f9953183","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"4bd-cjGaQzTRppdNrhauL92bhWcgm1g\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+[INFO] 2026-01-25T16:28:10.640Z PDF financial extraction ok
+{"ms":461821}
 Bot: True
-[INFO] 2026-01-03T00:50:13.006Z HTTP response
-{"requestId":"1bfc63c7-7aa6-4c6c-9a82-5a61f9953183","method":"GET","path":"/api/workflows/043e841f-87d1-4ad2-859c-df005cdba6d5","status":200,"ms":2}
+[INFO] 2026-01-25T16:28:22.545Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":18554}
+Bot: True
+[WARN] 2026-01-25T16:28:22.546Z [Agent] Regeneration still violated heuristic; using fallback drafts
+Bot: True
+[INFO] 2026-01-25T16:28:22.546Z HTTP response
+{"requestId":"0e1ffa25-e821-4909-861f-dbbc80fbb124","method":"POST","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb/match","status":200,"ms":50229}
+Bot: True
+[INFO] 2026-01-25T16:28:22.550Z HTTP request
+{"requestId":"c62b44f6-5ff6-4256-b51a-54a0ad874e3b","method":"GET","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb","headers":{"host":"localhost:4000","connection":"keep-alive","sec-ch-ua-platform":"\"macOS\"","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36","sec-ch-ua":"\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"","sec-ch-ua-mobile":"?0","accept":"*/*","origin":"http://localhost:5173","sec-fetch-site":"same-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"http://localhost:5173/","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9","if-none-match":"W/\"61c-+QH/V9c3BCFi23H5z0HsbbJ+ZUk\""},"body":"{}"}
+Bot: True
+[INFO] 2026-01-25T16:28:22.552Z HTTP response
+{"requestId":"c62b44f6-5ff6-4256-b51a-54a0ad874e3b","method":"GET","path":"/api/workflows/950c2819-fbe9-49b9-91cd-3a958a236bdb","status":200,"ms":2}
 Bot: True

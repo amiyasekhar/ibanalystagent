@@ -69,37 +69,8 @@ function numberMentioned(rawText, value) {
     }
     return false;
 }
-function detectCurrencyScale(rawText) {
-    const t = rawText.toLowerCase();
-    // currency
-    let currency = "USD";
-    if (t.includes("₹") || t.includes("inr") || t.includes("rupee"))
-        currency = "INR";
-    else if (t.includes("€") || t.includes("eur"))
-        currency = "EUR";
-    else if (t.includes("£") || t.includes("gbp"))
-        currency = "GBP";
-    else if (t.includes("$") || t.includes("usd"))
-        currency = "USD";
-    // scale
-    let scale = "m";
-    if (t.includes("crore") || /\bcr\b/.test(t))
-        scale = "crore";
-    else if (t.includes("billion") || /\bbn\b/.test(t))
-        scale = "b";
-    else if (t.includes("million") || /\bmm\b/.test(t) || /\bm\b/.test(t))
-        scale = "m";
-    return { currency, scale };
-}
-function scaleMultiplier(scale) {
-    if (scale === "m")
-        return 1000000;
-    if (scale === "b")
-        return 1000000000;
-    // crore
-    return 10000000;
-}
-// NOTE: We are intentionally NOT converting currencies right now (nominal values only).
+// All financials are assumed to be in USD millions
+// No currency conversion - everything is USD millions
 function parseLatestMetricFromFinancials(rawText, key) {
     // If user pasted a FY table (often from PDF extraction), use the most recent FY block.
     // Example line: "FY 2024-25:\nRevenue: 980,136 | EBITDA: 183,422 | ..."
@@ -165,18 +136,11 @@ function sanitizeExtractedDeal(rawText, d) {
         name,
         sector,
         geography,
-        // NOMINAL values (no conversion)
-        revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
-        ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
-        dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
+        // All values in USD millions
+        revenue: safeRevenueProvided,
+        ebitda: safeEbitdaProvided,
+        dealSize: safeDealSizeProvided,
         description: String(d?.description || rawText).slice(0, 1200),
-        provided: {
-            currency: provided.currency,
-            scale: "unit",
-            revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
-            ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
-            dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
-        },
     };
 }
 function cleanDealName(rawText, proposed) {
@@ -214,31 +178,24 @@ function fallbackExtract(rawText) {
                         "Other";
     const sector = hasExplicitSectorHint(text, sectorGuess) ? sectorGuess : "Other";
     const geo = inferGeographyIfExplicit(text);
-    const provided = extractProvidedMetrics(text);
-    const revenueProvided = provided.revenue ?? 0;
-    const ebitdaProvided = provided.ebitda ?? 0;
-    const dealSizeProvided = provided.dealSize ?? 0;
+    // Extract numbers (assumed to be in USD millions)
+    const numbers = extractNumbers(text);
+    const revenueProvided = numbers[0] ?? 0;
+    const ebitdaProvided = numbers[1] ?? 0;
+    const dealSizeProvided = numbers[2] ?? 0;
     const safeRevenueProvided = numberMentioned(text, revenueProvided) ? revenueProvided : 0;
     const safeEbitdaProvided = numberMentioned(text, ebitdaProvided) ? ebitdaProvided : 0;
     const safeDealSizeProvided = numberMentioned(text, dealSizeProvided) ? dealSizeProvided : 0;
     const name = cleanDealName(text, "");
-    const mult = scaleMultiplier(provided.scale);
     return {
         name,
         sector: (0, normalize_1.normalizeSector)(sector),
         geography: geo ? (0, normalize_1.normalizeGeography)(geo) : "",
-        // NOMINAL values (no conversion)
-        revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
-        ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
-        dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
+        // All values in USD millions
+        revenue: safeRevenueProvided,
+        ebitda: safeEbitdaProvided,
+        dealSize: safeDealSizeProvided,
         description: text.slice(0, 1200),
-        provided: {
-            currency: provided.currency,
-            scale: "unit",
-            revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
-            ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
-            dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
-        },
     };
 }
 async function extractDealFromText(reqBody) {

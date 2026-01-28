@@ -80,10 +80,14 @@ function scoreBuyer(tokens: string[], b: BuyerProfile): { score: number; hits: s
 function mandateReason(b: BuyerProfile, p: BuyerSearchParams): string[] {
   const reasons: string[] = [];
   if (Number.isFinite(p.minDeal ?? NaN) || Number.isFinite(p.maxDeal ?? NaN)) {
-    reasons.push(`Deal size band: ${b.minDealSize}–${b.maxDealSize}m EV`);
+    const minM = (b.minDealSize / 1_000_000).toFixed(1);
+    const maxM = (b.maxDealSize / 1_000_000).toFixed(1);
+    reasons.push(`Deal size band: $${minM}M–$${maxM}M EV`);
   }
   if (Number.isFinite(p.minEbitda ?? NaN) || Number.isFinite(p.maxEbitda ?? NaN)) {
-    reasons.push(`EBITDA band: ${b.minEbitda}–${b.maxEbitda}m`);
+    const minM = (b.minEbitda / 1_000_000).toFixed(1);
+    const maxM = (b.maxEbitda / 1_000_000).toFixed(1);
+    reasons.push(`EBITDA band: $${minM}M–$${maxM}M`);
   }
   return reasons;
 }

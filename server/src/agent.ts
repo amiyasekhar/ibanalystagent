@@ -66,11 +66,16 @@ function buildRationale(m: BuyerMatchScore): string {
   const f = m.features;
   const b = m.buyer;
   const parts: string[] = [];
+  const minDealM = (b.minDealSize / 1_000_000).toFixed(1);
+  const maxDealM = (b.maxDealSize / 1_000_000).toFixed(1);
+  const minEbitdaM = (b.minEbitda / 1_000_000).toFixed(1);
+  const maxEbitdaM = (b.maxEbitda / 1_000_000).toFixed(1);
+
   parts.push(f.sectorMatch ? "Sector match" : "Sector adjacency");
   parts.push(f.geoMatch ? "Geo match" : "Geo flexible");
-  parts.push(f.sizeFit ? `Size fit (${b.minDealSize}–${b.maxDealSize}m EV)` : `Out-of-range size (${b.minDealSize}–${b.maxDealSize}m EV)`);
+  parts.push(f.sizeFit ? `Size fit ($${minDealM}M–$${maxDealM}M EV)` : `Out-of-range size ($${minDealM}M–$${maxDealM}M EV)`);
   // EBITDA fit is a real mandate constraint
-  parts.push(f.ebitdaFit ? `EBITDA fit (${b.minEbitda}–${b.maxEbitda}m)` : `EBITDA out-of-range (${b.minEbitda}–${b.maxEbitda}m)`);
+  parts.push(f.ebitdaFit ? `EBITDA fit ($${minEbitdaM}M–$${maxEbitdaM}M)` : `EBITDA out-of-range ($${minEbitdaM}M–$${maxEbitdaM}M)`);
   parts.push(`Activity ${(clamp01(f.activityLevel) * 100).toFixed(0)}%`);
   parts.push(`Capital ${(clamp01(f.dryPowderFit) * 100).toFixed(0)}%`);
   if (b.strategyTags?.length) parts.push(`Tags: ${b.strategyTags.slice(0, 3).join(", ")}`);
@@ -91,13 +96,15 @@ function computeSynergyScore(deal: DealInput, buyer: { type: string; strategyTag
   return Math.max(0, Math.min(1, score));
 }
 
-function applyMandateFilters(scores: BuyerMatchScore[]): BuyerMatchScore[] {
-  // “Mandate fit” + explicit filtering:
-  // - must be within deal size and EBITDA bands
+function applyMandateFilters(scores: BuyerMatchScore[], deal: DealInput): BuyerMatchScore[] {
+  // "Mandate fit" + explicit filtering:
+  // - must be within deal size and EBITDA bands (if provided)
   // - must match sector, unless buyer explicitly covers "Other" (generalist bucket)
+  const hasDealSize = deal.dealSize > 0;
+
   return scores.filter((m) => {
     const sectorOk = m.features.sectorMatch === 1 || m.buyer.sectorFocus.includes("Other");
-    const sizeOk = m.features.sizeFit === 1;
+    const sizeOk = hasDealSize ? m.features.sizeFit === 1 : true; // Skip size check if deal size unknown
     const ebitdaOk = m.features.ebitdaFit === 1;
     return sectorOk && sizeOk && ebitdaOk;
   });
@@ -125,7 +132,23 @@ export async function scoreAndRankBuyers(deal: DealInput): Promise<{ modelVersio
   });
 
   // Apply mandate filtering then rank
-  const filtered = applyMandateFilters(matches);
+  log.info("[Agent] Mandate filtering", {
+    beforeFiltering: matches.length,
+    deal: {
+      sector: deal.sector,
+      geography: deal.geography || "(blank)",
+      dealSize: deal.dealSize,
+      ebitda: deal.ebitda,
+    },
+  });
+
+  const filtered = applyMandateFilters(matches, deal);
+
+  log.info("[Agent] After mandate filtering", {
+    afterFiltering: filtered.length,
+    filtered: filtered.length - matches.length,
+  });
+
   // Incorporate deal-specific synergy score into ranking as a small multiplier
   const withSynergy = filtered.map((m: any) => {
     const synergy = computeSynergyScore(deal, m.buyer);
@@ -147,8 +170,14 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
       nominal: { revenue: deal.revenue, ebitda: deal.ebitda, dealSize: deal.dealSize },
     },
   });
-  if (deal.provided?.currency && (deal.provided.currency !== "USD" || deal.provided.scale !== "m")) {
-    log.warn("[Agent] Nominal units in use (no conversion). Matching/ML may be unreliable until buyer DB is aligned.", {
+  if (deal.provided?.currency && deal.provided.currency !== "USD") {
+    log.warn("[Agent] Non-USD currency detected. No currency conversion is performed. Matching may be unreliable.", {
+      currency: deal.provided.currency,
+      scale: deal.provided.scale,
+    });
+  }
+  if (deal.provided?.scale && deal.provided.scale !== "unit") {
+    log.warn("[Agent] Scale should be 'unit' (full nominal values). Unexpected scale detected.", {
       currency: deal.provided.currency,
       scale: deal.provided.scale,
     });
@@ -156,6 +185,29 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
   // 1) ML ranking + mandate filtering
   const { modelVersion, matches } = await scoreAndRankBuyers(deal);
   const top = matches.slice(0, 5);
+
+  // Log top matches for debugging
+  log.info("[Agent] Top buyer matches", {
+    totalMatches: matches.length,
+    top5: top.map((m) => ({
+      name: m.buyer.name,
+      score: (m.score * 100).toFixed(1) + "%",
+      features: {
+        sectorMatch: m.features.sectorMatch,
+        geoMatch: m.features.geoMatch,
+        sizeFit: m.features.sizeFit,
+        ebitdaFit: m.features.ebitdaFit,
+        activityLevel: (m.features.activityLevel * 100).toFixed(0) + "%",
+        dryPowderFit: (m.features.dryPowderFit * 100).toFixed(0) + "%",
+      },
+      buyer: {
+        sectorFocus: m.buyer.sectorFocus,
+        geographies: m.buyer.geographies,
+        dealSizeRange: `$${(m.buyer.minDealSize / 1_000_000).toFixed(1)}M-$${(m.buyer.maxDealSize / 1_000_000).toFixed(1)}M`,
+        ebitdaRange: `$${(m.buyer.minEbitda / 1_000_000).toFixed(1)}M-$${(m.buyer.maxEbitda / 1_000_000).toFixed(1)}M`,
+      },
+    })),
+  });
 
   const buyers: BuyerMatch[] = top.map((m) => ({
     name: m.buyer.name,

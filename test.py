@@ -13,7 +13,7 @@ load_dotenv()
 # -------------------------
 # CONFIG
 # -------------------------
-PDF_FILES = ["Reliance1.pdf", "Reliance2.pdf", "Reliance3.pdf"]
+PDF_FILES = []  # Configure with actual PDF files as needed
 MODEL_NAME = "gemini-2.5-pro"
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY") or None)
@@ -21,11 +21,11 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY") or None)
 METRICS = ["revenue", "ebitda", "pat", "eps", "networth", "total_assets"]
 
 KEYWORDS = {
-    "revenue": ["Value of Sales", "Sales & Services", "Revenue", "Total income", "Income"],
-    "ebitda": ["EBITDA", "EBDIT", "Earnings Before Depreciation", "Operating EBITDA"],
-    "pat": ["PROFIT AFTER TAX", "Profit after tax", "PAT", "Profit for the year", "Net Profit", "Net profit"],
+    "revenue": ["Value of Sales", "Sales & Services", "Revenue", "Total income", "Income", "Total Revenue"],
+    "ebitda": ["EBITDA", "EBDIT", "Earnings Before Depreciation", "Operating EBITDA", "Operating Income", "Operating income", "Income from operations"],
+    "pat": ["PROFIT AFTER TAX", "Profit after tax", "PAT", "Profit for the year", "Net Profit", "Net profit", "Net Income", "Net income"],
     "eps": ["Earnings Per Equity Share", "Basic (in", "EPS", "Earnings per share", "Diluted"],
-    "networth": ["Total Equity", "Total equity", "Total Equity attributable", "Equity", "Net worth", "Shareholders' funds"],
+    "networth": ["Total Equity", "Total equity", "Total Equity attributable", "Equity", "Net worth", "Shareholders' funds", "Stockholders' Equity"],
     "total_assets": ["Total Assets", "Assets"],
 }
 
@@ -67,12 +67,13 @@ Rules:
 EXTRACTION_PROMPT = r"""
 You are a precise financial table extractor working on a PDF.
 
-For the attached Reliance Industries Limited annual report PDF, extract CONSOLIDATED
-financial metrics for the SINGLE financial year the report relates to.
+For the attached annual report PDF, extract CONSOLIDATED financial metrics
+for the SINGLE financial year the report relates to.
 
 CRITICAL UNITS RULE:
-- revenue, ebitda, pat, networth, total_assets MUST be returned in INR CRORE (not INR).
-- eps MUST be returned in INR per share.
+- Detect the currency and scale used in the document (e.g., USD millions, INR crores, EUR millions).
+- Return all metrics (revenue, ebitda, pat, networth, total_assets) in the SAME scale as shown in the document.
+- For EPS: return in the native currency per share (e.g., USD per share, INR per share, EUR per share).
 
 Return STRICT JSON ONLY with exactly this structure:
 
@@ -90,6 +91,10 @@ Return STRICT JSON ONLY with exactly this structure:
 Rules:
 - Use CONSOLIDATED figures only if both standalone and consolidated are shown.
 - Ignore prior-year comparison columns; only extract the CURRENT report year.
+- For year_label: Return ONLY the fiscal year as a 4-digit number (e.g., "2025", "2024"). If the report says "fiscal year ended January 28, 2024", return "2024". Do NOT include month names or multiple years.
+- For EBITDA: Look for "EBITDA", "Operating EBITDA", or "Operating Income" (common in US 10-K filings).
+- For PAT (Profit After Tax): Look for "Net Income", "Net Profit", or "Profit for the year".
+- For Networth: Look for "Total Equity", "Stockholders' Equity", or "Shareholders' Equity".
 - Page numbers must correspond to the PDF page where the value appears (physical PDF page index, 1-based).
 - Snippet should be a short excerpt (≤ 200 chars) containing the number.
 - If a metric is not clearly present, set value=0 and page=0 and section/snippet empty.
@@ -100,7 +105,7 @@ Rules:
 
 # EPS-only with strict basis + scope locking
 EPS_ONLY_PROMPT = r"""
-You are extracting one value from a Reliance Industries annual report PDF.
+You are extracting one value from a company annual report PDF.
 
 Find: CONSOLIDATED "Earnings per Equity Share" for the CURRENT report year only.
 
@@ -118,7 +123,7 @@ Return STRICT JSON ONLY:
 }
 
 Rules:
-- EPS must be INR per share.
+- EPS must be in native currency per share (e.g., USD, INR, EUR per share - as shown in document).
 - Page is physical PDF page index (1-based).
 - Snippet ≤ 200 chars and MUST include:
   - the word "Basic" or "Diluted"
@@ -131,9 +136,9 @@ Rules:
 
 # Force Total Equity for networth
 NETWORTH_ONLY_PROMPT = r"""
-You are extracting one value from a Reliance Industries annual report PDF.
+You are extracting one value from a company annual report PDF.
 
-Find: CONSOLIDATED "Total Equity" (also called "Total equity", "Total Equity attributable to owners", etc.)
+Find: CONSOLIDATED "Total Equity" (also called "Total equity", "Total Equity attributable to owners", "Shareholders' Equity", etc.)
 from the CONSOLIDATED BALANCE SHEET for the CURRENT report year only.
 
 Return STRICT JSON ONLY:
@@ -143,7 +148,7 @@ Return STRICT JSON ONLY:
 }
 
 Rules:
-- Value must be INR CRORE.
+- Value must be in the same scale as shown in document (e.g., millions, crores, billions).
 - Page is physical PDF page index (1-based).
 - Snippet ≤ 200 chars and MUST contain the phrase "Total Equity" (or "Total equity") and the current-year number.
 - Do NOT return "Equity Share Capital" or "Other Equity" separately.
@@ -153,9 +158,9 @@ Rules:
 
 # Targeted prompt to get PAT attributable to owners (for implied-shares sanity)
 PAT_ATTRIB_PROMPT = r"""
-You are extracting one value from a Reliance Industries annual report PDF.
+You are extracting one value from a company annual report PDF.
 
-Find: CONSOLIDATED "Net Profit attributable to Owners of the Company" (or equivalent wording)
+Find: CONSOLIDATED "Net Profit attributable to Owners/Shareholders" (or "Net Income", or equivalent wording)
 for the CURRENT report year only (not prior year).
 
 Return STRICT JSON ONLY:
@@ -165,7 +170,7 @@ Return STRICT JSON ONLY:
 }
 
 Rules:
-- Value must be INR CRORE.
+- Value must be in the same scale as shown in document (e.g., millions, crores, billions).
 - Page is physical PDF page index (1-based).
 - Snippet ≤ 200 chars and must contain the number and "Owners" or "attributable".
 - If not found: value=0 and page=0 and section/snippet empty.
@@ -186,7 +191,15 @@ def norm_spaces(s: str) -> str:
 
 def norm_year_label(s: str) -> str:
     s = (s or "").strip()
-    return s.replace("FY ", "").replace("FY", "")
+    # Remove FY prefix
+    s = s.replace("FY ", "").replace("FY", "")
+    # Extract just the 4-digit year (handles cases like "January 2026, 2025" -> "2025")
+    # Look for all 4-digit years in the string
+    years = re.findall(r'\b(20\d{2})\b', s)
+    if years:
+        # Return the last year found (most likely the fiscal year)
+        return years[-1]
+    return s
 
 def looks_like_inr_not_crore(v: float) -> bool:
     # If someone returns INR, it's ~1e13; crore is ~1e6
@@ -835,15 +848,15 @@ def main():
     years_sorted = sorted(years, key=lambda yy: yy.get("year_label", ""))
 
     combined = {
-        "company": "Reliance Industries Limited",
-        "currency": "INR crore",
+        "company": "",  # Company name detection can be added if needed
+        "currency": "Detected from document",  # Currency/scale detected from document
         "years": years_sorted,
     }
 
-    with open("ril_3yr_financials_with_sources.json", "w") as f:
+    with open("financials_with_sources.json", "w") as f:
         json.dump(combined, f, indent=2)
 
-    print("\n✅ Saved: ril_3yr_financials_with_sources.json")
+    print("\n✅ Saved: financials_with_sources.json")
 
     print("\n=== YoY reconciliation checks ===")
     yoy_warnings = run_yoy_checks(years_sorted)

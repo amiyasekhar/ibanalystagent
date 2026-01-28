@@ -52,6 +52,11 @@ const generateRawDealText_1 = require("./generateRawDealText");
 const pdfFinancials_1 = require("./pdfFinancials");
 const multer_1 = __importDefault(require("multer"));
 const uploadUtils_1 = require("./uploadUtils");
+const precedentExtractor_1 = require("./precedentExtractor");
+const styleGuideAnalyzer_1 = require("./styleGuideAnalyzer");
+const memoGenerator_1 = require("./memoGenerator");
+const docExport_1 = require("./docExport");
+const memoStorage_1 = require("./memoStorage");
 // Clear server log on each (re)start so it doesn't contain old runs.
 // Set LOG_APPEND=1 to keep appending across restarts.
 if (String(process.env.LOG_APPEND || "").trim() !== "1") {
@@ -325,6 +330,267 @@ app.post("/api/extract-deal", async (req, res) => {
         return res.status(500).json({ error: e?.message || "Server error" });
     }
 });
+// ============================================================================
+// CROSSCOURT AI PROTOTYPE: Investment Memo Generator
+// ============================================================================
+// Upload precedent memos (PDF or DOCX)
+app.post("/api/memos/precedents/upload", upload.array("precedents", 10), async (req, res) => {
+    try {
+        const files = req.files || [];
+        if (!files.length) {
+            return res.status(400).json({ ok: false, error: "No files uploaded" });
+        }
+        const results = [];
+        const errors = [];
+        for (const file of files) {
+            // Extract text from precedent
+            const extraction = await (0, precedentExtractor_1.extractPrecedentMemo)(file.path);
+            if (extraction.ok) {
+                // Save precedent to storage
+                const precedent = (0, memoStorage_1.savePrecedent)({
+                    filename: file.originalname,
+                    filePath: file.path,
+                    extractedText: extraction.text,
+                    sections: extraction.sections,
+                    metadata: extraction.metadata,
+                });
+                results.push({
+                    id: precedent.id,
+                    filename: precedent.filename,
+                    sectionsCount: precedent.sections?.length || 0,
+                });
+            }
+            else {
+                errors.push({ filename: file.originalname, error: extraction.error });
+            }
+        }
+        return res.json({
+            ok: true,
+            uploaded: results.length,
+            results,
+            errors: errors.length > 0 ? errors : undefined,
+        });
+    }
+    catch (e) {
+        logger_1.log.error("precedent upload failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get all precedents
+app.get("/api/memos/precedents", (_req, res) => {
+    try {
+        const precedents = (0, memoStorage_1.getAllPrecedents)();
+        return res.json({
+            ok: true,
+            precedents: precedents.map((p) => ({
+                id: p.id,
+                filename: p.filename,
+                uploadedAt: p.uploadedAt,
+                sectionsCount: p.sections?.length || 0,
+            })),
+        });
+    }
+    catch (e) {
+        logger_1.log.error("get precedents failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Analyze precedents and create style guide
+app.post("/api/memos/style-guides/analyze", async (req, res) => {
+    try {
+        const { precedentIds, firmName } = req.body;
+        if (!Array.isArray(precedentIds) || precedentIds.length === 0) {
+            return res.status(400).json({
+                ok: false,
+                error: "precedentIds must be a non-empty array",
+            });
+        }
+        // Get precedents
+        const precedents = precedentIds
+            .map((id) => (0, memoStorage_1.getPrecedent)(String(id)))
+            .filter((p) => p !== undefined);
+        if (precedents.length === 0) {
+            return res.status(404).json({
+                ok: false,
+                error: "No valid precedents found",
+            });
+        }
+        // Analyze and create style guide
+        const result = await (0, styleGuideAnalyzer_1.analyzeStyleFromPrecedents)(precedents, firmName);
+        if (!result.ok) {
+            return res.status(500).json(result);
+        }
+        // Save style guide
+        (0, memoStorage_1.saveStyleGuide)(result.styleGuide);
+        return res.json({
+            ok: true,
+            styleGuide: result.styleGuide,
+        });
+    }
+    catch (e) {
+        logger_1.log.error("style guide analysis failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get all style guides
+app.get("/api/memos/style-guides", (_req, res) => {
+    try {
+        const styleGuides = (0, memoStorage_1.getAllStyleGuides)();
+        return res.json({
+            ok: true,
+            styleGuides: styleGuides.map((sg) => ({
+                id: sg.id,
+                firmName: sg.firmName,
+                sectionsCount: sg.sections.length,
+                precedentsUsed: sg.precedentIds.length,
+                createdAt: sg.createdAt,
+            })),
+        });
+    }
+    catch (e) {
+        logger_1.log.error("get style guides failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get default style guide
+app.get("/api/memos/style-guides/default", (_req, res) => {
+    try {
+        const defaultGuide = (0, styleGuideAnalyzer_1.getDefaultStyleGuide)();
+        return res.json({ ok: true, styleGuide: defaultGuide });
+    }
+    catch (e) {
+        logger_1.log.error("get default style guide failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Generate investment memo
+app.post("/api/memos/generate", async (req, res) => {
+    try {
+        const { dealName, dealData, styleGuideId, useDefaultTemplate } = req.body;
+        if (!dealName || !dealData) {
+            return res.status(400).json({
+                ok: false,
+                error: "dealName and dealData are required",
+            });
+        }
+        // Get style guide
+        let styleGuide;
+        if (!useDefaultTemplate && styleGuideId) {
+            styleGuide = (0, memoStorage_1.getStyleGuide)(styleGuideId);
+            if (!styleGuide) {
+                return res.status(404).json({
+                    ok: false,
+                    error: `Style guide not found: ${styleGuideId}`,
+                });
+            }
+        }
+        // Generate memo
+        const result = await (0, memoGenerator_1.generateInvestmentMemo)({ dealName, dealData, styleGuideId }, styleGuide);
+        if (!result.ok) {
+            return res.status(500).json(result);
+        }
+        // Save generated memo
+        (0, memoStorage_1.saveGeneratedMemo)(result.memo);
+        return res.json({
+            ok: true,
+            memo: result.memo,
+        });
+    }
+    catch (e) {
+        logger_1.log.error("memo generation failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get all generated memos
+app.get("/api/memos/generated", (_req, res) => {
+    try {
+        const memos = (0, memoStorage_1.getAllGeneratedMemos)();
+        return res.json({
+            ok: true,
+            memos: memos.map((m) => ({
+                id: m.id,
+                dealName: m.dealName,
+                title: m.title,
+                status: m.status,
+                generatedAt: m.generatedAt,
+                sectionsCount: m.sections.length,
+                exportPath: m.exportPath,
+            })),
+        });
+    }
+    catch (e) {
+        logger_1.log.error("get generated memos failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get specific memo
+app.get("/api/memos/generated/:id", (req, res) => {
+    try {
+        const memo = (0, memoStorage_1.getGeneratedMemo)(req.params.id);
+        if (!memo) {
+            return res.status(404).json({ ok: false, error: "Memo not found" });
+        }
+        return res.json({ ok: true, memo });
+    }
+    catch (e) {
+        logger_1.log.error("get memo failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Export memo to DOCX
+app.post("/api/memos/generated/:id/export", async (req, res) => {
+    try {
+        const memo = (0, memoStorage_1.getGeneratedMemo)(req.params.id);
+        if (!memo) {
+            return res.status(404).json({ ok: false, error: "Memo not found" });
+        }
+        // Convert memo to DOCX data format
+        const docxData = (0, memoGenerator_1.memoToDocxData)(memo);
+        // Generate filename
+        const sanitizedName = memo.dealName.replace(/[^a-z0-9]/gi, "_");
+        const filename = `memo_${sanitizedName}_${Date.now()}.docx`;
+        // Export to DOCX
+        const result = await (0, docExport_1.exportToDocx)(docxData, filename);
+        if (!result.ok) {
+            return res.status(500).json(result);
+        }
+        // Update memo with export path
+        (0, memoStorage_1.setMemoExportPath)(memo.id, result.path);
+        return res.json({
+            ok: true,
+            path: result.path,
+            filename,
+        });
+    }
+    catch (e) {
+        logger_1.log.error("memo export failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Download exported memo
+app.get("/api/memos/download/:filename", (req, res) => {
+    try {
+        const path = require("path");
+        const filePath = path.join(process.cwd(), "exports", req.params.filename);
+        res.download(filePath);
+    }
+    catch (e) {
+        logger_1.log.error("memo download failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// Get stats
+app.get("/api/memos/stats", (_req, res) => {
+    try {
+        const stats = (0, memoStorage_1.getMemoStats)();
+        return res.json({ ok: true, stats });
+    }
+    catch (e) {
+        logger_1.log.error("get memo stats failed", { message: e?.message || String(e) });
+        return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+    }
+});
+// ============================================================================
 const PORT = Number(process.env.PORT || 4000);
 app.listen(PORT, () => {
     logger_1.log.info(`Server running on http://localhost:${PORT}`);

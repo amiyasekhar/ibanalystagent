@@ -1,0 +1,735 @@
+
+> offdeal-analyst-agent-server@1.0.0 dev
+> ts-node-dev --respawn --transpile-only src/index.ts
+
+[INFO] 17:09:07 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.9.3)
+[INFO] 2026-01-20T13:09:07.623Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-20T13:09:10.214Z HTTP request
+{"requestId":"57a8f881-3000-4967-bcc3-56b6e599cb6c","method":"GET","path":"/health","headers":{"host":"localhost:4000","user-agent":"curl/8.7.1","accept":"*/*"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:09:10.216Z HTTP response
+{"requestId":"57a8f881-3000-4967-bcc3-56b6e599cb6c","method":"GET","path":"/health","status":200,"ms":2}
+Bot: True
+[INFO] 2026-01-20T13:09:57.114Z HTTP request
+{"requestId":"15484299-27b3-4664-8f10-6c96747af68e","method":"GET","path":"/health","headers":{"host":"localhost:4000","user-agent":"curl/8.7.1","accept":"*/*"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:09:57.115Z HTTP response
+{"requestId":"15484299-27b3-4664-8f10-6c96747af68e","method":"GET","path":"/health","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-20T13:10:29.947Z HTTP request
+{"requestId":"14749ddb-6ff8-476d-ad53-770f7c70b589","method":"GET","path":"/api/memos/stats","headers":{"host":"localhost:4000","user-agent":"curl/8.7.1","accept":"*/*"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:10:29.948Z HTTP response
+{"requestId":"14749ddb-6ff8-476d-ad53-770f7c70b589","method":"GET","path":"/api/memos/stats","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-20T13:11:27.482Z HTTP request
+{"requestId":"ab9e1e2a-6eec-42a7-8cfd-459f86253256","method":"GET","path":"/api/memos/style-guides/default","headers":{"host":"localhost:4000","user-agent":"curl/8.7.1","accept":"*/*"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:11:27.483Z HTTP response
+{"requestId":"ab9e1e2a-6eec-42a7-8cfd-459f86253256","method":"GET","path":"/api/memos/style-guides/default","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-20T13:17:04.324Z HTTP request
+{"requestId":"3e96e3b5-a8a0-48e1-8596-fea7d26819ac","method":"GET","path":"/","headers":{"host":"localhost:4000","sec-fetch-dest":"document","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","upgrade-insecure-requests":"1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","sec-fetch-site":"none","sec-fetch-mode":"navigate","accept-language":"en-US,en;q=0.9","priority":"u=0, i","accept-encoding":"gzip, deflate","cookie":"[REDACTED]","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:17:04.327Z HTTP response
+{"requestId":"3e96e3b5-a8a0-48e1-8596-fea7d26819ac","method":"GET","path":"/","status":404,"ms":3}
+Bot: True
+[INFO] 2026-01-20T13:17:04.340Z HTTP request
+{"requestId":"2199b0f9-3539-4e7b-ac94-ea6a02c6c106","method":"GET","path":"/apple-touch-icon-precomposed.png","headers":{"host":"localhost:4000","accept":"*/*","accept-language":"en-US,en;q=0.9","connection":"keep-alive","accept-encoding":"gzip, deflate","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Safari"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:17:04.341Z HTTP response
+{"requestId":"2199b0f9-3539-4e7b-ac94-ea6a02c6c106","method":"GET","path":"/apple-touch-icon-precomposed.png","status":404,"ms":1}
+Bot: True
+[INFO] 2026-01-20T13:17:04.451Z HTTP request
+{"requestId":"c429fee3-a908-494e-9271-069e96d539ea","method":"GET","path":"/apple-touch-icon.png","headers":{"host":"localhost:4000","accept":"*/*","accept-language":"en-US,en;q=0.9","connection":"keep-alive","accept-encoding":"gzip, deflate","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Safari"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T13:17:04.452Z HTTP response
+{"requestId":"c429fee3-a908-494e-9271-069e96d539ea","method":"GET","path":"/apple-touch-icon.png","status":404,"ms":1}
+Bot: True
+[INFO] 22:03:09 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T18:03:09.442Z Server running on http://localhost:4000
+Bot: True
+[INFO] 22:03:43 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T18:03:44.079Z Server running on http://localhost:4000
+Bot: True
+[INFO] 22:04:10 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T18:04:10.578Z Server running on http://localhost:4000
+Bot: True
+[INFO] 22:05:02 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T18:05:02.556Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-20T19:27:28.898Z HTTP request
+{"requestId":"3503c1cd-5274-4db6-b36b-ebbb4a9b9976","method":"GET","path":"/health","headers":{"host":"localhost:4000","user-agent":"curl/8.7.1","accept":"*/*"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T19:27:28.901Z HTTP response
+{"requestId":"3503c1cd-5274-4db6-b36b-ebbb4a9b9976","method":"GET","path":"/health","status":200,"ms":3}
+Bot: True
+[INFO] 2026-01-20T21:46:23.734Z HTTP request
+{"requestId":"957ee6ff-7926-4f81-a418-5cae2bfc4bd4","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryZfCsEcfaSWaf27Ja","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T21:46:23.849Z HTTP response
+{"requestId":"957ee6ff-7926-4f81-a418-5cae2bfc4bd4","method":"POST","path":"/api/extract-financials-from-upload","status":500,"ms":115}
+Bot: True
+MulterError: File too large
+    at abortWithCode (/Users/amiyasekhar/ibanalystagent/server/node_modules/multer/lib/make-middleware.js:73:22)
+    at FileStream.<anonymous> (/Users/amiyasekhar/ibanalystagent/server/node_modules/multer/lib/make-middleware.js:136:11)
+    at FileStream.emit (node:events:507:28)
+    at SBMH.ssCb [as _cb] (/Users/amiyasekhar/ibanalystagent/server/node_modules/busboy/lib/types/multipart.js:479:32)
+    at feed (/Users/amiyasekhar/ibanalystagent/server/node_modules/streamsearch/lib/sbmh.js:248:10)
+    at SBMH.push (/Users/amiyasekhar/ibanalystagent/server/node_modules/streamsearch/lib/sbmh.js:104:16)
+    at Multipart._write (/Users/amiyasekhar/ibanalystagent/server/node_modules/busboy/lib/types/multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Multipart.Writable.write (node:internal/streams/writable:508:10)
+[INFO] 01:48:23 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/index.ts has been modified
+[INFO] 2026-01-20T21:48:23.500Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-20T21:49:18.868Z HTTP request
+{"requestId":"ca3b4645-943e-40d2-8ad9-c57448c26d7c","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundarypKWgqTX8A45O6P06","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[ERROR] 2026-01-20T21:49:18.982Z Multer error
+{"code":"LIMIT_FILE_SIZE","message":"File too large","field":"pdfs"}
+Bot: True
+[INFO] 2026-01-20T21:49:18.984Z HTTP response
+{"requestId":"ca3b4645-943e-40d2-8ad9-c57448c26d7c","method":"POST","path":"/api/extract-financials-from-upload","status":413,"ms":116}
+Bot: True
+[INFO] 01:50:24 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/index.ts has been modified
+[INFO] 2026-01-20T21:50:24.459Z Server running on http://localhost:4000
+Bot: True
+[INFO] 01:50:33 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/index.ts has been modified
+[INFO] 2026-01-20T21:50:33.666Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-20T21:54:11.151Z HTTP request
+{"requestId":"416e7112-20b7-4999-8230-6cca1c4c11da","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryGyfgShBxy6eYAAfm","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T21:54:11.266Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":4}
+Bot: True
+[INFO] 2026-01-20T22:02:06.908Z PDF financial extraction ok
+{"ms":475642}
+Bot: True
+[INFO] 2026-01-20T22:02:06.911Z HTTP response
+{"requestId":"416e7112-20b7-4999-8230-6cca1c4c11da","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":475760}
+Bot: True
+[INFO] 2026-01-20T22:39:26.369Z HTTP request
+{"requestId":"4f734ada-387b-4e4b-b79c-1ff8b5eed8ca","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundary1HZDAmc3b0lnXo3y","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T22:39:26.489Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":4}
+Bot: True
+[INFO] 2026-01-20T22:47:34.233Z PDF financial extraction ok
+{"ms":487744}
+Bot: True
+[INFO] 2026-01-20T22:47:34.235Z HTTP response
+{"requestId":"4f734ada-387b-4e4b-b79c-1ff8b5eed8ca","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":487866}
+Bot: True
+[INFO] 2026-01-20T22:53:57.982Z HTTP request
+{"requestId":"240e99aa-688c-4578-8471-09e968136c36","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryk5bQpdUD9CJ1Ixqr","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T22:53:58.090Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":4}
+Bot: True
+[INFO] 2026-01-20T23:02:26.842Z PDF financial extraction ok
+{"ms":508752}
+Bot: True
+[INFO] 2026-01-20T23:02:26.844Z HTTP response
+{"requestId":"240e99aa-688c-4578-8471-09e968136c36","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":508862}
+Bot: True
+[INFO] 2026-01-20T23:04:46.316Z HTTP request
+{"requestId":"2b0771eb-4417-4e3f-bc8f-eacc3f219085","method":"POST","path":"/api/generate-raw-deal-text","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"595","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"companyName\":\"NVIDIA\",\"companyDescription\":\"\",\"financialText\":\"year_label | revenue | ebitda | pat | eps | networth | total_assets\\n-------------------------------------------------------------------\\n2022 | 26,914,000,000 | 10,041,000,000 | 9,752,000,000 | 3.85 | 26,612,000,000 | 44,187,000,000\\n2023 | 26,974,000,000 | 4,224,000,000 | 4,368,000,000 | 1.74 | 22,101,000,000 | 41,182,000,000\\n2024 | 60,922,000,000 | 32,972,000,000 | 29,760,000,000 | 11.93 | 42,978,000,000 | 65,728,000,000\\n2025 | 130,497,000,000 | 81,453,000,000 | 72,880,000,000 | 2.94 | 79,327,000,000 | 111,601,000,000\"}"}
+Bot: True
+[INFO] 2026-01-20T23:04:46.318Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":197,"promptLen":1386}
+Bot: True
+[INFO] 2026-01-20T23:04:57.692Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":11374}
+Bot: True
+[INFO] 2026-01-20T23:04:57.695Z HTTP response
+{"requestId":"2b0771eb-4417-4e3f-bc8f-eacc3f219085","method":"POST","path":"/api/generate-raw-deal-text","status":200,"ms":11379}
+Bot: True
+[INFO] 2026-01-20T23:14:02.421Z HTTP request
+{"requestId":"8dee0ed6-7e05-4589-b648-0c05f1d83ed0","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryUievHS7SXq7t1cNZ","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"84797940","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T23:14:02.510Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":2}
+Bot: True
+[INFO] 2026-01-20T23:17:47.372Z PDF financial extraction ok
+{"ms":224862}
+Bot: True
+[INFO] 2026-01-20T23:17:47.374Z HTTP response
+{"requestId":"8dee0ed6-7e05-4589-b648-0c05f1d83ed0","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":224953}
+Bot: True
+[INFO] 2026-01-20T23:18:30.915Z HTTP request
+{"requestId":"f5d84505-7ad3-4365-a349-443a2314cc80","method":"POST","path":"/api/extract-financials-from-upload","headers":{"host":"localhost:4000","accept":"*/*","content-type":"multipart/form-data; boundary=----WebKitFormBoundaryJSejbH1rvYLOJZ3B","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"130138898","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T23:18:31.023Z PDF financial extraction start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/extract_financials_from_pdfs.py","pdfs":4}
+Bot: True
+[INFO] 2026-01-20T23:25:42.199Z PDF financial extraction ok
+{"ms":431176}
+Bot: True
+[INFO] 2026-01-20T23:25:42.201Z HTTP response
+{"requestId":"f5d84505-7ad3-4365-a349-443a2314cc80","method":"POST","path":"/api/extract-financials-from-upload","status":200,"ms":431286}
+Bot: True
+[INFO] 2026-01-20T23:37:57.947Z HTTP request
+{"requestId":"34237b69-79f5-4fef-afa1-9a359fd84829","method":"POST","path":"/api/generate-raw-deal-text","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"595","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"companyName\":\"NVIDIA\",\"companyDescription\":\"\",\"financialText\":\"year_label | revenue | ebitda | pat | eps | networth | total_assets\\n-------------------------------------------------------------------\\n2022 | 26,914,000,000 | 10,041,000,000 | 9,752,000,000 | 3.85 | 26,612,000,000 | 44,187,000,000\\n2023 | 26,974,000,000 | 4,224,000,000 | 4,368,000,000 | 1.74 | 22,101,000,000 | 41,182,000,000\\n2024 | 60,922,000,000 | 32,972,000,000 | 29,760,000,000 | 11.93 | 42,978,000,000 | 65,728,000,000\\n2025 | 130,497,000,000 | 81,453,000,000 | 72,880,000,000 | 2.94 | 79,327,000,000 | 111,601,000,000\"}"}
+Bot: True
+[INFO] 2026-01-20T23:37:57.950Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":197,"promptLen":1386}
+Bot: True
+[INFO] 2026-01-20T23:38:08.003Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":10053}
+Bot: True
+[INFO] 2026-01-20T23:38:08.006Z HTTP response
+{"requestId":"34237b69-79f5-4fef-afa1-9a359fd84829","method":"POST","path":"/api/generate-raw-deal-text","status":200,"ms":10059}
+Bot: True
+[INFO] 2026-01-20T23:46:01.291Z HTTP request
+{"requestId":"6ef288f7-0ba1-4067-8df3-4f55393e2c2b","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T23:46:01.293Z HTTP response
+{"requestId":"6ef288f7-0ba1-4067-8df3-4f55393e2c2b","method":"POST","path":"/api/workflows","status":200,"ms":2}
+Bot: True
+[INFO] 2026-01-20T23:46:01.297Z HTTP request
+{"requestId":"ca16cbaa-44a5-4861-872f-5c8383e9207a","method":"POST","path":"/api/workflows/7101bfb3-3797-4b55-8ee2-baf8bd14dae3/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2303","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\nNVIDIA\\n\\nOur client, a global leader in accelerated computing and artificial intelligence infrastructure, is exploring strategic alternatives. NVIDIA has established itself as the dominant provider of graphics processing units (GPUs) and AI computing platforms, serving data center, gaming, professional visualization, and automotive markets worldwide.\\n\\nThe company has demonstrated exceptional growth trajectory, driven by surging demand for AI and machine learning infrastructure across enterprise, cloud service provider, and research institutions. NVIDIA's technology portfolio spans hardware architecture, system design, and software frameworks that enable advanced computing workloads.\\n\\nFinancials (as provided):\\n\\nRevenue growth from $26.9B (2022) to $130.5B (2025) reflects extraordinary market expansion\\nEBITDA increased from $10.0B (2022) to $81.5B (2025)\\nNet income scaled from $9.8B (2022) to $72.9B (2025)\\nTotal assets grew from $44.2B (2022) to $111.6B (2025)\\nShareholders' equity strengthened from $26.6B (2022) to $79.3B (2025)\\n\\nInvestment Highlights:\\n\\n- Market-leading position in AI accelerators and GPU computing\\n- Diversified revenue base across multiple high-growth end markets\\n- Proprietary technology platform with significant barriers to entry\\n- Strong balance sheet supporting continued innovation and expansion\\n- Proven management team with track record of execution\\n\\nThis represents a rare opportunity to acquire a franchise asset at the intersection of artificial intelligence, high-performance comput…(+703 chars)"}
+Bot: True
+[INFO] 2026-01-20T23:46:01.299Z [ExtractDeal] Start
+{"rawTextLen":2256,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-20T23:46:01.300Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2937}
+Bot: True
+[INFO] 2026-01-20T23:46:04.623Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3323}
+Bot: True
+[INFO] 2026-01-20T23:46:04.628Z [ExtractDeal] Claude parsed & sanitized
+{"name":"NVIDIA","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","ebitda":10000000},"nominal":{"revenue":0,"ebitda":10000000,"dealSize":0}}
+Bot: True
+[INFO] 2026-01-20T23:46:04.628Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":5495}
+Bot: True
+[INFO] 2026-01-20T23:46:06.173Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1545}
+Bot: True
+[INFO] 2026-01-20T23:46:06.175Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-20T23:46:06.175Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-20T23:46:06.176Z HTTP response
+{"requestId":"ca16cbaa-44a5-4861-872f-5c8383e9207a","method":"POST","path":"/api/workflows/7101bfb3-3797-4b55-8ee2-baf8bd14dae3/extract","status":200,"ms":4879}
+Bot: True
+[INFO] 2026-01-20T23:46:06.184Z HTTP request
+{"requestId":"c46876a2-4565-4077-a7fa-ce16bb3613a3","method":"GET","path":"/api/workflows/7101bfb3-3797-4b55-8ee2-baf8bd14dae3","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-20T23:46:06.186Z HTTP response
+{"requestId":"c46876a2-4565-4077-a7fa-ce16bb3613a3","method":"GET","path":"/api/workflows/7101bfb3-3797-4b55-8ee2-baf8bd14dae3","status":200,"ms":2}
+Bot: True
+[INFO] 03:49:40 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T23:49:40.979Z Server running on http://localhost:4000
+Bot: True
+[INFO] 03:50:06 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-20T23:50:06.872Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T00:26:05.847Z HTTP request
+{"requestId":"685cd66e-0153-4dc5-bfd6-b658e958811a","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:26:05.855Z HTTP response
+{"requestId":"685cd66e-0153-4dc5-bfd6-b658e958811a","method":"POST","path":"/api/workflows","status":200,"ms":8}
+Bot: True
+[INFO] 2026-01-21T00:26:05.868Z HTTP request
+{"requestId":"8c130d45-4597-4a0d-8b78-bc6b5ab81147","method":"POST","path":"/api/workflows/8c89bc65-ef3e-4d1e-ac5c-c402e15e559b/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2303","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\nNVIDIA\\n\\nOur client, a global leader in accelerated computing and artificial intelligence infrastructure, is exploring strategic alternatives. NVIDIA has established itself as the dominant provider of graphics processing units (GPUs) and AI computing platforms, serving data center, gaming, professional visualization, and automotive markets worldwide.\\n\\nThe company has demonstrated exceptional growth trajectory, driven by surging demand for AI and machine learning infrastructure across enterprise, cloud service provider, and research institutions. NVIDIA's technology portfolio spans hardware architecture, system design, and software frameworks that enable advanced computing workloads.\\n\\nFinancials (as provided):\\n\\nRevenue growth from $26.9B (2022) to $130.5B (2025) reflects extraordinary market expansion\\nEBITDA increased from $10.0B (2022) to $81.5B (2025)\\nNet income scaled from $9.8B (2022) to $72.9B (2025)\\nTotal assets grew from $44.2B (2022) to $111.6B (2025)\\nShareholders' equity strengthened from $26.6B (2022) to $79.3B (2025)\\n\\nInvestment Highlights:\\n\\n- Market-leading position in AI accelerators and GPU computing\\n- Diversified revenue base across multiple high-growth end markets\\n- Proprietary technology platform with significant barriers to entry\\n- Strong balance sheet supporting continued innovation and expansion\\n- Proven management team with track record of execution\\n\\nThis represents a rare opportunity to acquire a franchise asset at the intersection of artificial intelligence, high-performance comput…(+703 chars)"}
+Bot: True
+[INFO] 2026-01-21T00:26:05.870Z [ExtractDeal] Start
+{"rawTextLen":2256,"detected":{"currency":"USD","scale":"b"}}
+Bot: True
+[INFO] 2026-01-21T00:26:05.870Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2937}
+Bot: True
+[INFO] 2026-01-21T00:26:12.221Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":6351}
+Bot: True
+[INFO] 2026-01-21T00:26:12.224Z [ExtractDeal] Claude parsed & sanitized
+{"name":"NVIDIA","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","ebitda":10000000000},"nominal":{"revenue":0,"ebitda":10000000000,"dealSize":0}}
+Bot: True
+[INFO] 2026-01-21T00:26:12.225Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":5750}
+Bot: True
+[INFO] 2026-01-21T00:26:15.596Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":3371}
+Bot: True
+[INFO] 2026-01-21T00:26:15.597Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T00:26:15.598Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T00:26:15.599Z HTTP response
+{"requestId":"8c130d45-4597-4a0d-8b78-bc6b5ab81147","method":"POST","path":"/api/workflows/8c89bc65-ef3e-4d1e-ac5c-c402e15e559b/extract","status":200,"ms":9731}
+Bot: True
+[INFO] 2026-01-21T00:26:15.605Z HTTP request
+{"requestId":"00922b2f-a40f-4e5e-b1fc-4e89539fdbe9","method":"GET","path":"/api/workflows/8c89bc65-ef3e-4d1e-ac5c-c402e15e559b","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:26:15.608Z HTTP response
+{"requestId":"00922b2f-a40f-4e5e-b1fc-4e89539fdbe9","method":"GET","path":"/api/workflows/8c89bc65-ef3e-4d1e-ac5c-c402e15e559b","status":200,"ms":3}
+Bot: True
+[INFO] 04:28:29 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:28:29.752Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T00:29:24.343Z HTTP request
+{"requestId":"82c270fd-92e4-45b3-8501-c9e42ed0fb45","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:29:24.349Z HTTP response
+{"requestId":"82c270fd-92e4-45b3-8501-c9e42ed0fb45","method":"POST","path":"/api/workflows","status":200,"ms":6}
+Bot: True
+[INFO] 2026-01-21T00:29:24.367Z HTTP request
+{"requestId":"4aeb70ce-ed64-44c6-a031-ea0d7bf7baf0","method":"POST","path":"/api/workflows/8b0e7100-f350-47ea-9d53-66e55231730c/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2303","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\nNVIDIA\\n\\nOur client, a global leader in accelerated computing and artificial intelligence infrastructure, is exploring strategic alternatives. NVIDIA has established itself as the dominant provider of graphics processing units (GPUs) and AI computing platforms, serving data center, gaming, professional visualization, and automotive markets worldwide.\\n\\nThe company has demonstrated exceptional growth trajectory, driven by surging demand for AI and machine learning infrastructure across enterprise, cloud service provider, and research institutions. NVIDIA's technology portfolio spans hardware architecture, system design, and software frameworks that enable advanced computing workloads.\\n\\nFinancials (as provided):\\n\\nRevenue growth from $26.9B (2022) to $130.5B (2025) reflects extraordinary market expansion\\nEBITDA increased from $10.0B (2022) to $81.5B (2025)\\nNet income scaled from $9.8B (2022) to $72.9B (2025)\\nTotal assets grew from $44.2B (2022) to $111.6B (2025)\\nShareholders' equity strengthened from $26.6B (2022) to $79.3B (2025)\\n\\nInvestment Highlights:\\n\\n- Market-leading position in AI accelerators and GPU computing\\n- Diversified revenue base across multiple high-growth end markets\\n- Proprietary technology platform with significant barriers to entry\\n- Strong balance sheet supporting continued innovation and expansion\\n- Proven management team with track record of execution\\n\\nThis represents a rare opportunity to acquire a franchise asset at the intersection of artificial intelligence, high-performance comput…(+703 chars)"}
+Bot: True
+[INFO] 2026-01-21T00:29:24.369Z [ExtractDeal] Start
+{"rawTextLen":2256,"detected":{"currency":"USD","scale":"b"}}
+Bot: True
+[INFO] 2026-01-21T00:29:24.369Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2937}
+Bot: True
+[INFO] 2026-01-21T00:29:28.716Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4347}
+Bot: True
+[INFO] 2026-01-21T00:29:28.720Z [ExtractDeal] Claude parsed & sanitized
+{"name":"NVIDIA","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","ebitda":10000000000},"nominal":{"revenue":0,"ebitda":10000000000,"dealSize":0}}
+Bot: True
+[INFO] 2026-01-21T00:29:28.721Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":5588}
+Bot: True
+[INFO] 2026-01-21T00:29:30.684Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1963}
+Bot: True
+[INFO] 2026-01-21T00:29:30.686Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T00:29:30.686Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T00:29:30.688Z HTTP response
+{"requestId":"4aeb70ce-ed64-44c6-a031-ea0d7bf7baf0","method":"POST","path":"/api/workflows/8b0e7100-f350-47ea-9d53-66e55231730c/extract","status":200,"ms":6321}
+Bot: True
+[INFO] 2026-01-21T00:29:30.694Z HTTP request
+{"requestId":"29d95c10-6d65-4523-8964-04d79fa23218","method":"GET","path":"/api/workflows/8b0e7100-f350-47ea-9d53-66e55231730c","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:29:30.697Z HTTP response
+{"requestId":"29d95c10-6d65-4523-8964-04d79fa23218","method":"GET","path":"/api/workflows/8b0e7100-f350-47ea-9d53-66e55231730c","status":200,"ms":3}
+Bot: True
+[INFO] 04:31:51 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:31:51.972Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:32:10 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:32:10.680Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:32:16 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:32:16.673Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:32:21 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:32:21.943Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:32:27 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:32:27.419Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:37:12 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:37:12.632Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:37:27 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:37:27.094Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:37:45 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:37:45.109Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:38:01 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:38:01.313Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:47:49 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:47:49.373Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:47:55 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:47:55.932Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:48:12 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:48:12.520Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:48:53 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:48:53.331Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:49:19 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:49:19.957Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:49:34 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:49:34.258Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:50:52 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:50:52.354Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:50:59 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:50:59.466Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:51:05 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:51:05.917Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:51:16 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:51:16.223Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:51:29 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:51:29.767Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:51:44 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:51:44.089Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:51:58 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:51:58.746Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:52:38 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:52:38.936Z Server running on http://localhost:4000
+Bot: True
+[INFO] 04:52:54 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T00:52:54.829Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T00:56:46.605Z HTTP request
+{"requestId":"29a2d868-b5d9-4580-a599-96dfba25e089","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:56:46.612Z HTTP response
+{"requestId":"29a2d868-b5d9-4580-a599-96dfba25e089","method":"POST","path":"/api/workflows","status":200,"ms":7}
+Bot: True
+[INFO] 2026-01-21T00:56:46.625Z HTTP request
+{"requestId":"3ac69d97-45d3-48c9-9377-69f143c8a7e1","method":"POST","path":"/api/workflows/a3cb9473-0b56-4465-a349-8e8865fedc03/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2303","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\nNVIDIA\\n\\nOur client, a global leader in accelerated computing and artificial intelligence infrastructure, is exploring strategic alternatives. NVIDIA has established itself as the dominant provider of graphics processing units (GPUs) and AI computing platforms, serving data center, gaming, professional visualization, and automotive markets worldwide.\\n\\nThe company has demonstrated exceptional growth trajectory, driven by surging demand for AI and machine learning infrastructure across enterprise, cloud service provider, and research institutions. NVIDIA's technology portfolio spans hardware architecture, system design, and software frameworks that enable advanced computing workloads.\\n\\nFinancials (as provided):\\n\\nRevenue growth from $26.9B (2022) to $130.5B (2025) reflects extraordinary market expansion\\nEBITDA increased from $10.0B (2022) to $81.5B (2025)\\nNet income scaled from $9.8B (2022) to $72.9B (2025)\\nTotal assets grew from $44.2B (2022) to $111.6B (2025)\\nShareholders' equity strengthened from $26.6B (2022) to $79.3B (2025)\\n\\nInvestment Highlights:\\n\\n- Market-leading position in AI accelerators and GPU computing\\n- Diversified revenue base across multiple high-growth end markets\\n- Proprietary technology platform with significant barriers to entry\\n- Strong balance sheet supporting continued innovation and expansion\\n- Proven management team with track record of execution\\n\\nThis represents a rare opportunity to acquire a franchise asset at the intersection of artificial intelligence, high-performance comput…(+703 chars)"}
+Bot: True
+[INFO] 2026-01-21T00:56:46.628Z [ExtractDeal] Start
+{"rawTextLen":2256,"detected":{"currency":"USD","scale":"b"}}
+Bot: True
+[INFO] 2026-01-21T00:56:46.629Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":2937}
+Bot: True
+[INFO] 2026-01-21T00:56:51.079Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4450}
+Bot: True
+[INFO] 2026-01-21T00:56:51.084Z [ExtractDeal] Claude parsed & sanitized
+{"name":"NVIDIA","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":130497000000,"ebitda":81453000000},"nominal":{"revenue":130497000000,"ebitda":81453000000,"dealSize":0}}
+Bot: True
+[INFO] 2026-01-21T00:56:51.085Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":5642}
+Bot: True
+[INFO] 2026-01-21T00:56:53.605Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2520}
+Bot: True
+[INFO] 2026-01-21T00:56:53.607Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T00:56:53.607Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T00:56:53.609Z HTTP response
+{"requestId":"3ac69d97-45d3-48c9-9377-69f143c8a7e1","method":"POST","path":"/api/workflows/a3cb9473-0b56-4465-a349-8e8865fedc03/extract","status":200,"ms":6984}
+Bot: True
+[INFO] 2026-01-21T00:56:53.618Z HTTP request
+{"requestId":"df42a1fc-35b2-4f9e-ab9b-0363df9d2af7","method":"GET","path":"/api/workflows/a3cb9473-0b56-4465-a349-8e8865fedc03","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T00:56:53.621Z HTTP response
+{"requestId":"df42a1fc-35b2-4f9e-ab9b-0363df9d2af7","method":"GET","path":"/api/workflows/a3cb9473-0b56-4465-a349-8e8865fedc03","status":200,"ms":3}
+Bot: True
+[INFO] 05:26:55 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/buyers.ts has been modified
+[INFO] 2026-01-21T01:26:55.550Z Server running on http://localhost:4000
+Bot: True
+[INFO] 05:29:57 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/buyerSearch.ts has been modified
+[INFO] 2026-01-21T01:29:57.122Z Server running on http://localhost:4000
+Bot: True
+[INFO] 05:30:20 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/agent.ts has been modified
+[INFO] 2026-01-21T01:30:20.826Z Server running on http://localhost:4000
+Bot: True
+[INFO] 05:30:35 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/agent.ts has been modified
+[INFO] 2026-01-21T01:30:35.607Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T01:51:19.896Z HTTP request
+{"requestId":"e00d6317-95aa-4c3f-9a62-611f1cb0d969","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T01:51:19.902Z HTTP response
+{"requestId":"e00d6317-95aa-4c3f-9a62-611f1cb0d969","method":"POST","path":"/api/workflows","status":200,"ms":6}
+Bot: True
+[INFO] 2026-01-21T01:51:19.916Z HTTP request
+{"requestId":"d7e8cc7a-7bea-4516-87a4-a15cf240f395","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2841","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\n  Project Atlas – Vertical SaaS Platform\\n\\n  Our client, a leading provider of cloud-based workflow automation and carrier management software for the logistics industry, is exploring\\n  strategic alternatives. The Company has established itself as a mission-critical platform for mid-market freight brokers and 3PL providers\\n  across North America.\\n\\n  The platform enables customers to automate load management, carrier sourcing, rate optimization, and real-time tracking through a modern\\n  API-first architecture. The Company serves 280+ active customers with an average contract value of $48K annually and net revenue retention of\\n  118%, driven by strong product-market fit and recurring module expansion.\\n\\n  Founded in 2016, the business has achieved profitability while maintaining 30%+ YoY growth. The Company's technology differentiation stems from\\n  proprietary carrier network integrations (2,400+ carriers), embedded financial services (factoring, fuel cards), and vertical-specific workflow\\n  templates that reduce implementation time from months to weeks.\\n\\n  Financials (as provided):\\n\\n  Revenue grew from $11.2M (2022) to $24.8M (2025), reflecting 30% CAGR\\n  EBITDA increased from $2.1M (2022) to $8.4M (2025)\\n  Net income scaled from $1.6M (2022) to $6.8M (2025)\\n  ARR reached $26.2M with 94% recurring revenue mix\\n  Rule of 40 score: 64 (growth + margin)\\n\\n  Investment Highlights:\\n\\n  - Market-leading vertical SaaS with 94% gross revenue retention\\n  - Significant whitespace opportunity: 15K+ addressable mid-m…(+1239 chars)"}
+Bot: True
+[INFO] 2026-01-21T01:51:19.918Z [ExtractDeal] Start
+{"rawTextLen":2782,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-21T01:51:19.919Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":3463}
+Bot: True
+[INFO] 2026-01-21T01:51:24.563Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4644}
+Bot: True
+[INFO] 2026-01-21T01:51:24.567Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000,"dealSize":11200000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":11200000}}
+Bot: True
+[INFO] 2026-01-21T01:51:24.568Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":6513}
+Bot: True
+[INFO] 2026-01-21T01:51:26.186Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1618}
+Bot: True
+[INFO] 2026-01-21T01:51:26.187Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T01:51:26.188Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T01:51:26.189Z HTTP response
+{"requestId":"d7e8cc7a-7bea-4516-87a4-a15cf240f395","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/extract","status":200,"ms":6273}
+Bot: True
+[INFO] 2026-01-21T01:51:26.193Z HTTP request
+{"requestId":"077b4aae-70a7-4010-b47a-3eefa0fd0d9e","method":"GET","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T01:51:26.194Z HTTP response
+{"requestId":"077b4aae-70a7-4010-b47a-3eefa0fd0d9e","method":"GET","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-21T01:54:01.132Z HTTP request
+{"requestId":"03690623-d1fe-4c6c-967f-34b5634362fd","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"904","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Atlas\\nSector: Software\\nGeography: \\nRevenue ($m): 24800000\\nEBITDA ($m): 8400000\\nEV ($m): 11200000\\nDescription: Cloud-based workflow automation and carrier management SaaS platform for mid-market freight brokers and 3PL providers in North America. Serves 280+ customers with $48K ACV and 118% NRR. Platform enables load management, carrier sourcing, rate optimization, and real-time tracking via API-first architecture. Founded 2016, achieved profitability with 30%+ YoY growth. Key differentiators: 2,400+ carrier network integrations, embedded financial services (factoring, fuel cards), vertical-specific workflow templates. ARR $26.2M with 94% recurring revenue, 94% gross retention, Rule of 40 score of 64. Capital-efficient growth with <$1.5M annual S&M spend and 6-month payback. Significant expansion opportunity in 15K+ addressable mid-market logistics companies.\"}"}
+Bot: True
+[INFO] 2026-01-21T01:54:01.133Z [ExtractDeal] Start
+{"rawTextLen":884,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-21T01:54:01.134Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":1565}
+Bot: True
+[INFO] 2026-01-21T01:54:07.267Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":6133}
+Bot: True
+[INFO] 2026-01-21T01:54:07.270Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000,"dealSize":24800000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":24800000}}
+Bot: True
+[INFO] 2026-01-21T01:54:07.271Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4615}
+Bot: True
+[INFO] 2026-01-21T01:54:08.867Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1596}
+Bot: True
+[INFO] 2026-01-21T01:54:08.868Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T01:54:08.868Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T01:54:08.870Z HTTP response
+{"requestId":"03690623-d1fe-4c6c-967f-34b5634362fd","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/extract","status":200,"ms":7738}
+Bot: True
+[INFO] 2026-01-21T01:54:08.872Z HTTP request
+{"requestId":"5d58bdaf-35c6-4059-914d-a0d1c890d10e","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T01:54:08.873Z [Agent] Start
+{"deal":{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000,"dealSize":24800000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":24800000}}}
+Bot: True
+[INFO] 2026-01-21T01:54:08.874Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2026-01-21T01:54:08.932Z Python inference ok
+{"ms":58,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2026-01-21T01:54:08.933Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1674}
+Bot: True
+[INFO] 2026-01-21T01:54:27.736Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":18803}
+Bot: True
+[WARN] 2026-01-21T01:54:27.737Z [Agent] Heuristic failed: email introduced unsupported numbers
+Bot: True
+[INFO] 2026-01-21T01:54:27.737Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":7648}
+Bot: True
+[INFO] 2026-01-21T01:54:29.397Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1660}
+Bot: True
+[INFO] 2026-01-21T01:54:29.398Z [Validator] No unsupported claims detected
+Bot: True
+[WARN] 2026-01-21T01:54:29.398Z [Agent] Regenerating due to validation issues
+{"validatorIssues":[],"heuristicOk":false}
+Bot: True
+[INFO] 2026-01-21T01:54:29.399Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1953}
+Bot: True
+[INFO] 2026-01-21T01:54:46.234Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":16835}
+Bot: True
+[WARN] 2026-01-21T01:54:46.235Z [Agent] Regeneration still violated heuristic; using fallback drafts
+Bot: True
+[INFO] 2026-01-21T01:54:46.236Z HTTP response
+{"requestId":"5d58bdaf-35c6-4059-914d-a0d1c890d10e","method":"POST","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442/match","status":200,"ms":37364}
+Bot: True
+[INFO] 2026-01-21T01:54:46.241Z HTTP request
+{"requestId":"b4aa5956-342b-452c-9ec7-79890a1c463e","method":"GET","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"502-J0g7r1EZf1TGz6V59OSLB9r/+bo\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T01:54:46.242Z HTTP response
+{"requestId":"b4aa5956-342b-452c-9ec7-79890a1c463e","method":"GET","path":"/api/workflows/cd61dbe2-73a4-4779-8dff-eb194ff0b442","status":200,"ms":1}
+Bot: True
+[INFO] 06:05:12 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:05:12.134Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:05:25 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:05:25.227Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:05:48 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:05:48.183Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:05:55 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:05:55.947Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T02:14:05.814Z HTTP request
+{"requestId":"50aa965e-3bed-4849-8dda-f7ad939d453e","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:14:05.824Z HTTP response
+{"requestId":"50aa965e-3bed-4849-8dda-f7ad939d453e","method":"POST","path":"/api/workflows","status":200,"ms":10}
+Bot: True
+[INFO] 2026-01-21T02:14:05.837Z HTTP request
+{"requestId":"bbb3588c-de2f-40ce-8314-c36b663cf6d5","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2841","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\n  Project Atlas – Vertical SaaS Platform\\n\\n  Our client, a leading provider of cloud-based workflow automation and carrier management software for the logistics industry, is exploring\\n  strategic alternatives. The Company has established itself as a mission-critical platform for mid-market freight brokers and 3PL providers\\n  across North America.\\n\\n  The platform enables customers to automate load management, carrier sourcing, rate optimization, and real-time tracking through a modern\\n  API-first architecture. The Company serves 280+ active customers with an average contract value of $48K annually and net revenue retention of\\n  118%, driven by strong product-market fit and recurring module expansion.\\n\\n  Founded in 2016, the business has achieved profitability while maintaining 30%+ YoY growth. The Company's technology differentiation stems from\\n  proprietary carrier network integrations (2,400+ carriers), embedded financial services (factoring, fuel cards), and vertical-specific workflow\\n  templates that reduce implementation time from months to weeks.\\n\\n  Financials (as provided):\\n\\n  Revenue grew from $11.2M (2022) to $24.8M (2025), reflecting 30% CAGR\\n  EBITDA increased from $2.1M (2022) to $8.4M (2025)\\n  Net income scaled from $1.6M (2022) to $6.8M (2025)\\n  ARR reached $26.2M with 94% recurring revenue mix\\n  Rule of 40 score: 64 (growth + margin)\\n\\n  Investment Highlights:\\n\\n  - Market-leading vertical SaaS with 94% gross revenue retention\\n  - Significant whitespace opportunity: 15K+ addressable mid-m…(+1239 chars)"}
+Bot: True
+[INFO] 2026-01-21T02:14:05.838Z [ExtractDeal] Start
+{"rawTextLen":2782,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-21T02:14:05.839Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":3725}
+Bot: True
+[INFO] 2026-01-21T02:14:10.446Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4607}
+Bot: True
+[INFO] 2026-01-21T02:14:10.451Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000,"dealSize":11200000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":11200000}}
+Bot: True
+[INFO] 2026-01-21T02:14:10.451Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":6804}
+Bot: True
+[INFO] 2026-01-21T02:14:12.186Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":1735}
+Bot: True
+[INFO] 2026-01-21T02:14:12.187Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T02:14:12.187Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T02:14:12.188Z HTTP response
+{"requestId":"bbb3588c-de2f-40ce-8314-c36b663cf6d5","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/extract","status":200,"ms":6351}
+Bot: True
+[INFO] 2026-01-21T02:14:12.191Z HTTP request
+{"requestId":"2b89647f-9946-4dbb-ae53-c113dbcbebfe","method":"GET","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:14:12.192Z HTTP response
+{"requestId":"2b89647f-9946-4dbb-ae53-c113dbcbebfe","method":"GET","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5","status":200,"ms":1}
+Bot: True
+[INFO] 2026-01-21T02:14:29.489Z HTTP request
+{"requestId":"5676bc59-5167-4805-8095-071146f242a6","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"1001","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"Name: Project Atlas\\nSector: Software\\nGeography: \\nRevenue ($m): 24800000\\nEBITDA ($m): 8400000\\nEV ($m): 11200000\\nDescription: Leading vertical SaaS platform providing cloud-based workflow automation and carrier management software for the logistics industry, serving mid-market freight brokers and 3PL providers across North America. The platform enables automated load management, carrier sourcing, rate optimization, and real-time tracking through API-first architecture. Serves 280+ active customers with $48K average contract value and 118% net revenue retention. Founded in 2016, achieved profitability with 30%+ YoY growth. Key differentiators include 2,400+ carrier network integrations, embedded financial services (factoring, fuel cards), and vertical-specific workflow templates. ARR of $26.2M with 94% recurring revenue mix and 94% gross revenue retention. Rule of 40 score: 64. Significant whitespace with 15K+ addressable mid-market logistics companies in North America.\"}"}
+Bot: True
+[INFO] 2026-01-21T02:14:29.491Z [ExtractDeal] Start
+{"rawTextLen":981,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-21T02:14:29.492Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":1924}
+Bot: True
+[INFO] 2026-01-21T02:14:32.243Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2751}
+Bot: True
+[INFO] 2026-01-21T02:14:32.248Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":0}}
+Bot: True
+[INFO] 2026-01-21T02:14:32.248Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":4922}
+Bot: True
+[INFO] 2026-01-21T02:14:34.839Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2591}
+Bot: True
+[INFO] 2026-01-21T02:14:34.840Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T02:14:34.840Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T02:14:34.841Z HTTP response
+{"requestId":"5676bc59-5167-4805-8095-071146f242a6","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/extract","status":200,"ms":5352}
+Bot: True
+[INFO] 2026-01-21T02:14:34.843Z HTTP request
+{"requestId":"4575e921-eb4d-49e0-9185-5b11a1047c59","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/match","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:14:34.844Z [Agent] Start
+{"deal":{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":0}}}
+Bot: True
+[INFO] 2026-01-21T02:14:34.845Z Python inference start
+{"scriptPath":"/Users/amiyasekhar/ibanalystagent/python_ml/infer.py","buyers":250}
+Bot: True
+[INFO] 2026-01-21T02:14:34.885Z Python inference ok
+{"ms":40,"modelVersion":"2025-12-12"}
+Bot: True
+[INFO] 2026-01-21T02:14:34.886Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1593}
+Bot: True
+[INFO] 2026-01-21T02:14:52.591Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":17705}
+Bot: True
+[WARN] 2026-01-21T02:14:52.593Z [Agent] Heuristic failed: email introduced unsupported numbers
+Bot: True
+[INFO] 2026-01-21T02:14:52.594Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":7946}
+Bot: True
+[INFO] 2026-01-21T02:14:54.934Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2340}
+Bot: True
+[INFO] 2026-01-21T02:14:54.935Z [Validator] No unsupported claims detected
+Bot: True
+[WARN] 2026-01-21T02:14:54.935Z [Agent] Regenerating due to validation issues
+{"validatorIssues":[],"heuristicOk":false}
+Bot: True
+[INFO] 2026-01-21T02:14:54.936Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":156,"promptLen":1872}
+Bot: True
+[INFO] 2026-01-21T02:15:10.545Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":15609}
+Bot: True
+[WARN] 2026-01-21T02:15:10.546Z [Agent] Regeneration still violated heuristic; using fallback drafts
+Bot: True
+[INFO] 2026-01-21T02:15:10.548Z HTTP response
+{"requestId":"4575e921-eb4d-49e0-9185-5b11a1047c59","method":"POST","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5/match","status":200,"ms":35705}
+Bot: True
+[INFO] 2026-01-21T02:15:10.553Z HTTP request
+{"requestId":"6e3ca925-162b-40c6-a77e-b9c6ee69d366","method":"GET","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","if-none-match":"W/\"563-cISla4RPfLm75jQFEwnrRGGF/+o\"","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:15:10.554Z HTTP response
+{"requestId":"6e3ca925-162b-40c6-a77e-b9c6ee69d366","method":"GET","path":"/api/workflows/dc476e08-dfb1-4d3d-a068-d8be91a554c5","status":200,"ms":1}
+Bot: True
+[INFO] 06:15:57 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/agent.ts has been modified
+[INFO] 2026-01-21T02:15:58.021Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:16:02 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/agent.ts has been modified
+[INFO] 2026-01-21T02:16:02.616Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:18:28 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:18:28.913Z Server running on http://localhost:4000
+Bot: True
+[INFO] 06:18:37 Restarting: /Users/amiyasekhar/ibanalystagent/server/src/extractDeal.ts has been modified
+[INFO] 2026-01-21T02:18:38.041Z Server running on http://localhost:4000
+Bot: True
+[INFO] 2026-01-21T02:20:14.351Z HTTP request
+{"requestId":"299ae60c-00f3-4295-a84f-5508a4753b90","method":"POST","path":"/api/workflows","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"0","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:20:14.358Z HTTP response
+{"requestId":"299ae60c-00f3-4295-a84f-5508a4753b90","method":"POST","path":"/api/workflows","status":200,"ms":7}
+Bot: True
+[INFO] 2026-01-21T02:20:14.371Z HTTP request
+{"requestId":"c24d6c8f-821f-48bb-9db6-5304a8d58458","method":"POST","path":"/api/workflows/ea00487f-5cca-4564-b6f5-7c8e48c12626/extract","headers":{"host":"localhost:4000","accept":"*/*","content-type":"application/json","sec-fetch-site":"same-site","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","content-length":"2841","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{\"rawText\":\"CONFIDENTIAL INVESTMENT OPPORTUNITY\\n\\n  Project Atlas – Vertical SaaS Platform\\n\\n  Our client, a leading provider of cloud-based workflow automation and carrier management software for the logistics industry, is exploring\\n  strategic alternatives. The Company has established itself as a mission-critical platform for mid-market freight brokers and 3PL providers\\n  across North America.\\n\\n  The platform enables customers to automate load management, carrier sourcing, rate optimization, and real-time tracking through a modern\\n  API-first architecture. The Company serves 280+ active customers with an average contract value of $48K annually and net revenue retention of\\n  118%, driven by strong product-market fit and recurring module expansion.\\n\\n  Founded in 2016, the business has achieved profitability while maintaining 30%+ YoY growth. The Company's technology differentiation stems from\\n  proprietary carrier network integrations (2,400+ carriers), embedded financial services (factoring, fuel cards), and vertical-specific workflow\\n  templates that reduce implementation time from months to weeks.\\n\\n  Financials (as provided):\\n\\n  Revenue grew from $11.2M (2022) to $24.8M (2025), reflecting 30% CAGR\\n  EBITDA increased from $2.1M (2022) to $8.4M (2025)\\n  Net income scaled from $1.6M (2022) to $6.8M (2025)\\n  ARR reached $26.2M with 94% recurring revenue mix\\n  Rule of 40 score: 64 (growth + margin)\\n\\n  Investment Highlights:\\n\\n  - Market-leading vertical SaaS with 94% gross revenue retention\\n  - Significant whitespace opportunity: 15K+ addressable mid-m…(+1239 chars)"}
+Bot: True
+[INFO] 2026-01-21T02:20:14.374Z [ExtractDeal] Start
+{"rawTextLen":2782,"detected":{"currency":"USD","scale":"m"}}
+Bot: True
+[INFO] 2026-01-21T02:20:14.374Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0.2,"systemLen":98,"promptLen":3725}
+Bot: True
+[INFO] 2026-01-21T02:20:19.157Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":4783}
+Bot: True
+[INFO] 2026-01-21T02:20:19.162Z [ExtractDeal] Claude parsed & sanitized
+{"name":"Project Atlas","sector":"Software","geography":"","provided":{"currency":"USD","scale":"unit","revenue":24800000,"ebitda":8400000,"dealSize":11200000},"nominal":{"revenue":24800000,"ebitda":8400000,"dealSize":11200000}}
+Bot: True
+[INFO] 2026-01-21T02:20:19.163Z [Claude] Call start
+{"model":"claude-sonnet-4-5-20250929","maxTokens":"[REDACTED]","temperature":0,"systemLen":125,"promptLen":6804}
+Bot: True
+[INFO] 2026-01-21T02:20:21.398Z [Claude] Call succeeded
+{"model":"claude-sonnet-4-5-20250929","ms":2235}
+Bot: True
+[INFO] 2026-01-21T02:20:21.400Z [Validator] No unsupported claims detected
+Bot: True
+[INFO] 2026-01-21T02:20:21.400Z [ExtractDeal] Used=claude
+Bot: True
+[INFO] 2026-01-21T02:20:21.402Z HTTP response
+{"requestId":"c24d6c8f-821f-48bb-9db6-5304a8d58458","method":"POST","path":"/api/workflows/ea00487f-5cca-4564-b6f5-7c8e48c12626/extract","status":200,"ms":7031}
+Bot: True
+[INFO] 2026-01-21T02:20:21.407Z HTTP request
+{"requestId":"3e2fecec-e603-4215-86ca-c6d560671509","method":"GET","path":"/api/workflows/ea00487f-5cca-4564-b6f5-7c8e48c12626","headers":{"host":"localhost:4000","sec-fetch-site":"same-site","accept":"*/*","origin":"http://localhost:5173","sec-fetch-mode":"cors","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Safari/605.1.15","referer":"http://localhost:5173/","sec-fetch-dest":"empty","accept-language":"en-US,en;q=0.9","priority":"u=3, i","accept-encoding":"gzip, deflate","connection":"keep-alive"},"body":"{}"}
+Bot: True
+[INFO] 2026-01-21T02:20:21.411Z HTTP response
+{"requestId":"3e2fecec-e603-4215-86ca-c6d560671509","method":"GET","path":"/api/workflows/ea00487f-5cca-4564-b6f5-7c8e48c12626","status":200,"ms":4}
+Bot: True

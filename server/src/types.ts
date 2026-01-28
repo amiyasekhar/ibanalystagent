@@ -21,10 +21,16 @@ export interface DealInput {
   provided?: {
     // informational only; we do not normalize currencies right now
     currency: string; // e.g. USD, INR, EUR (best-effort)
-    scale: "m" | "crore" | "b" | "unit"; // unit indicates already expanded to full nominal units
+    scale: "m" | "crore" | "b" | "t" | "k" | "unit"; // unit indicates already expanded to full nominal units
     revenue?: number;
     ebitda?: number;
     dealSize?: number;
+  };
+  // Uncertainty warnings for metrics that need user clarification
+  uncertainties?: {
+    revenue?: string;
+    ebitda?: string;
+    dealSize?: string;
   };
 }
 

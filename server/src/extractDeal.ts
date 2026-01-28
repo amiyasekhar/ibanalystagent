@@ -63,97 +63,282 @@ function numberMentioned(rawText: string, value: number): boolean {
   return false;
 }
 
-type ProvidedScale = "m" | "crore" | "b";
+type ProvidedScale = "m" | "crore" | "b" | "t" | "k" | "unit";
 type ProvidedMetrics = {
   currency: string;
   scale: ProvidedScale;
   revenue?: number;
   ebitda?: number;
   dealSize?: number;
+  uncertainties?: {
+    revenue?: string;
+    ebitda?: string;
+    dealSize?: string;
+  };
 };
 
 function detectCurrencyScale(rawText: string): { currency: string; scale: ProvidedScale } {
   const t = rawText.toLowerCase();
-  // currency
+  // currency (USD only for now)
   let currency = "USD";
-  if (t.includes("₹") || t.includes("inr") || t.includes("rupee")) currency = "INR";
-  else if (t.includes("€") || t.includes("eur")) currency = "EUR";
-  else if (t.includes("£") || t.includes("gbp")) currency = "GBP";
-  else if (t.includes("$") || t.includes("usd")) currency = "USD";
+  if (t.includes("$") || t.includes("usd") || t.includes("us$")) currency = "USD";
 
-  // scale
+  // scale - check for number-suffix patterns like "$26.9B" or standalone words
   let scale: ProvidedScale = "m";
-  if (t.includes("crore") || /\bcr\b/.test(t)) scale = "crore";
-  else if (t.includes("billion") || /\bbn\b/.test(t)) scale = "b";
-  else if (t.includes("million") || /\bmm\b/.test(t) || /\bm\b/.test(t)) scale = "m";
+  if (t.includes("billion") || /\bbn\b/.test(t) || /\d+\.?\d*\s*b\b/i.test(rawText)) scale = "b";
+  else if (t.includes("million") || /\bmm\b/.test(t) || /\d+\.?\d*\s*m\b/i.test(rawText)) scale = "m";
+  else if (t.includes("thousand") || /\d+\.?\d*\s*k\b/i.test(rawText)) scale = "k";
   return { currency, scale };
 }
 
+function hasCurrencyMarker(textSnippet: string): boolean {
+  // Check if the text snippet has a USD currency marker (symbol or code)
+  const t = textSnippet.toLowerCase();
+  return /[\$]|usd|us\$/.test(t);
+}
+
+function looksLikeRange(textSnippet: string): boolean {
+  // Detect patterns like "$50-100M", "$50M-$100M", "$50M to $100M", "between $50M and $100M"
+  const rangePatterns = [
+    /\$?\s*\d+[\d,\.]*\s*[-–—]\s*\d+[\d,\.]*\s*[bmk]/i,  // "$50-100M" or "50-100M"
+    /\$\s*\d+[\d,\.]*\s*[bmk]\s*[-–—to]\s*\$?\s*\d+[\d,\.]*\s*[bmk]/i,  // "$50M-$100M" or "$50M to $100M"
+    /between\s+\$?\s*\d+[\d,\.]*\s*[bmk]?\s+and\s+\$?\s*\d+[\d,\.]*\s*[bmk]/i,  // "between $50M and $100M"
+  ];
+  return rangePatterns.some(pattern => pattern.test(textSnippet));
+}
+
 function scaleMultiplier(scale: ProvidedScale): number {
+  if (scale === "unit") return 1; // Already in full units
+  if (scale === "k") return 1_000;
   if (scale === "m") return 1_000_000;
   if (scale === "b") return 1_000_000_000;
+  if (scale === "t") return 1_000_000_000_000;
   // crore
   return 10_000_000;
 }
 
 // NOTE: We are intentionally NOT converting currencies right now (nominal values only).
 
-function parseLatestMetricFromFinancials(rawText: string, key: "Revenue" | "EBITDA" | "EV" | "Deal Size" | "Enterprise Value"): number | null {
-  // If user pasted a FY table (often from PDF extraction), use the most recent FY block.
-  // Example line: "FY 2024-25:\nRevenue: 980,136 | EBITDA: 183,422 | ..."
-  const re = new RegExp(`FY\\s*\\d{4}[-–]\\d{2}:[\\s\\S]*?${key}:\\s*([\\d,]+)`, "gi");
-  let m: RegExpExecArray | null;
-  let last: string | null = null;
-  while ((m = re.exec(rawText)) !== null) {
-    last = m[1];
-  }
-  if (last) return Number(String(last).replace(/,/g, ""));
+function parseMetricWithScale(rawText: string, key: "Revenue" | "EBITDA" | "EV" | "Deal Size" | "Enterprise Value"): { value: number; scale: ProvidedScale; uncertainty?: string } | null {
+  // First, try to parse pipe-delimited table format (from PDF extraction)
+  // Format: year_label | revenue | ebitda | pat | eps | networth | total_assets
+  // These values have NO scale suffix, so they're in full units
+  const lines = rawText.split("\n");
+  const headerLine = lines.find(l => l.includes("year_label") && l.includes("revenue") && l.includes("ebitda"));
 
-  // Fallback: "$18.5m revenue" style
-  const low = rawText.toLowerCase();
+  if (headerLine) {
+    const headers = headerLine.split("|").map(h => h.trim().toLowerCase());
+    const revenueIdx = headers.indexOf("revenue");
+    const ebitdaIdx = headers.indexOf("ebitda");
+
+    // Find all data rows (skip header and divider lines)
+    const dataRows = lines
+      .filter(l => l.includes("|") && !l.includes("year_label") && !l.match(/^-+$/))
+      .map(l => l.split("|").map(cell => cell.trim()));
+
+    if (dataRows.length > 0) {
+      // Get the last row (most recent year)
+      const lastRow = dataRows[dataRows.length - 1];
+
+      if (key === "Revenue" && revenueIdx >= 0 && lastRow[revenueIdx]) {
+        const val = Number(lastRow[revenueIdx].replace(/,/g, ""));
+        if (val > 0) return { value: val, scale: "unit" }; // Table values are already in full units
+      }
+      if (key === "EBITDA" && ebitdaIdx >= 0 && lastRow[ebitdaIdx]) {
+        const val = Number(lastRow[ebitdaIdx].replace(/,/g, ""));
+        if (val > 0) return { value: val, scale: "unit" };
+      }
+    }
+  }
+
+  // Check for ranges - if detected, flag as uncertain
+  const keyLower = key.toLowerCase();
+  const searchWindow = 150; // characters around the keyword to check for ranges
+  const keyIndex = rawText.toLowerCase().indexOf(keyLower);
+  if (keyIndex >= 0) {
+    const start = Math.max(0, keyIndex - 50);
+    const end = Math.min(rawText.length, keyIndex + searchWindow);
+    const snippet = rawText.substring(start, end);
+    if (looksLikeRange(snippet)) {
+      // Extract the range text to show user
+      const rangeMatch = snippet.match(/\$?\s*\d+[\d,\.]*\s*(?:[-–—]|to)\s*\$?\s*\d+[\d,\.]*\s*[BMKbmkTt]*/);
+      const rangeText = rangeMatch ? rangeMatch[0].trim() : "a range";
+      return {
+        value: 0,
+        scale: "unit",
+        uncertainty: `Range detected (${rangeText}). Please specify the exact ${key.toLowerCase()} value.`
+      };
+    }
+  }
+
+  // Extract from narrative text with scale suffixes
+  // Pattern captures: (currency symbol)(number)(scale suffix)
+  const matches: Array<{ value: number; scale: ProvidedScale; fullMatch: string }> = [];
+
   if (key === "Revenue") {
-    const mm = low.match(/revenue[^0-9]{0,30}(\$?\s*[\d,.]+)\s*(m|mm|million|crore|cr|bn|billion)?/i);
-    if (mm?.[1]) return Number(mm[1].replace(/,/g, ""));
+    // Match: "revenue ... $100B" or "revenue ... USD 100 billion"
+    const pattern = /revenue[^\d\n]{0,50}?([\$]|usd|us\$)?\s*([\d,.]+)\s*(k|t|tn|b|bn|m|mm|mn|thousand|million|billion|trillion)?/gi;
+    let match;
+    while ((match = pattern.exec(rawText)) !== null) {
+      const currencyMarker = match[1] || "";
+      const val = Number(match[2].replace(/,/g, ""));
+      const suffix = (match[3] || "").toLowerCase();
+      const fullMatch = match[0];
+
+      let scale: ProvidedScale = "unit";
+      if (suffix === "t" || suffix === "tn" || suffix === "trillion") scale = "t";
+      else if (suffix === "b" || suffix === "bn" || suffix === "billion") scale = "b";
+      else if (suffix === "m" || suffix === "mm" || suffix === "mn" || suffix === "million") scale = "m";
+      else if (suffix === "k" || suffix === "thousand") {
+        // Only allow "k" if there's a currency marker
+        if (hasCurrencyMarker(fullMatch)) {
+          scale = "k";
+        } else {
+          continue; // Skip this match - "k" without currency
+        }
+      }
+      if (val > 0) matches.push({ value: val, scale, fullMatch });
+    }
   }
   if (key === "EBITDA") {
-    const mm = low.match(/ebitda[^0-9]{0,30}(\$?\s*[\d,.]+)\s*(m|mm|million|crore|cr|bn|billion)?/i);
-    if (mm?.[1]) return Number(mm[1].replace(/,/g, ""));
+    const pattern = /ebitda[^\d\n]{0,50}?([\$]|usd|us\$)?\s*([\d,.]+)\s*(k|t|tn|b|bn|m|mm|mn|thousand|million|billion|trillion)?/gi;
+    let match;
+    while ((match = pattern.exec(rawText)) !== null) {
+      const currencyMarker = match[1] || "";
+      const val = Number(match[2].replace(/,/g, ""));
+      const suffix = (match[3] || "").toLowerCase();
+      const fullMatch = match[0];
+
+      let scale: ProvidedScale = "unit";
+      if (suffix === "t" || suffix === "tn" || suffix === "trillion") scale = "t";
+      else if (suffix === "b" || suffix === "bn" || suffix === "billion") scale = "b";
+      else if (suffix === "m" || suffix === "mm" || suffix === "mn" || suffix === "million") scale = "m";
+      else if (suffix === "k" || suffix === "thousand") {
+        if (hasCurrencyMarker(fullMatch)) {
+          scale = "k";
+        } else {
+          continue;
+        }
+      }
+      if (val > 0) matches.push({ value: val, scale, fullMatch });
+    }
   }
   if (key === "EV" || key === "Deal Size" || key === "Enterprise Value") {
-    const mm = low.match(/(ev|enterprise value|deal size)[^0-9]{0,30}(\$?\s*[\d,.]+)\s*(m|mm|million|crore|cr|bn|billion)?/i);
-    if (mm?.[2]) return Number(mm[2].replace(/,/g, ""));
+    // Only match when there's an explicit EV/valuation/deal size keyword to avoid false positives from revenue
+    const pattern = /(ev|enterprise value|deal size|valuation|implied enterprise value|implied valuation)[^\d\n]{0,80}?([\$]|usd|us\$)?\s*([\d,.]+)\s*(k|t|tn|b|bn|m|mm|mn|thousand|million|billion|trillion)?/gi;
+    let match;
+    while ((match = pattern.exec(rawText)) !== null) {
+      const currencyMarker = match[2] || "";
+      const val = Number(match[3].replace(/,/g, ""));
+      const suffix = (match[4] || "").toLowerCase();
+      const fullMatch = match[0];
+
+      let scale: ProvidedScale = "unit";
+      if (suffix === "t" || suffix === "tn" || suffix === "trillion") scale = "t";
+      else if (suffix === "b" || suffix === "bn" || suffix === "billion") scale = "b";
+      else if (suffix === "m" || suffix === "mm" || suffix === "mn" || suffix === "million") scale = "m";
+      else if (suffix === "k" || suffix === "thousand") {
+        if (hasCurrencyMarker(fullMatch)) {
+          scale = "k";
+        } else {
+          continue;
+        }
+      }
+      if (val > 0) matches.push({ value: val, scale, fullMatch });
+    }
   }
+
+  // Return the match with the highest SCALED value (i.e., actual value in full units)
+  if (matches.length > 0) {
+    return matches.reduce((best, curr) => {
+      const bestFull = best.value * scaleMultiplier(best.scale);
+      const currFull = curr.value * scaleMultiplier(curr.scale);
+      return currFull > bestFull ? curr : best;
+    });
+  }
+
   return null;
 }
 
 function extractProvidedMetrics(rawText: string): ProvidedMetrics {
-  const { currency, scale } = detectCurrencyScale(rawText);
-  const revenue = parseLatestMetricFromFinancials(rawText, "Revenue");
-  const ebitda = parseLatestMetricFromFinancials(rawText, "EBITDA");
-  const dealSize =
-    parseLatestMetricFromFinancials(rawText, "EV") ??
-    parseLatestMetricFromFinancials(rawText, "Deal Size") ??
-    parseLatestMetricFromFinancials(rawText, "Enterprise Value");
+  const { currency } = detectCurrencyScale(rawText);
+
+  const revenueData = parseMetricWithScale(rawText, "Revenue");
+  const ebitdaData = parseMetricWithScale(rawText, "EBITDA");
+  const dealSizeData =
+    parseMetricWithScale(rawText, "EV") ??
+    parseMetricWithScale(rawText, "Deal Size") ??
+    parseMetricWithScale(rawText, "Enterprise Value");
+
+  // Apply scale multiplier to get full units
+  const revenue = revenueData ? revenueData.value * scaleMultiplier(revenueData.scale) : undefined;
+  const ebitda = ebitdaData ? ebitdaData.value * scaleMultiplier(ebitdaData.scale) : undefined;
+  const dealSize = dealSizeData ? dealSizeData.value * scaleMultiplier(dealSizeData.scale) : undefined;
+
+  // Collect uncertainties
+  const uncertainties: { revenue?: string; ebitda?: string; dealSize?: string } = {};
+  if (revenueData?.uncertainty) uncertainties.revenue = revenueData.uncertainty;
+  if (ebitdaData?.uncertainty) uncertainties.ebitda = ebitdaData.uncertainty;
+  if (dealSizeData?.uncertainty) uncertainties.dealSize = dealSizeData.uncertainty;
+
+  // Determine overall scale based on what we found (use "unit" since we already scaled everything)
+  const scale: ProvidedScale = "unit";
+
   return {
     currency,
     scale,
-    revenue: revenue != null && Number.isFinite(revenue) ? revenue : undefined,
-    ebitda: ebitda != null && Number.isFinite(ebitda) ? ebitda : undefined,
-    dealSize: dealSize != null && Number.isFinite(dealSize) ? dealSize : undefined,
+    revenue: revenue != null && Number.isFinite(revenue) && revenue > 0 ? revenue : undefined,
+    ebitda: ebitda != null && Number.isFinite(ebitda) && ebitda > 0 ? ebitda : undefined,
+    dealSize: dealSize != null && Number.isFinite(dealSize) && dealSize > 0 ? dealSize : undefined,
+    uncertainties: Object.keys(uncertainties).length > 0 ? uncertainties : undefined,
   };
 }
 
 function sanitizeExtractedDeal(rawText: string, d: any): DealInput {
   const name = cleanDealName(rawText, String(d?.name || ""));
   const provided = extractProvidedMetrics(rawText);
+
+  // extractProvidedMetrics already returns values in full units, so use them directly
   const revenueProvided = provided.revenue ?? num(d?.revenue, 0);
   const ebitdaProvided = provided.ebitda ?? num(d?.ebitda, 0);
   const dealSizeProvided = provided.dealSize ?? num(d?.dealSize, 0);
 
-  // Enforce: numbers must be present in rawText, else zero them (in provided units)
+  // Enforce: numbers must be present in rawText, else zero them
   const safeRevenueProvided = numberMentioned(rawText, revenueProvided) ? revenueProvided : 0;
   const safeEbitdaProvided = numberMentioned(rawText, ebitdaProvided) ? ebitdaProvided : 0;
-  const safeDealSizeProvided = numberMentioned(rawText, dealSizeProvided) ? dealSizeProvided : 0;
+
+  // Deal size validation: must be mentioned AND must not equal revenue or EBITDA (prevents confusion)
+  const dealSizeMentioned = numberMentioned(rawText, dealSizeProvided);
+  const dealSizeIsRevenueOrEbitda =
+    (dealSizeProvided > 0 && dealSizeProvided === revenueProvided) ||
+    (dealSizeProvided > 0 && dealSizeProvided === ebitdaProvided);
+
+  // Additional check: ensure the deal size appears near EV-related keywords
+  let dealSizeHasEvContext = false;
+  if (dealSizeProvided > 0) {
+    const t = rawText.toLowerCase();
+    const val = dealSizeProvided / 1_000_000; // Convert to millions
+    const valStr = val.toFixed(1).replace(/\.0$/, "");
+    const fullValStr = dealSizeProvided.toString();
+
+    // Pattern 1: "EV $70M" or "EV ($m): 70"
+    const evPatternAbbrev = new RegExp(`(\\bev\\b|enterprise value|deal size|valuation|implied.*value)[^\\d]{0,80}?\\$?\\s*${valStr.replace('.', '\\.')}`, "i");
+    // Pattern 2: "EV ($m): 70000000" (structured format)
+    const evPatternFull = new RegExp(`(\\bev\\b|enterprise value|deal size|valuation)\\s*\\([^)]*\\)[^\\d]{0,20}?${fullValStr}`, "i");
+
+    dealSizeHasEvContext = evPatternAbbrev.test(t) || evPatternFull.test(t);
+
+    log.info("[ExtractDeal] Deal size EV context check", {
+      dealSizeProvided,
+      valStr,
+      fullValStr,
+      hasEvContext: dealSizeHasEvContext,
+      patternAbbrev: evPatternAbbrev.toString(),
+      patternFull: evPatternFull.toString()
+    });
+  }
+
+  const safeDealSizeProvided = dealSizeMentioned && !dealSizeIsRevenueOrEbitda && dealSizeHasEvContext ? dealSizeProvided : 0;
 
   // Enforce: sector/geo are inference-prone. Only set if explicitly supported.
   const sectorRaw = String(d?.sector || "Other");
@@ -161,23 +346,23 @@ function sanitizeExtractedDeal(rawText: string, d: any): DealInput {
   const geoExplicit = inferGeographyIfExplicit(rawText);
   const geography = geoExplicit ? normalizeGeography(geoExplicit) : "";
 
-  const mult = scaleMultiplier(provided.scale);
   return {
     name,
     sector,
     geography,
-    // NOMINAL values (no conversion)
-    revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
-    ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
-    dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
+    // Already in full units (no additional scaling needed)
+    revenue: safeRevenueProvided,
+    ebitda: safeEbitdaProvided,
+    dealSize: safeDealSizeProvided,
     description: String(d?.description || rawText).slice(0, 1200),
     provided: {
       currency: provided.currency,
       scale: "unit",
-      revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
-      ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
-      dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
+      revenue: safeRevenueProvided || undefined,
+      ebitda: safeEbitdaProvided || undefined,
+      dealSize: safeDealSizeProvided || undefined,
     },
+    uncertainties: provided.uncertainties,
   };
 }
 
@@ -223,33 +408,57 @@ function fallbackExtract(rawText: string): DealInput {
   const geo = inferGeographyIfExplicit(text);
 
   const provided = extractProvidedMetrics(text);
+  // extractProvidedMetrics already returns values in full units
   const revenueProvided = provided.revenue ?? 0;
   const ebitdaProvided = provided.ebitda ?? 0;
   const dealSizeProvided = provided.dealSize ?? 0;
 
   const safeRevenueProvided = numberMentioned(text, revenueProvided) ? revenueProvided : 0;
   const safeEbitdaProvided = numberMentioned(text, ebitdaProvided) ? ebitdaProvided : 0;
-  const safeDealSizeProvided = numberMentioned(text, dealSizeProvided) ? dealSizeProvided : 0;
+
+  // Deal size validation: must be mentioned AND must not equal revenue or EBITDA
+  const dealSizeMentioned = numberMentioned(text, dealSizeProvided);
+  const dealSizeIsRevenueOrEbitda =
+    (dealSizeProvided > 0 && dealSizeProvided === revenueProvided) ||
+    (dealSizeProvided > 0 && dealSizeProvided === ebitdaProvided);
+
+  // Ensure deal size appears near EV-related keywords
+  let dealSizeHasEvContext = false;
+  if (dealSizeProvided > 0) {
+    const t = text.toLowerCase();
+    const val = dealSizeProvided / 1_000_000;
+    const valStr = val.toFixed(1).replace(/\.0$/, "");
+    const fullValStr = dealSizeProvided.toString();
+
+    // Pattern 1: "EV $70M" or "EV ($m): 70"
+    const evPatternAbbrev = new RegExp(`(\\bev\\b|enterprise value|deal size|valuation|implied.*value)[^\\d]{0,80}?\\$?\\s*${valStr.replace('.', '\\.')}`, "i");
+    // Pattern 2: "EV ($m): 70000000" (structured format)
+    const evPatternFull = new RegExp(`(\\bev\\b|enterprise value|deal size|valuation)\\s*\\([^)]*\\)[^\\d]{0,20}?${fullValStr}`, "i");
+
+    dealSizeHasEvContext = evPatternAbbrev.test(t) || evPatternFull.test(t);
+  }
+
+  const safeDealSizeProvided = dealSizeMentioned && !dealSizeIsRevenueOrEbitda && dealSizeHasEvContext ? dealSizeProvided : 0;
 
   const name = cleanDealName(text, "");
-  const mult = scaleMultiplier(provided.scale);
 
   return {
     name,
     sector: normalizeSector(sector),
     geography: geo ? normalizeGeography(geo) : "",
-    // NOMINAL values (no conversion)
-    revenue: safeRevenueProvided ? safeRevenueProvided * mult : 0,
-    ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : 0,
-    dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : 0,
+    // Already in full units
+    revenue: safeRevenueProvided,
+    ebitda: safeEbitdaProvided,
+    dealSize: safeDealSizeProvided,
     description: text.slice(0, 1200),
     provided: {
       currency: provided.currency,
       scale: "unit",
-      revenue: safeRevenueProvided ? safeRevenueProvided * mult : undefined,
-      ebitda: safeEbitdaProvided ? safeEbitdaProvided * mult : undefined,
-      dealSize: safeDealSizeProvided ? safeDealSizeProvided * mult : undefined,
+      revenue: safeRevenueProvided || undefined,
+      ebitda: safeEbitdaProvided || undefined,
+      dealSize: safeDealSizeProvided || undefined,
     },
+    uncertainties: provided.uncertainties,
   };
 }
 
@@ -280,13 +489,14 @@ Return JSON with exactly these keys:
   "geography": "string (e.g. US, UK, Europe)",
   "revenue": number,   // numeric value as stated in the text (do not convert currencies)
   "ebitda": number,    // numeric value as stated in the text (do not convert currencies)
-  "dealSize": number,  // EV as stated in the text (do not convert currencies)
+  "dealSize": number,  // ONLY extract if text explicitly mentions "EV", "enterprise value", or "deal size". Otherwise use 0. Do NOT use revenue or other metrics as deal size.
   "description": "string"
 }
 
 Rules:
 - If a number is not present, use 0.
-- Do NOT invent metrics.
+- Do NOT invent metrics. Do NOT use revenue as deal size.
+- For dealSize: ONLY extract if the text explicitly says "EV", "enterprise value", "valuation", or "deal size". Otherwise set to 0.
 - Keep description concise (<= 800 chars) but preserve key details.
 
 Text:

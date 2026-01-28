@@ -647,3 +647,261 @@ button.mini:hover{
   .kpis{ grid-template-columns: 1fr; }
   .grid > .card:nth-child(2){ position: static; }
 }
+/* ============================================================================
+   CrossCourt AI - Memo Generator Styles
+   ============================================================================ */
+
+.memo-generator {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.memo-generator h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.memo-generator .subtitle {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.memo-generator .tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--stroke);
+  padding-bottom: 0;
+}
+
+.memo-generator .tabs button {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.memo-generator .tabs button:hover {
+  color: var(--text);
+}
+
+.memo-generator .tabs button.active {
+  color: var(--text);
+  border-bottom-color: rgba(118, 84, 255, 0.8);
+}
+
+.tab-content {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--r);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.tab-content h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.tab-content h3 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--card2);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.form-group textarea {
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.upload-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.upload-section input[type="file"] {
+  display: none;
+}
+
+.precedents-list,
+.style-guides-list,
+.memos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.precedent-card,
+.style-guide-card,
+.memo-card {
+  background: var(--card2);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.precedent-card:hover,
+.style-guide-card:hover,
+.memo-card:hover {
+  border-color: var(--stroke2);
+  background: var(--card);
+}
+
+.memo-card.selected {
+  border-color: rgba(118, 84, 255, 0.6);
+  background: var(--card);
+}
+
+.precedent-name,
+.sg-name,
+.memo-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.precedent-meta,
+.sg-meta,
+.memo-meta {
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+.precedents-select {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.precedent-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.precedent-checkbox input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.precedent-checkbox label {
+  cursor: pointer;
+  margin: 0;
+}
+
+.primary-btn,
+.next-btn,
+.export-btn {
+  background: linear-gradient(135deg, rgba(118, 84, 255, 0.8), rgba(46, 255, 182, 0.6));
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 16px;
+}
+
+.primary-btn:hover,
+.next-btn:hover,
+.export-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(118, 84, 255, 0.4);
+}
+
+.primary-btn:disabled,
+.next-btn:disabled,
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.export-btn {
+  padding: 8px 16px;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.memo-preview {
+  margin-top: 32px;
+  background: var(--card2);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.memo-preview h3 {
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.memo-section {
+  margin-bottom: 24px;
+}
+
+.memo-section h4 {
+  color: var(--text);
+  font-size: 18px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.memo-section p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.error {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  color: #ff9999;
+  margin: 16px 0;
+  font-size: 14px;
+}
