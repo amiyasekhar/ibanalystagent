@@ -27,6 +27,40 @@ import importlib.util
 from typing import Any, Dict, List
 
 
+METRIC_KEYS = ["revenue", "ebitda", "pat", "eps", "networth", "total_assets"]
+
+
+def dedupe_years(years: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Merge duplicate year_label entries.  For each metric, keep the entry
+    whose value is non-zero (or the later-seen one when both are non-zero)."""
+    merged: Dict[str, Dict[str, Any]] = {}
+    for y in years:
+        label = y.get("year_label", "")
+        if label not in merged:
+            merged[label] = dict(y)
+            continue
+        # Merge: for each metric key, prefer the non-zero value
+        existing = merged[label]
+        for k in METRIC_KEYS:
+            new_val = (y.get(k) or {}).get("value", 0)
+            old_val = (existing.get(k) or {}).get("value", 0)
+            try:
+                new_num = float(new_val) if new_val else 0
+                old_num = float(old_val) if old_val else 0
+            except (TypeError, ValueError):
+                new_num = 0
+                old_num = 0
+            # Replace if existing is zero but new is non-zero
+            if old_num == 0 and new_num != 0:
+                existing[k] = y.get(k)
+        # Keep _sourcePdf from whichever had more non-zero metrics
+        new_filled = sum(1 for k in METRIC_KEYS if (y.get(k) or {}).get("value", 0))
+        old_filled = sum(1 for k in METRIC_KEYS if (existing.get(k) or {}).get("value", 0))
+        if new_filled > old_filled:
+            existing["_sourcePdf"] = y.get("_sourcePdf", existing.get("_sourcePdf", ""))
+    return list(merged.values())
+
+
 def to_table_text(years: List[Dict[str, Any]]) -> str:
     # Simple banker-friendly table text for pasting into the app.
     # Each year object is expected to have {year_label, revenue/ebitda/pat/eps/networth/total_assets} each as {value, source}.
@@ -103,7 +137,14 @@ def main() -> None:
             return
 
         try:
-            y = t.gemini_extract_from_pdf(path)
+            # Debug: log locator output to stderr so server captures it
+            loc = t.gemini_locate_pages(path) or {}
+            sys.stderr.write(f"[DEBUG] {os.path.basename(path)} locator: {json.dumps(loc)}\n")
+            sys.stderr.flush()
+
+            extracted = t.gemini_extract_from_pdf(path)
+            sys.stderr.write(f"[DEBUG] {os.path.basename(path)} extracted years: {[y.get('year_label') for y in extracted]}\n")
+            sys.stderr.flush()
         except Exception as e:
             msg = str(e)
             if "SSLV3_ALERT_BAD_RECORD_MAC" in msg:
@@ -118,50 +159,56 @@ def main() -> None:
                 return
             sys.stdout.write(json.dumps({"ok": False, "error": f"Gemini extraction failed: {msg}"}))
             return
-        y["_sourcePdf"] = os.path.basename(path)
-        y["year_label"] = t.norm_year_label(y.get("year_label"))
-        t.normalize_units_in_place(y)
 
-        # Repair pages (for highlighting + credibility)
-        t.repair_sources(path, y)
+        # gemini_extract_from_pdf now returns a list of year objects (one per
+        # fiscal year found in comparative statements).  Iterate and process each.
+        for y in extracted:
+            y["_sourcePdf"] = os.path.basename(path)
+            y["year_label"] = t.norm_year_label(y.get("year_label"))
+            t.normalize_units_in_place(y)
 
-        if t.needs_eps_fix(y):
+            # Repair pages (for highlighting + credibility)
+            t.repair_sources(path, y)
+
+            if t.needs_eps_fix(y):
+                try:
+                    t.apply_eps_only(path, y)
+                except Exception:
+                    pass
+
+            if t.needs_networth_fix(y):
+                try:
+                    t.apply_networth_only(path, y)
+                except Exception:
+                    pass
+
+            # PAT attributable to Owners
             try:
-                t.apply_eps_only(path, y)
+                attrib = t.gemini_extract_pat_attrib_owners(path)
+                v = t.safe_num(attrib.get("value", 0))
+                if v and t.looks_like_inr_not_crore(v):
+                    attrib["value"] = v / t.CRORE_TO_INR
+                if t.safe_num(attrib.get("value", 0)) > 0:
+                    t.repair_single_source_page(path, "pat", attrib, fallback_val=t.safe_num(attrib.get("value", 0)))
+                    y["_pat_attrib_owners"] = attrib
             except Exception:
                 pass
 
-        if t.needs_networth_fix(y):
-            try:
-                t.apply_networth_only(path, y)
-            except Exception:
-                pass
+            # Re-run repair after replacements
+            t.repair_sources(path, y)
 
-        # PAT attributable to Owners
-        try:
-            attrib = t.gemini_extract_pat_attrib_owners(path)
-            v = t.safe_num(attrib.get("value", 0))
-            if v and t.looks_like_inr_not_crore(v):
-                attrib["value"] = v / t.CRORE_TO_INR
-            if t.safe_num(attrib.get("value", 0)) > 0:
-                t.repair_single_source_page(path, "pat", attrib, fallback_val=t.safe_num(attrib.get("value", 0)))
-                y["_pat_attrib_owners"] = attrib
-        except Exception:
-            pass
-
-        # Re-run repair after replacements
-        t.repair_sources(path, y)
-
-        years.append(y)
+            years.append(y)
 
         if highlight:
             out_pdf = os.path.splitext(path)[0] + "_HIGHLIGHTED.pdf"
             try:
-                t.highlight_pdf(path, y, out_pdf)
+                # Highlight using the first year object as representative source map
+                t.highlight_pdf(path, extracted[0] if extracted else {}, out_pdf)
             except Exception:
                 pass
 
-    years_sorted = sorted(years, key=lambda yy: yy.get("year_label", ""))
+    years_deduped = dedupe_years(years)
+    years_sorted = sorted(years_deduped, key=lambda yy: yy.get("year_label", ""))
     out = {
         "ok": True,
         "company": "",  # Company name detection can be added later if needed

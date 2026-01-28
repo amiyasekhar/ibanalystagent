@@ -43,7 +43,7 @@ export async function extractFinancialsFromPdfs(opts: { pdfPaths: string[]; high
       try {
         const parsed = JSON.parse(stdout) as any;
         if (!parsed?.ok) return resolve({ ok: false, error: parsed?.error || "Unknown error" });
-        log.info("PDF financial extraction ok", { ms: Date.now() - startedAt });
+        log.info("PDF financial extraction ok", { ms: Date.now() - startedAt, debug: stderr.slice(0, 3000) });
         return resolve({
           ok: true,
           company: String(parsed.company || ""),

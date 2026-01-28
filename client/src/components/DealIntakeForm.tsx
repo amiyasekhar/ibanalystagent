@@ -37,6 +37,12 @@ interface DealIntakeFormProps {
 
   // Run history
   runHistory: Array<{ at: string; type: string; ok: boolean; note?: string }>;
+
+  // Strategic advisory
+  strategicAnalysis: { recommendation: string; confidence: number; rationale: string; marketContext: string; preferredBuyerTypes: string[]; timelineRecommendation: string; risks: string[]; opportunities: string[]; valuationIndicator: string } | null;
+  strategicLoading: boolean;
+  strategicError: string | null;
+  onStrategicAdvisory: () => void;
 }
 
 export default function DealIntakeForm(props: DealIntakeFormProps) {
@@ -68,6 +74,10 @@ export default function DealIntakeForm(props: DealIntakeFormProps) {
     error,
     onClear,
     runHistory,
+    strategicAnalysis,
+    strategicLoading,
+    strategicError,
+    onStrategicAdvisory,
   } = props;
 
   const quickMetrics = useMemo(() => {
@@ -164,11 +174,22 @@ export default function DealIntakeForm(props: DealIntakeFormProps) {
             placeholder="Type or pick (e.g. Software)"
           />
           <datalist id="sectorOptions">
+            <option value="IT / SaaS" />
             <option value="Software" />
+            <option value="Fintech" />
             <option value="Healthcare" />
+            <option value="Pharma" />
+            <option value="BFSI" />
             <option value="Manufacturing" />
             <option value="Business Services" />
             <option value="Consumer" />
+            <option value="D2C / Brands" />
+            <option value="Logistics" />
+            <option value="Agritech" />
+            <option value="EdTech" />
+            <option value="Energy / Cleantech" />
+            <option value="Auto / EV" />
+            <option value="Real Estate" />
             <option value="Other" />
           </datalist>
         </div>
@@ -177,49 +198,52 @@ export default function DealIntakeForm(props: DealIntakeFormProps) {
       <div className="row">
         <div className="field">
           <label>Geography</label>
-          <input value={geo} onChange={(e) => setGeo(e.target.value)} placeholder="US, UK, DACH…" />
+          <input value={geo} onChange={(e) => setGeo(e.target.value)} placeholder="Mumbai, Delhi NCR, Bangalore…" />
         </div>
 
         <div className="field">
-          <label>Revenue</label>
+          <label>Revenue (INR)</label>
           <input
             type="number"
             min={0}
-            step={0.1}
+            step={1_000_000}
             value={revenue}
             onChange={(e) => setRevenue(parseFloat(e.target.value))}
           />
-          {providedInfo?.currency && (
-            <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
-          )}
+          <div className="small">
+            {revenue >= 10_000_000 ? `₹${(revenue / 10_000_000).toFixed(1)}Cr` : revenue >= 100_000 ? `₹${(revenue / 100_000).toFixed(1)}L` : ""}
+            {providedInfo?.currency && providedInfo.currency !== "INR" ? ` (source: ${providedInfo.currency})` : ""}
+          </div>
         </div>
 
         <div className="field">
-          <label>EBITDA</label>
+          <label>EBITDA (INR)</label>
           <input
             type="number"
             min={0}
-            step={0.1}
+            step={1_000_000}
             value={ebitda}
             onChange={(e) => setEbitda(parseFloat(e.target.value))}
           />
-          {providedInfo?.currency && (
-            <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
-          )}
+          <div className="small">
+            {ebitda >= 10_000_000 ? `₹${(ebitda / 10_000_000).toFixed(1)}Cr` : ebitda >= 100_000 ? `₹${(ebitda / 100_000).toFixed(1)}L` : ""}
+            {providedInfo?.currency && providedInfo.currency !== "INR" ? ` (source: ${providedInfo.currency})` : ""}
+          </div>
         </div>
 
         <div className="field">
-          <label>EV / Deal Size</label>
+          <label>EV / Deal Size (INR)</label>
           <input
             type="number"
             min={0}
-            step={0.1}
+            step={1_000_000}
             value={dealSize}
             onChange={(e) => setDealSize(parseFloat(e.target.value))}
           />
-          {providedInfo?.currency && (
-            <div className="small">Units: nominal (currency hint: {providedInfo.currency})</div>
-          )}
+          <div className="small">
+            {dealSize >= 10_000_000 ? `₹${(dealSize / 10_000_000).toFixed(1)}Cr` : dealSize >= 100_000 ? `₹${(dealSize / 100_000).toFixed(1)}L` : ""}
+            {providedInfo?.currency && providedInfo.currency !== "INR" ? ` (source: ${providedInfo.currency})` : ""}
+          </div>
         </div>
       </div>
 
@@ -272,6 +296,42 @@ export default function DealIntakeForm(props: DealIntakeFormProps) {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Customers, product, differentiation, growth, retention, etc."
         />
+      </div>
+
+      {/* Strategic Advisory Section */}
+      <div className="field" style={{ marginTop: 4 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <label>Strategic Advisory</label>
+          <button
+            className="ghost"
+            type="button"
+            onClick={onStrategicAdvisory}
+            disabled={strategicLoading || loading || !dealName.trim() || !revenue || !ebitda}
+          >
+            {strategicLoading ? "Analyzing…" : strategicAnalysis ? "Re-analyze" : "Get advisory"}
+          </button>
+        </div>
+        {strategicError && (
+          <div className="small" style={{ color: "#f59e0b", marginTop: 4 }}>⚠ {strategicError}</div>
+        )}
+        {strategicAnalysis && (
+          <div className="warnBox" style={{ borderColor: "#7C5CFF", backgroundColor: "rgba(124,92,255,0.08)", marginTop: 8 }}>
+            <div className="warnTitle" style={{ color: "#a78bfa" }}>
+              {strategicAnalysis.recommendation.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+              <span style={{ marginLeft: 8, fontSize: 11, opacity: 0.7 }}>
+                {(strategicAnalysis.confidence * 100).toFixed(0)}% confidence
+              </span>
+            </div>
+            <div className="small" style={{ marginTop: 6, lineHeight: 1.5 }}>{strategicAnalysis.rationale}</div>
+            <div className="small" style={{ marginTop: 4, opacity: 0.75 }}>{strategicAnalysis.marketContext}</div>
+            <div className="small" style={{ marginTop: 4, opacity: 0.65 }}>Timeline: {strategicAnalysis.timelineRecommendation}</div>
+            {strategicAnalysis.preferredBuyerTypes.length > 0 && (
+              <div className="small" style={{ marginTop: 6 }}>
+                Preferred buyers: {strategicAnalysis.preferredBuyerTypes.map((t) => t.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())).join(", ")}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="actions">

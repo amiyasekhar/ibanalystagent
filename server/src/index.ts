@@ -7,6 +7,7 @@ import { extractDealFromText } from "./extractDeal";
 import { normalizeGeography, normalizeSector, num } from "./normalize";
 import { log } from "./logger";
 import { DealInput } from "./types";
+import { getStrategicRecommendation } from "./strategicAdvisor";
 import { createWorkflow, getWorkflow, recordRun, setResult, updateDeal } from "./workflows";
 import { claudeJson } from "./claude";
 import { requestLoggingMiddleware } from "./requestLogging";
@@ -74,21 +75,8 @@ app.post("/api/extract-financials-from-upload", upload.array("pdfs", 50), async 
 
     const pdfPaths = files.map((f) => f.path);
     const out = await extractFinancialsFromPdfs({ pdfPaths, highlight });
-    // Cleanup uploaded temp files (keep highlighted PDFs if generated).
-    try {
-      const fs = await import("node:fs/promises");
-      await Promise.all(
-        files.map(async (f) => {
-          try {
-            await fs.unlink(f.path);
-          } catch {
-            // ignore
-          }
-        })
-      );
-    } catch {
-      // ignore
-    }
+    // DEBUG: skip cleanup so PDFs can be re-run manually for debugging
+    // TODO: re-enable after debugging FY2022 missing issue
 
     if (!out.ok) return res.status(500).json(out);
     return res.json({ ...out, uploaded: files.map((f) => ({ originalName: f.originalname })) });
@@ -120,6 +108,27 @@ app.post("/api/generate-raw-deal-text", async (req, res) => {
     return res.json(out);
   } catch (e: any) {
     log.error("generate-raw-deal-text failed", { message: e?.message || String(e) });
+    return res.status(500).json({ ok: false, error: e?.message || "Server error" });
+  }
+});
+
+// Strategic advisory: analyze company financials → recommend transaction strategy
+app.post("/api/strategic-recommendation", async (req, res) => {
+  try {
+    const { deal, financials, bankerNotes } = req.body;
+
+    if (!deal?.name || !deal?.sector) {
+      return res.status(400).json({ ok: false, error: "deal.name and deal.sector are required" });
+    }
+    if (!financials?.revenue || !financials?.ebitda) {
+      return res.status(400).json({ ok: false, error: "financials.revenue and financials.ebitda are required (INR nominal)" });
+    }
+
+    const result = await getStrategicRecommendation({ deal, financials, bankerNotes });
+    if (!result.ok) return res.status(500).json(result);
+    return res.json(result);
+  } catch (e: any) {
+    log.error("strategic-recommendation failed", { message: e?.message || String(e) });
     return res.status(500).json({ ok: false, error: e?.message || "Server error" });
   }
 });
@@ -222,7 +231,9 @@ app.post("/api/workflows/:id/match", async (req, res) => {
     if (!wf) return res.status(404).json({ error: "Workflow not found" });
     if (!wf.deal) return res.status(400).json({ error: "Workflow has no deal yet. Run extract or provide deal." });
 
-    const result = await runAnalystAgent(wf.deal);
+    // Optional: pass strategic analysis to influence buyer ranking
+    const strategicAnalysis = req.body?.strategicAnalysis || undefined;
+    const result = await runAnalystAgent(wf.deal, strategicAnalysis);
     setResult(workflowId, result);
     recordRun(workflowId, { type: "match", ok: true });
     return res.json({ ok: true, result, workflow: getWorkflow(workflowId) });
@@ -294,7 +305,9 @@ app.post("/api/match-buyers", async (req, res) => {
       return res.status(400).json({ error: "Invalid request body" });
     }
 
-    const result = await runAnalystAgent(deal);
+    // Optional: pass strategic analysis to influence buyer ranking + teaser
+    const strategicAnalysis = req.body?.strategicAnalysis || undefined;
+    const result = await runAnalystAgent(deal, strategicAnalysis);
     return res.json(result);
   } catch (e: any) {
     log.error("match-buyers failed", { message: e?.message || String(e) });

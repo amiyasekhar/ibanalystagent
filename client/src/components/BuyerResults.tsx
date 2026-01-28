@@ -20,9 +20,10 @@ type ApiResponse = {
   dealSummary: string;
   buyers: BuyerMatch[];
   outreachDrafts: OutreachDraft[];
+  strategicRationale?: string;
 };
 
-type TabKey = "summary" | "buyers" | "outreach" | "search";
+type TabKey = "summary" | "buyers" | "outreach" | "search" | "strategy";
 
 interface BuyerResultsProps {
   result: ApiResponse;
@@ -63,12 +64,27 @@ export default function BuyerResults({ result }: BuyerResultsProps) {
         >
           Buyer Search
         </button>
+        {result.strategicRationale && (
+          <button
+            type="button"
+            className={`pill ${tab === "strategy" ? "pillActive" : ""}`}
+            onClick={() => setTab("strategy")}
+          >
+            Strategy
+          </button>
+        )}
       </div>
 
       {tab === "summary" && <DealSummary summary={result.dealSummary} />}
       {tab === "buyers" && <BuyerMatchList buyers={result.buyers} />}
       {tab === "outreach" && <OutreachDrafts drafts={result.outreachDrafts} />}
       {tab === "search" && <BuyerSearch />}
+      {tab === "strategy" && result.strategicRationale && (
+        <div className="section">
+          <h3>Strategic Advisory</h3>
+          <div className="small" style={{ whiteSpace: "pre-wrap", lineHeight: 1.6 }}>{result.strategicRationale}</div>
+        </div>
+      )}
     </div>
   );
 }

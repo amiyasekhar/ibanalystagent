@@ -46,15 +46,17 @@ LOCATOR_PROMPT = r"""
 You are a PDF navigator for a public-company annual report.
 
 Task: identify the physical PDF page numbers (1-based) where the following CONSOLIDATED statements appear for the CURRENT report year:
-1) Consolidated Statement of Profit and Loss (or Income Statement)
-2) Consolidated Balance Sheet
-3) Earnings per Equity Share (EPS) table/row (basic/diluted)
+1) Consolidated Statement of Profit and Loss (or Income Statement) — also look for XBRL tag "[210000]" or section headers like "Statement of profit and loss"
+2) Consolidated Balance Sheet — also look for XBRL tag "[110000]" or section headers like "Balance sheet"
+3) Earnings per Equity Share (EPS) table/row (basic/diluted) — also look for XBRL tag "[250000]" or text containing "earnings per share" or "EPS"
+4) Financial Highlights / 10-Year Summary / Historical Financial Data (any multi-year summary table with revenue, profit, assets across 3+ years)
 
 Return STRICT JSON ONLY:
 {
   "income_statement_pages": [number, ...],
   "balance_sheet_pages": [number, ...],
-  "eps_pages": [number, ...]
+  "eps_pages": [number, ...],
+  "financial_highlights_pages": [number, ...]
 }
 
 Rules:
@@ -68,39 +70,43 @@ EXTRACTION_PROMPT = r"""
 You are a precise financial table extractor working on a PDF.
 
 For the attached annual report PDF, extract CONSOLIDATED financial metrics
-for the SINGLE financial year the report relates to.
+for ALL fiscal years shown in the comparative financial statements (typically 2-4 years).
 
 CRITICAL UNITS RULE:
 - Detect the currency and scale used in the document (e.g., USD millions, INR crores, EUR millions).
 - Return all metrics (revenue, ebitda, pat, networth, total_assets) in the SAME scale as shown in the document.
 - For EPS: return in the native currency per share (e.g., USD per share, INR per share, EUR per share).
 
-Return STRICT JSON ONLY with exactly this structure:
+Return STRICT JSON ONLY — an array of year objects:
 
-{
-  "year_label": "string",
-  "year_end": "string",
-  "revenue": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
-  "ebitda":  { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
-  "pat":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
-  "eps":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
-  "networth":{ "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
-  "total_assets": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } }
-}
+[
+  {
+    "year_label": "string",
+    "year_end": "string",
+    "revenue": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+    "ebitda":  { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+    "pat":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+    "eps":     { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+    "networth":{ "value": number, "source": { "page": number, "section": "string", "snippet": "string" } },
+    "total_assets": { "value": number, "source": { "page": number, "section": "string", "snippet": "string" } }
+  },
+  ...
+]
 
 Rules:
 - Use CONSOLIDATED figures only if both standalone and consolidated are shown.
-- Ignore prior-year comparison columns; only extract the CURRENT report year.
-- For year_label: Return ONLY the fiscal year as a 4-digit number (e.g., "2025", "2024"). If the report says "fiscal year ended January 28, 2024", return "2024". Do NOT include month names or multiple years.
-- For EBITDA: Look for "EBITDA", "Operating EBITDA", or "Operating Income" (common in US 10-K filings).
+- Extract ALL years present in comparative columns (e.g., if P&L shows FY2023 and FY2024, extract both).
+- For Balance Sheet items (networth, total_assets): extract all years shown in the comparative balance sheet.
+- For year_label: Return ONLY the fiscal year as a 4-digit number (e.g., "2025", "2024").
+- For EBITDA: Look for "EBITDA", "Operating EBITDA", or "Operating Income". If not explicitly shown, set value=0.
 - For PAT (Profit After Tax): Look for "Net Income", "Net Profit", or "Profit for the year".
 - For Networth: Look for "Total Equity", "Stockholders' Equity", or "Shareholders' Equity".
 - Page numbers must correspond to the PDF page where the value appears (physical PDF page index, 1-based).
 - Snippet should be a short excerpt (≤ 200 chars) containing the number.
-- If a metric is not clearly present, set value=0 and page=0 and section/snippet empty.
+- If a metric is not clearly present for a year, set value=0 and page=0 and section/snippet empty.
 - Use plain numbers without commas.
 - Do NOT invent numbers.
-- Return JSON only. No markdown. No commentary.
+- Return JSON array only. No markdown. No commentary.
 """
 
 # EPS-only with strict basis + scope locking
@@ -293,7 +299,39 @@ def _subset_pdf(pdf_path: str, pages_1based: List[int]) -> Tuple[str, List[int]]
     doc.close()
     return tmp.name, page_map
 
+def _xbrl_locate_pages(pdf_path: str) -> Optional[Dict[str, List[int]]]:
+    """Fast local scan for XBRL-tagged PDFs (e.g. PrivateCircle exports).
+    Returns page map if XBRL tags found, else None so caller falls back to Gemini."""
+    import re
+    doc = fitz.open(pdf_path)
+    income_pages: List[int] = []
+    balance_pages: List[int] = []
+    eps_pages: List[int] = []
+    for i in range(len(doc)):
+        text = doc[i].get_text()
+        if "[210000]" in text or "Statement of profit and loss" in text:
+            income_pages.append(i + 1)
+        if "[110000]" in text or "Balance sheet" in text:
+            if re.search(r"\[110000\]|Balance sheet\s*\n", text):
+                balance_pages.append(i + 1)
+        if "[250000]" in text or re.search(r"earnings?\s*(per|loss)\s*(equity\s*)?share", text, re.IGNORECASE):
+            eps_pages.append(i + 1)
+    doc.close()
+    if income_pages or balance_pages or eps_pages:
+        return {
+            "income_statement_pages": income_pages,
+            "balance_sheet_pages": balance_pages,
+            "eps_pages": eps_pages,
+            "financial_highlights_pages": [],
+        }
+    return None
+
+
 def gemini_locate_pages(pdf_path: str) -> Dict[str, Any]:
+    # Try fast local XBRL scan first; fall back to Gemini for traditional PDFs
+    xbrl = _xbrl_locate_pages(pdf_path)
+    if xbrl:
+        return xbrl
     return _gemini_pdf_call(pdf_path, LOCATOR_PROMPT)
 
 def _gemini_pdf_call(pdf_path: str, prompt: str, page_map: Optional[List[int]] = None) -> Dict[str, Any]:
@@ -325,7 +363,8 @@ def _gemini_pdf_call(pdf_path: str, prompt: str, page_map: Optional[List[int]] =
             time.sleep(0.8 * attempt)
     raise last_err if last_err else RuntimeError("Gemini PDF call failed")
 
-def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
+def gemini_extract_from_pdf(pdf_path: str) -> List[Dict[str, Any]]:
+    """Extract all years from a single PDF. Returns a list of year objects."""
     # Two-step: locate relevant pages first, then extract from subset PDF for speed/accuracy.
     try:
         loc = gemini_locate_pages(pdf_path) or {}
@@ -333,6 +372,7 @@ def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
         pages += list(loc.get("income_statement_pages") or [])
         pages += list(loc.get("balance_sheet_pages") or [])
         pages += list(loc.get("eps_pages") or [])
+        pages += list(loc.get("financial_highlights_pages") or [])
         # Add neighbors to handle split statements across pages
         expanded = []
         for p in pages:
@@ -343,7 +383,7 @@ def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
             expanded.extend([p - 1, p, p + 1])
         subset_path, page_map = _subset_pdf(pdf_path, expanded)
         try:
-            return _gemini_pdf_call(subset_path, EXTRACTION_PROMPT, page_map=page_map)
+            result = _gemini_pdf_call(subset_path, EXTRACTION_PROMPT, page_map=page_map)
         finally:
             if subset_path != pdf_path:
                 try:
@@ -351,7 +391,14 @@ def gemini_extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
                 except Exception:
                     pass
     except Exception:
-        return _gemini_pdf_call(pdf_path, EXTRACTION_PROMPT)
+        result = _gemini_pdf_call(pdf_path, EXTRACTION_PROMPT)
+
+    # Handle both array (new multi-year) and single object (legacy fallback) responses
+    if isinstance(result, list):
+        return result
+    if isinstance(result, dict):
+        return [result]
+    return []
 
 def gemini_extract_pat_attrib_owners(pdf_path: str) -> Dict[str, Any]:
     return _gemini_pdf_call(pdf_path, PAT_ATTRIB_PROMPT)
@@ -793,55 +840,60 @@ def main():
             raise FileNotFoundError(p)
 
         print(f"\n=== Processing {p} (full PDF into Gemini) ===")
-        y = gemini_extract_from_pdf(p)
+        extracted = gemini_extract_from_pdf(p)
+        print(f"  -> Gemini returned {len(extracted)} fiscal year(s)")
 
-        y["year_label"] = norm_year_label(y.get("year_label"))
-        normalize_units_in_place(y)
+        for y in extracted:
+            print(f"\n  --- Year: {y.get('year_label', '(unknown)')} ---")
 
-        # Repair bad page numbers (critical for highlighting)
-        repairs = repair_sources(p, y)
-        fixed = [r for r in repairs if "->" in r[1]]
-        if fixed:
-            print("  -> Repaired source pages:", fixed)
+            y["year_label"] = norm_year_label(y.get("year_label"))
+            normalize_units_in_place(y)
 
-        # EPS: force BASIC+scope locking
-        if needs_eps_fix(y):
-            print("  -> EPS looks missing/ambiguous/diluted-only. Re-querying EPS-only (prefer BASIC + lock scope)...")
+            # Repair bad page numbers (critical for highlighting)
+            repairs = repair_sources(p, y)
+            fixed = [r for r in repairs if "->" in r[1]]
+            if fixed:
+                print("    -> Repaired source pages:", fixed)
+
+            # EPS: force BASIC+scope locking
+            if needs_eps_fix(y):
+                print("    -> EPS looks missing/ambiguous/diluted-only. Re-querying EPS-only (prefer BASIC + lock scope)...")
+                try:
+                    apply_eps_only(p, y)
+                except Exception as e:
+                    print("    -> EPS-only requery failed (non-fatal):", str(e))
+
+            # Networth: force Total Equity
+            if needs_networth_fix(y):
+                print("    -> Networth looks like components or missing 'Total Equity'. Re-querying networth-only (Total Equity)...")
+                try:
+                    apply_networth_only(p, y)
+                except Exception as e:
+                    print("    -> Networth-only requery failed (non-fatal):", str(e))
+
+            # Repair pages again (in case EPS/Networth were replaced)
+            repair_sources(p, y)
+
+            # PAT attributable to Owners
             try:
-                apply_eps_only(p, y)
-            except Exception as e:
-                print("  -> EPS-only requery failed (non-fatal):", str(e))
+                attrib = gemini_extract_pat_attrib_owners(p)
+                v = safe_num(attrib.get("value", 0))
+                if v and looks_like_inr_not_crore(v):
+                    attrib["value"] = v / CRORE_TO_INR
 
-        # Networth: force Total Equity
-        if needs_networth_fix(y):
-            print("  -> Networth looks like components or missing 'Total Equity'. Re-querying networth-only (Total Equity)...")
-            try:
-                apply_networth_only(p, y)
-            except Exception as e:
-                print("  -> Networth-only requery failed (non-fatal):", str(e))
+                if safe_num(attrib.get("value", 0)) > 0:
+                    repair_single_source_page(p, "pat", attrib, fallback_val=safe_num(attrib.get("value", 0)))
+                    y["_pat_attrib_owners"] = attrib
+            except Exception:
+                pass
 
-        # Repair pages again (in case EPS/Networth were replaced)
-        repair_sources(p, y)
+            print(json.dumps(y, indent=2))
+            years.append(y)
 
-        # PAT attributable to Owners
-        try:
-            attrib = gemini_extract_pat_attrib_owners(p)
-            v = safe_num(attrib.get("value", 0))
-            if v and looks_like_inr_not_crore(v):
-                attrib["value"] = v / CRORE_TO_INR
-
-            if safe_num(attrib.get("value", 0)) > 0:
-                repair_single_source_page(p, "pat", attrib, fallback_val=safe_num(attrib.get("value", 0)))
-                y["_pat_attrib_owners"] = attrib
-        except Exception:
-            pass
-
-        print(json.dumps(y, indent=2))
-        years.append(y)
-
+        # Highlight using the first year as representative source map
         out_pdf = os.path.splitext(p)[0] + "_HIGHLIGHTED.pdf"
         print(f"-> Writing highlights: {out_pdf}")
-        failures = highlight_pdf(p, y, out_pdf)
+        failures = highlight_pdf(p, extracted[0] if extracted else {}, out_pdf)
         if failures:
             print("Highlight failures:", failures)
 

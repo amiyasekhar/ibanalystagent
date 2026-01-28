@@ -5,6 +5,7 @@ import { BuyerMatchScore, DealInput } from "./types";
 import { z } from "zod";
 import { validateUnsupportedClaims } from "./llmValidation";
 import { log } from "./logger";
+import { StrategicAnalysis, getBuyerTypeWeights } from "./strategicAdvisor";
 
 export type BuyerMatch = { name: string; score: number; rationale: string };
 export type OutreachDraft = { buyerName: string; emailSubject: string; emailBody: string };
@@ -13,11 +14,20 @@ export type AgentResult = {
   dealSummary: string;
   buyers: BuyerMatch[];
   outreachDrafts: OutreachDraft[];
+  strategicRationale?: string;  // Strategic recommendation summary if provided
   // extra debugging fields (safe to ignore in UI)
   modelVersion?: string;
   llmUsed?: boolean;
   llmError?: string;
 };
+
+// Format INR amounts for display (crores for IB context)
+function formatINR(amount: number): string {
+  const crores = amount / 10_000_000;
+  if (crores >= 1) return `₹${crores.toFixed(1)}Cr`;
+  const lakhs = amount / 100_000;
+  return `₹${lakhs.toFixed(1)}L`;
+}
 
 const AgentLlmSchema = z
   .object({
@@ -66,16 +76,11 @@ function buildRationale(m: BuyerMatchScore): string {
   const f = m.features;
   const b = m.buyer;
   const parts: string[] = [];
-  const minDealM = (b.minDealSize / 1_000_000).toFixed(1);
-  const maxDealM = (b.maxDealSize / 1_000_000).toFixed(1);
-  const minEbitdaM = (b.minEbitda / 1_000_000).toFixed(1);
-  const maxEbitdaM = (b.maxEbitda / 1_000_000).toFixed(1);
 
   parts.push(f.sectorMatch ? "Sector match" : "Sector adjacency");
   parts.push(f.geoMatch ? "Geo match" : "Geo flexible");
-  parts.push(f.sizeFit ? `Size fit ($${minDealM}M–$${maxDealM}M EV)` : `Out-of-range size ($${minDealM}M–$${maxDealM}M EV)`);
-  // EBITDA fit is a real mandate constraint
-  parts.push(f.ebitdaFit ? `EBITDA fit ($${minEbitdaM}M–$${maxEbitdaM}M)` : `EBITDA out-of-range ($${minEbitdaM}M–$${maxEbitdaM}M)`);
+  parts.push(f.sizeFit ? `Size fit (${formatINR(b.minDealSize)}–${formatINR(b.maxDealSize)} EV)` : `Out-of-range size (${formatINR(b.minDealSize)}–${formatINR(b.maxDealSize)} EV)`);
+  parts.push(f.ebitdaFit ? `EBITDA fit (${formatINR(b.minEbitda)}–${formatINR(b.maxEbitda)})` : `EBITDA out-of-range (${formatINR(b.minEbitda)}–${formatINR(b.maxEbitda)})`);
   parts.push(`Activity ${(clamp01(f.activityLevel) * 100).toFixed(0)}%`);
   parts.push(`Capital ${(clamp01(f.dryPowderFit) * 100).toFixed(0)}%`);
   if (b.strategyTags?.length) parts.push(`Tags: ${b.strategyTags.slice(0, 3).join(", ")}`);
@@ -160,7 +165,7 @@ export async function scoreAndRankBuyers(deal: DealInput): Promise<{ modelVersio
   return { modelVersion: py.modelVersion, matches: withSynergy.slice(0, 5) as any };
 }
 
-export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
+export async function runAnalystAgent(deal: DealInput, strategicAnalysis?: StrategicAnalysis): Promise<AgentResult> {
   log.info("[Agent] Start", {
     deal: {
       name: deal.name,
@@ -169,13 +174,8 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
       provided: deal.provided,
       nominal: { revenue: deal.revenue, ebitda: deal.ebitda, dealSize: deal.dealSize },
     },
+    hasStrategicAnalysis: !!strategicAnalysis,
   });
-  if (deal.provided?.currency && deal.provided.currency !== "USD") {
-    log.warn("[Agent] Non-USD currency detected. No currency conversion is performed. Matching may be unreliable.", {
-      currency: deal.provided.currency,
-      scale: deal.provided.scale,
-    });
-  }
   if (deal.provided?.scale && deal.provided.scale !== "unit") {
     log.warn("[Agent] Scale should be 'unit' (full nominal values). Unexpected scale detected.", {
       currency: deal.provided.currency,
@@ -183,7 +183,19 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
     });
   }
   // 1) ML ranking + mandate filtering
-  const { modelVersion, matches } = await scoreAndRankBuyers(deal);
+  let { modelVersion, matches } = await scoreAndRankBuyers(deal);
+
+  // Apply strategic buyer-type weights if strategic analysis was provided
+  if (strategicAnalysis) {
+    const weights = getBuyerTypeWeights(strategicAnalysis.recommendation);
+    matches = matches.map((m) => {
+      const weight = weights[m.buyer.type] ?? 1.0;
+      return { ...m, score: clamp01(m.score * weight) };
+    });
+    matches.sort((a, b) => b.score - a.score);
+    matches = matches.slice(0, 5);
+  }
+
   const top = matches.slice(0, 5);
 
   // Log top matches for debugging
@@ -203,8 +215,8 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
       buyer: {
         sectorFocus: m.buyer.sectorFocus,
         geographies: m.buyer.geographies,
-        dealSizeRange: `$${(m.buyer.minDealSize / 1_000_000).toFixed(1)}M-$${(m.buyer.maxDealSize / 1_000_000).toFixed(1)}M`,
-        ebitdaRange: `$${(m.buyer.minEbitda / 1_000_000).toFixed(1)}M-$${(m.buyer.maxEbitda / 1_000_000).toFixed(1)}M`,
+        dealSizeRange: `${formatINR(m.buyer.minDealSize)}-${formatINR(m.buyer.maxDealSize)}`,
+        ebitdaRange: `${formatINR(m.buyer.minEbitda)}-${formatINR(m.buyer.maxEbitda)}`,
       },
     })),
   });
@@ -216,24 +228,28 @@ export async function runAnalystAgent(deal: DealInput): Promise<AgentResult> {
   }));
 
   // 2) LLM: teaser-style summary + outreach drafts
-  const system = `You are an investment banking analyst copilot.
-You write concise, realistic banker-grade outputs.
+  const system = `You are an investment banking analyst copilot at an Indian IB firm.
+You write concise, realistic banker-grade outputs. All monetary values are in INR (use ₹ and Cr notation).
 Return STRICT JSON only. No markdown. No extra commentary.`;
+
+  const strategicContext = strategicAnalysis
+    ? `\nStrategic Advisory Recommendation:\n- Recommendation: ${strategicAnalysis.recommendation}\n- Rationale: ${strategicAnalysis.rationale}\n- Market Context: ${strategicAnalysis.marketContext}\n- Timeline: ${strategicAnalysis.timelineRecommendation}\n`
+    : "";
 
   const prompt = `Deal:
 - Name: ${deal.name}
 - Sector: ${deal.sector}
 - Geography: ${deal.geography}
-- Revenue: ${deal.revenue}
-- EBITDA: ${deal.ebitda}
-- EV / Deal Size: ${deal.dealSize}
+- Revenue: ${formatINR(deal.revenue)}
+- EBITDA: ${formatINR(deal.ebitda)}
+- EV / Deal Size: ${formatINR(deal.dealSize)}
 - Description: ${deal.description}
-
+${strategicContext}
 Ranked buyers (already scored by our ML matching model):
 ${buyers.map((b, i) => `${i + 1}) ${b.name} score=${(b.score * 100).toFixed(0)}%`).join("\n")}
 
 Task:
-1) Write a teaser-style deal summary (4–7 sentences). Must sound like a real CIM/teaser blurb.
+1) Write a teaser-style deal summary (4–7 sentences). Must sound like a real CIM/teaser blurb.${strategicAnalysis ? "\n   Include a 1-2 sentence strategic rationale section explaining WHY this transaction structure is recommended (based on the advisory recommendation above)." : ""}
 2) For the top 3 buyers, write email subject + email body (short, banker tone, specific, no cringe).
 3) Return JSON with this exact shape:
 
@@ -246,8 +262,9 @@ Task:
 
 Rules:
 - Keep it realistic: no made-up traction claims.
-- Mention sector + geo + revenue/EBITDA succinctly.
-- No placeholders like [Name] — write it ready to send.`;
+- Mention sector + geo + revenue/EBITDA in ₹Cr notation.
+- No placeholders like [Name] — write it ready to send.
+- India context: reference relevant market dynamics if applicable.`;
 
   const llm = await claudeJson<{ dealSummary: string; outreachDrafts: OutreachDraft[] }>({
     system,
@@ -255,14 +272,15 @@ Rules:
     maxTokens: 1100,
   });
 
-  const fallbackSummary = `Teaser: ${deal.name} is a ${deal.sector} business in ${deal.geography} with ~$${deal.revenue}m revenue and ~$${deal.ebitda}m EBITDA. The transaction contemplates an EV of ~$${deal.dealSize}m. ${deal.description}`;
+  const strategyNote = strategicAnalysis ? ` Our advisory recommendation is to ${strategicAnalysis.recommendation.replace(/-/g, " ")}.` : "";
+  const fallbackSummary = `Teaser: ${deal.name} is a ${deal.sector} business in ${deal.geography} with ~${formatINR(deal.revenue)} revenue and ~${formatINR(deal.ebitda)} EBITDA. The transaction contemplates an EV of ~${formatINR(deal.dealSize)}.${strategyNote} ${deal.description}`;
 
   const fallbackDrafts: OutreachDraft[] = buyers.slice(0, 3).map((b) => ({
     buyerName: b.name,
     emailSubject: `Opportunity: ${deal.name} (${deal.sector}, ${deal.geography})`,
     emailBody:
       `Hi ${b.name} team,\n\n` +
-      `Sharing a new opportunity: ${deal.name} — ${deal.sector} in ${deal.geography} with ~$${deal.revenue}m revenue and ~$${deal.ebitda}m EBITDA. We’re exploring interest around an EV of ~$${deal.dealSize}m.\n\n` +
+      `Sharing a new opportunity: ${deal.name} — ${deal.sector} in ${deal.geography} with ~${formatINR(deal.revenue)} revenue and ~${formatINR(deal.ebitda)} EBITDA. We're exploring interest around an EV of ~${formatINR(deal.dealSize)}.\n\n` +
       `If this aligns with your mandate, happy to share a short teaser + set up a quick call.\n\n` +
       `Best,\nAmiya`,
   }));
@@ -354,10 +372,15 @@ Rules:
     }
   }
 
+  const strategicRationale = strategicAnalysis
+    ? `[${strategicAnalysis.recommendation}] ${strategicAnalysis.rationale} — ${strategicAnalysis.marketContext} Timeline: ${strategicAnalysis.timelineRecommendation}`
+    : undefined;
+
   return {
     dealSummary,
     buyers,
     outreachDrafts,
+    strategicRationale,
     modelVersion,
     llmUsed,
     llmError,

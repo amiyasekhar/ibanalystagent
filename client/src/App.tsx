@@ -6,7 +6,21 @@ import DealIntakeForm from "./components/DealIntakeForm";
 
 type BuyerMatch = { name: string; score: number; rationale: string };
 type OutreachDraft = { buyerName: string; emailSubject: string; emailBody: string };
-type ApiResponse = { dealSummary: string; buyers: BuyerMatch[]; outreachDrafts: OutreachDraft[] };
+
+type StrategicAnalysis = {
+  recommendation: string;
+  confidence: number;
+  rationale: string;
+  marketContext: string;
+  preferredBuyerTypes: string[];
+  alternativeScenarios: Array<{ scenario: string; rationale: string }>;
+  risks: string[];
+  opportunities: string[];
+  valuationIndicator: string;
+  timelineRecommendation: string;
+};
+
+type ApiResponse = { dealSummary: string; buyers: BuyerMatch[]; outreachDrafts: OutreachDraft[]; strategicRationale?: string };
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
@@ -17,15 +31,19 @@ export default function App() {
   const [runHistory, setRunHistory] = useState<Array<{ at: string; type: string; ok: boolean; note?: string }>>([]);
   const [leftTab, setLeftTab] = useState<LeftTabKey>("deal");
 
-  const [dealName, setDealName] = useState("B2B SaaS for logistics");
-  const [sector, setSector] = useState("Software");
-  const [geo, setGeo] = useState("US");
-  const [revenue, setRevenue] = useState<number>(15);
-  const [ebitda, setEbitda] = useState<number>(5);
-  const [dealSize, setDealSize] = useState<number>(60);
+  const [dealName, setDealName] = useState("Replit Technologies");
+  const [sector, setSector] = useState("IT / SaaS");
+  const [geo, setGeo] = useState("Mumbai");
+  const [revenue, setRevenue] = useState<number>(150_000_000);       // ₹15Cr
+  const [ebitda, setEbitda] = useState<number>(37_500_000);          // ₹3.75Cr
+  const [dealSize, setDealSize] = useState<number>(600_000_000);     // ₹60Cr
   const [description, setDescription] = useState(
-    "Vertical SaaS platform serving mid-market logistics companies with workflow automation and carrier integrations."
+    "B2B SaaS platform serving mid-market logistics companies in India with workflow automation, carrier integrations, and real-time tracking."
   );
+
+  const [strategicAnalysis, setStrategicAnalysis] = useState<StrategicAnalysis | null>(null);
+  const [strategicLoading, setStrategicLoading] = useState(false);
+  const [strategicError, setStrategicError] = useState<string | null>(null);
 
   const [rawIntake, setRawIntake] = useState<string>("");
   const [extracting, setExtracting] = useState(false);
@@ -63,6 +81,29 @@ export default function App() {
     setLeftTab("deal");
   }
 
+  async function handleStrategicAdvisory() {
+    setStrategicLoading(true);
+    setStrategicError(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/strategic-recommendation`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          deal: { name: dealName, sector, geography: geo, description },
+          financials: { revenue, ebitda },
+        }),
+      });
+      if (!res.ok) throw new Error(`Strategic API returned ${res.status}`);
+      const data = (await res.json()) as any;
+      if (!data?.ok || !data?.analysis) throw new Error(data?.error || "Bad response");
+      setStrategicAnalysis(data.analysis as StrategicAnalysis);
+    } catch (err: any) {
+      setStrategicError(err?.message || "Strategic advisory failed");
+    } finally {
+      setStrategicLoading(false);
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -71,8 +112,7 @@ export default function App() {
     try {
       const id = await ensureWorkflow();
 
-      // update deal in workflow by calling extract endpoint with structured text (simple approach)
-      // (for now: reuse existing extract endpoint would be better, but we keep it minimal)
+      // Seed deal into workflow via extract endpoint (structured text, INR nominal values)
       await fetch(`${API_BASE}/api/workflows/${id}/extract`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -81,14 +121,20 @@ export default function App() {
             `Name: ${dealName}\n` +
             `Sector: ${sector}\n` +
             `Geography: ${geo}\n` +
-            `Revenue ($m): ${Number(revenue)}\n` +
-            `EBITDA ($m): ${Number(ebitda)}\n` +
-            `EV ($m): ${Number(dealSize)}\n` +
+            `Revenue (INR): ${Number(revenue)}\n` +
+            `EBITDA (INR): ${Number(ebitda)}\n` +
+            `EV (INR): ${Number(dealSize)}\n` +
             `Description: ${description}`,
         }),
       });
 
-      const res = await fetch(`${API_BASE}/api/workflows/${id}/match`, { method: "POST" });
+      const matchBody: any = {};
+      if (strategicAnalysis) matchBody.strategicAnalysis = strategicAnalysis;
+      const res = await fetch(`${API_BASE}/api/workflows/${id}/match`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(matchBody),
+      });
       if (!res.ok) throw new Error(`API returned ${res.status}`);
       const payload = (await res.json()) as any;
       const data: ApiResponse = payload?.result;
@@ -169,7 +215,7 @@ export default function App() {
           <div className="logo">OD</div>
           <div className="brandText">
             <div className="name">OffDeal Analyst Co-Pilot</div>
-            <div className="tag">AI-native workflow • buyer matching • outreach drafts</div>
+            <div className="tag">AI-native workflow • strategic advisory • buyer matching • outreach drafts</div>
           </div>
         </div>
 
@@ -244,6 +290,10 @@ export default function App() {
                 error={error}
                 onClear={onClear}
                 runHistory={runHistory}
+                strategicAnalysis={strategicAnalysis}
+                strategicLoading={strategicLoading}
+                strategicError={strategicError}
+                onStrategicAdvisory={handleStrategicAdvisory}
               />
             )}
           </form>

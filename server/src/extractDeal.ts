@@ -26,22 +26,41 @@ const ExtractedDealSchema = z
 function hasExplicitSectorHint(rawText: string, sector: string): boolean {
   const t = rawText.toLowerCase();
   const s = sector.toLowerCase();
-  if (s === "software") return t.includes("software") || t.includes("saas") || t.includes("saaS".toLowerCase());
-  if (s === "healthcare") return t.includes("health") || t.includes("med") || t.includes("clinic") || t.includes("pharma");
+  if (s === "software" || s === "it / saas") return t.includes("software") || t.includes("saas") || t.includes("it /");
+  if (s === "fintech") return t.includes("fintech") || t.includes("fin tech") || t.includes("financial tech");
+  if (s === "healthcare") return t.includes("health") || t.includes("med") || t.includes("clinic");
+  if (s === "pharma") return t.includes("pharma") || t.includes("pharmaceutical");
+  if (s === "bfsi") return t.includes("bfsi") || t.includes("banking") || t.includes("insurance");
   if (s === "manufacturing") return t.includes("manufactur") || t.includes("industrial") || t.includes("factory");
   if (s === "business services") return t.includes("business services") || t.includes("outsourc") || t.includes("services");
   if (s === "consumer") return t.includes("consumer") || t.includes("retail") || t.includes("e-commerce") || t.includes("d2c");
+  if (s === "d2c / brands") return t.includes("d2c") || t.includes("dtc") || t.includes("direct to consumer");
+  if (s === "logistics") return t.includes("logistic") || t.includes("supply chain");
+  if (s === "agritech") return t.includes("agri");
+  if (s === "edtech") return t.includes("edtech") || t.includes("ed-tech") || t.includes("education");
+  if (s === "energy / cleantech") return t.includes("energy") || t.includes("cleantech");
+  if (s === "auto / ev") return t.includes("auto") || t.includes("electric vehicle");
+  if (s === "real estate") return t.includes("real estate") || t.includes("proptech");
+  if (s === "telecom") return t.includes("telecom");
   return true;
 }
 
 function inferGeographyIfExplicit(rawText: string): string {
   const t = rawText.toLowerCase();
-  // IMPORTANT: do NOT treat the pronoun "us" as geography. Require explicit tokens.
+  // Indian cities first (most specific)
+  if (t.includes("mumbai")) return "Mumbai";
+  if (t.includes("delhi") || t.includes("ncr")) return "Delhi NCR";
+  if (t.includes("bangalore") || t.includes("bengaluru")) return "Bangalore";
+  if (t.includes("hyderabad")) return "Hyderabad";
+  if (t.includes("pune")) return "Pune";
+  if (t.includes("chennai")) return "Chennai";
+  if (t.includes("kolkata")) return "Kolkata";
+  if (t.includes("india") || t.includes("pan-india")) return "India";
+  // International
   if (t.includes("united states") || t.includes("u.s.") || /\busa\b/.test(t) || /\bu\.s\.\b/.test(t)) return "US";
   if (t.includes("united kingdom") || /\buk\b/.test(t)) return "UK";
   if (t.includes("canada")) return "Canada";
   if (t.includes("europe") || t.includes("emea")) return "Europe";
-  if (t.includes("india")) return "India";
   return "";
 }
 
@@ -79,9 +98,10 @@ type ProvidedMetrics = {
 
 function detectCurrencyScale(rawText: string): { currency: string; scale: ProvidedScale } {
   const t = rawText.toLowerCase();
-  // currency (USD only for now)
-  let currency = "USD";
-  if (t.includes("$") || t.includes("usd") || t.includes("us$")) currency = "USD";
+  // currency detection (INR default for Indian context)
+  let currency = "INR";
+  if (t.includes("usd") || t.includes("us$") || (t.includes("$") && !t.includes("₹"))) currency = "USD";
+  if (t.includes("₹") || t.includes("inr") || t.includes("crore") || t.includes("lakh")) currency = "INR";
 
   // scale - check for number-suffix patterns like "$26.9B" or standalone words
   let scale: ProvidedScale = "m";
@@ -397,11 +417,23 @@ function fallbackExtract(rawText: string): DealInput {
   const lower = text.toLowerCase();
 
   const sectorGuess =
-    lower.includes("saas") || lower.includes("software") ? "Software" :
+    lower.includes("saas") || lower.includes("it /") ? "IT / SaaS" :
+    lower.includes("software") ? "Software" :
+    lower.includes("fintech") || lower.includes("fin tech") ? "Fintech" :
     lower.includes("health") ? "Healthcare" :
+    lower.includes("pharma") ? "Pharma" :
+    lower.includes("bfsi") || lower.includes("banking") || lower.includes("insurance") ? "BFSI" :
     lower.includes("manufactur") || lower.includes("industrial") ? "Manufacturing" :
     lower.includes("business services") ? "Business Services" :
     lower.includes("consumer") || lower.includes("retail") ? "Consumer" :
+    lower.includes("d2c") || lower.includes("dtc") ? "D2C / Brands" :
+    lower.includes("logistic") || lower.includes("supply chain") ? "Logistics" :
+    lower.includes("agri") ? "Agritech" :
+    lower.includes("edtech") || lower.includes("education") ? "EdTech" :
+    lower.includes("energy") || lower.includes("cleantech") ? "Energy / Cleantech" :
+    lower.includes("auto") || lower.includes("electric vehicle") ? "Auto / EV" :
+    lower.includes("real estate") ? "Real Estate" :
+    lower.includes("telecom") ? "Telecom" :
     "Other";
   const sector = hasExplicitSectorHint(text, sectorGuess) ? sectorGuess : "Other";
 
@@ -485,8 +517,8 @@ Return STRICT JSON only. No markdown. No extra commentary.`;
 Return JSON with exactly these keys:
 {
   "name": "string",
-  "sector": "Software|Healthcare|Manufacturing|Business Services|Consumer|Other",
-  "geography": "string (e.g. US, UK, Europe)",
+  "sector": "IT / SaaS|Software|Fintech|Healthcare|Pharma|BFSI|Manufacturing|Business Services|Consumer|D2C / Brands|Logistics|Agritech|EdTech|Energy / Cleantech|Auto / EV|Real Estate|Media / Entertainment|Telecom|Other",
+  "geography": "string (e.g. Mumbai, Delhi NCR, Bangalore, India, US, UK, Europe)",
   "revenue": number,   // numeric value as stated in the text (do not convert currencies)
   "ebitda": number,    // numeric value as stated in the text (do not convert currencies)
   "dealSize": number,  // ONLY extract if text explicitly mentions "EV", "enterprise value", or "deal size". Otherwise use 0. Do NOT use revenue or other metrics as deal size.

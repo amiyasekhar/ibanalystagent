@@ -1,22 +1,22 @@
 import fs from "node:fs";
 import path from "node:path";
-import { BuyerProfile } from "./types";
+import { BuyerProfile, BuyerType } from "./types";
 import { log } from "./logger";
 
 const FALLBACK_BUYERS: BuyerProfile[] = [
   {
     id: "b1",
-    name: "Summit Peak Capital",
+    name: "ChrysCapital",
     type: "Private Equity",
-    sectorFocus: ["Software", "Business Services"],
-    geographies: ["US", "Canada", "UK"],
-    minEbitda: 3_000_000,      // $3M
-    maxEbitda: 20_000_000,     // $20M
-    minDealSize: 20_000_000,   // $20M
-    maxDealSize: 150_000_000,  // $150M
-    dryPowder: 500_000_000,    // $500M
-    pastDeals: 18,
-    strategyTags: ["buy-and-build", "roll-up", "majority-stake"],
+    sectorFocus: ["BFSI", "Business Services", "Consumer"],
+    geographies: ["Pan-India", "Mumbai", "Delhi NCR"],
+    minEbitda: 100_000_000,      // ₹10Cr
+    maxEbitda: 2_000_000_000,    // ₹200Cr
+    minDealSize: 1_000_000_000,  // ₹100Cr
+    maxDealSize: 8_000_000_000,  // ₹800Cr
+    dryPowder: 30_000_000_000,   // ₹3000Cr
+    pastDeals: 55,
+    strategyTags: ["buyout", "growth-equity", "PIPE"],
   },
 ];
 
@@ -45,9 +45,9 @@ export function loadBuyers(): BuyerProfile[] {
         (b: any): BuyerProfile => ({
           id: String(b.id),
           name: String(b.name),
-          type: b.type === "Strategic" ? "Strategic" : "Private Equity",
+          type: (["Strategic", "Private Equity", "Family Office", "Growth Equity"].includes(b.type) ? b.type : "Private Equity") as BuyerType,
           sectorFocus: Array.isArray(b.sectorFocus) ? (b.sectorFocus as any) : ["Other"],
-          geographies: Array.isArray(b.geographies) ? b.geographies.map(String) : ["US"],
+          geographies: Array.isArray(b.geographies) ? b.geographies.map(String) : ["Pan-India"],
           minEbitda: Number(b.minEbitda) || 0,
           maxEbitda: Number(b.maxEbitda) || 0,
           minDealSize: Number(b.minDealSize) || 0,
@@ -55,6 +55,12 @@ export function loadBuyers(): BuyerProfile[] {
           dryPowder: Number(b.dryPowder) || 0,
           pastDeals: Number(b.pastDeals) || 0,
           strategyTags: Array.isArray(b.strategyTags) ? b.strategyTags.map(String) : [],
+          investmentStage: Array.isArray(b.investmentStage) ? b.investmentStage : undefined,
+          investmentThesis: typeof b.investmentThesis === "string" ? b.investmentThesis : undefined,
+          portfolioCompanies: Array.isArray(b.portfolioCompanies) ? b.portfolioCompanies.map(String) : undefined,
+          reputation: Array.isArray(b.reputation) ? b.reputation.map(String) : undefined,
+          keyPartners: Array.isArray(b.keyPartners) ? b.keyPartners.map(String) : undefined,
+          valueAdd: Array.isArray(b.valueAdd) ? b.valueAdd.map(String) : undefined,
         })
       );
   } catch (e: any) {
